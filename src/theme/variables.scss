@@ -36,12 +36,42 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  //primary:    #488aff,
+  primary:    #0f4162,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
+
+//$colors: (
+//    //primary: #ed2a7b,
+//    //primary: #9437ea,
+//    primary: #3CB5FE,
+//    //primary: #7851c6,
+//    secondary: #32db64,
+//    danger: #f53d3d,
+//    light: #f4f4f4,
+//    dark: #222,
+//
+//    bloom: (
+//        base: #e57373,
+//        contrast: #ecf0f1,
+//    ),
+//
+//    cloud: #ecf0f1,
+//    pear: #b2b2b2,
+//
+//    menu_red: #dfafb4,
+//    menu_red_transparent: rgba(223,175,180, 0.5)
+//);
+
+$toolbar-md-background: color($colors, primary);
+
+$tabs-md-background: color($colors, primary);
+$tabs-md-tab-color-inactive: white;
+$tabs-md-tab-color-active: white;
+
 
 
 // App iOS Variables

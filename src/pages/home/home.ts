@@ -28,6 +28,7 @@ export class HomePage {
     }
 
     startODK(): void {
+
         this.appstarter.start(
             "org.odk.collect.android",
             "You need OpenDataKit to log your catch, but it is not installed. " +
