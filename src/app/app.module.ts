@@ -8,7 +8,7 @@ import {HttpModule, Http} from '@angular/http';
 // import { HttpClient, HttpClientModule } from "@angular/http";
 // import {HttpClientModule} from '@angular/common/http';
 
-import {AboutPage} from '../pages/about/about';
+import {AnalyticsHomePage} from '../pages/analytics-home/analytics-home';
 import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 import {HomePage} from "../pages/home/home"
@@ -18,9 +18,10 @@ import {SettingsPage} from "../pages/settings/settings";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppstarterProvider} from '../providers/appstarter/appstarter';
+import { ErrorsProvider } from '../providers/errors/errors';
 
 let pages = [
-    AboutPage,
+    AnalyticsHomePage,
     ContactPage,
     TabsPage,
     HomePage,
@@ -58,7 +59,8 @@ export function createTranslateLoader(http: Http) {
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        AppstarterProvider
+        AppstarterProvider,
+    ErrorsProvider
     ]
 })
 export class AppModule {

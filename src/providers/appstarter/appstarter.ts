@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Platform} from "ionic-angular";
+import {ErrorsProvider} from "../errors/errors";
+
 let startApp: any;
 
 
@@ -14,7 +16,8 @@ let startApp: any;
 @Injectable()
 export class AppstarterProvider {
 
-    constructor(public http: Http, public platform: Platform) {
+    constructor(public http: Http, public platform: Platform,
+                public errors: ErrorsProvider) {
         // console.log('Hello AppstarterProvider Provider');
     }
 
@@ -45,10 +48,12 @@ export class AppstarterProvider {
                     console.log(success);
                 }, (error) => {
                     console.log(error);
+                    this.errors.presentToast(error);
                 })
             } catch (ex) {
                 console.log("appstarter: unable to home " + packagename);
                 console.log(ex);
+                this.errors.presentToast(ex);
             }
         });
     }
