@@ -3,7 +3,7 @@ import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from '@ngx-translate/core';
-import {LoginPage} from "../pages/login/login";
+import {LandingPage} from "../pages/landing/landing";
 
 import {TabsPage} from '../pages/tabs/tabs';
 import {HomePage} from "../pages/home/home"
@@ -12,7 +12,7 @@ import {HomePage} from "../pages/home/home"
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage: any = LoginPage;
+    rootPage: any = LandingPage;
 
     constructor(platform: Platform,
                 statusBar: StatusBar,

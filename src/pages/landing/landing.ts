@@ -3,7 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the LandingPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
@@ -11,16 +11,16 @@ import {HomePage} from "../home/home";
 
 @IonicPage()
 @Component({
-    selector: 'page-login',
-    templateUrl: 'login.html',
+    selector: 'page-landing',
+    templateUrl: 'landing.html',
 })
-export class LoginPage {
+export class LandingPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad LoginPage');
+        console.log('ionViewDidLoad LandingPage');
     }
 
     login(): void {
