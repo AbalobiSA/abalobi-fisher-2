@@ -16,6 +16,7 @@ import {StartPage} from "../pages/start/start"
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+import { AppstarterProvider } from '../providers/appstarter/appstarter';
 
 let pages = [
     AboutPage,
@@ -54,7 +55,8 @@ export function createTranslateLoader(http: Http) {
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: ErrorHandler, useClass: IonicErrorHandler}
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AppstarterProvider
     ]
 })
 export class AppModule {

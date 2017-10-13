@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Platform} from "ionic-angular";
+import {AppstarterProvider} from "../../providers/appstarter/appstarter";
 
 let startApp: any;
 
@@ -17,7 +19,8 @@ let startApp: any;
 })
 export class StartPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+                public platform: Platform, public appstarter: AppstarterProvider) {
     }
 
     ionViewDidLoad() {
@@ -25,40 +28,36 @@ export class StartPage {
     }
 
     startODK(): void {
-        let sApp = startApp.set({
-            /* params */
-            "package": "org.odk.collect.android",
-            "intentstart": "startActivity"
-        }, {/* extras */});
-
-        sApp.check((values) => { /* success */
-            console.log(values);
-        }, (error) => { /* fail */
-            let x = window.confirm("You need OpenDataKit to log your catch, but it is not installed. " +
-                "\n\nWould you like to install it now using the Google Play Store?");
-            if (x === true) {
-                window.open('https://play.google.com/store/apps/details?id=org.odk.collect.android', '_system')
-            }
-        });
-
-
-        sApp.start((success) => {
-            console.log(success);
-        }, (error) => {
-            console.log(error);
-        })
+        this.appstarter.start(
+            "org.odk.collect.android",
+            "You need OpenDataKit to log your catch, but it is not installed. " +
+                            "\n\nWould you like to install it now using the Google Play Store?",
+            'https://play.google.com/store/apps/details?id=org.odk.collect.android'
+        );
     }
 
     startAnalytics(): void {
-
+        this.appstarter.start(
+            "com.abalobi.fisheranalytics",
+            "You need Abalobi Fisher Analytics, but it is not installed. " +
+            "\n\nWould you like to install it now using the Google Play Store?",
+            'https://play.google.com/store/apps/details?id=com.abalobi.fisheranalytics'
+        );
     }
 
     startTelegram(): void {
-
+        this.appstarter.start(
+            "org.telegram.messenger",
+            "You need Telegram for messaging, but it is not installed. " +
+            "\n\nWould you like to install it now using the Google Play Store?",
+            'https://play.google.com/store/apps/details?id=org.telegram.messenger'
+        );
     }
 
     startCalculator(): void {
-
+        this.appstarter.start(
+            "com.android.calculator2"
+        );
     }
 
     openSettings(): void {
