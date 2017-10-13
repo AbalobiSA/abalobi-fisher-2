@@ -1,0 +1,23 @@
+{
+	"MAIN_MENU_LOG_CATCH": "Skryf my vangs op",
+	"MAIN_MENU_ANALYTICS": "Grafieke en Finansies",
+	"MAIN_MENU_MESSAGING": "Boodskappe",
+	"MAIN_MENU_CALCULATOR": "Sakrekenaar",
+	"MAIN_MENU_WEATHER": "Weervoorspelling",
+	"MAIN_MENU_WEBSITE": "Besoek Ons Webwerf",
+	"MAIN_MENU_SETUP_LOGBOOK": "Stel Logboek op",
+	"MAIN_MENU_SETUP_APP": "Abalobi Instellings",
+	"MAIN_MENU_GET_HELP": "Vra hulp met Abalobi",
+	"ABLB_SAVE_SETTINGS_BUTTON" : "Stoor Instellings",
+	"HELP_SITE_BUTTON" : "Kliek hier vir hoe om te begin",
+	"HELP_SCREEN_HEADER" : "Indien u met Abalobi enige probleme ervaar, doen asb een van die volgende:",
+	"HELP_OPTION_1" : "(a) Kontak jou plaaslike Abalobi Visser Assistent",
+	"HELP_OPTION_2" : "(b) Stuur 'n e-pos aan support@abalobi.info",
+	"HELP_OPTION_3" : "(c) Stuur 'n SMS aan: +2787240508610041",
+	"SETTINGS_USERNAME":"Gebruikersnaam",
+	"SETTINGS_PASSWORD":"Wagwoord",
+	"SETTINGS_URL":"ODK Url",
+	"HEADER_ABALOBI_FISHER":"Abalobi Visser",
+	"HEADER_LOGBOOK_SETTINGS":"Logboek Instellings",
+	"HEADER_ABALOBI_SETTINGS":"Abalobi Instellings"
+}

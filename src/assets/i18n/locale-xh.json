@@ -1,0 +1,24 @@
+{
+	"MAIN_MENU_LOG_CATCH": "Log my catch",
+	"MAIN_MENU_ANALYTICS": "Analytics",
+	"MAIN_MENU_MESSAGING": "Messaging",
+	"MAIN_MENU_CALCULATOR": "Calculator",
+	"MAIN_MENU_WEATHER": "Weather",
+	"MAIN_MENU_WEBSITE": "Visit Abalobi Website",
+	"MAIN_MENU_SETUP_LOGBOOK": "Setup Logbook",
+	"MAIN_MENU_SETUP_APP": "Abalobi Settings",
+	"MAIN_MENU_GET_HELP": "Get help with Abalobi",
+	"ABLB_SAVE_SETTINGS_BUTTON" : "Save Settings",
+	"HELP_SITE_BUTTON" : "Click here for how to get started",
+	"HELP_SCREEN_HEADER" : "If you are having trouble with Abalobi, please do one of the following:",
+	"HELP_OPTION_1" : "(a) Contact your local Abalobi Fisher Assistant",
+	"HELP_OPTION_2" : "(b) Send an e-mail to support@abalobi.info",
+	"HELP_OPTION_3" : "(c) Send an sms to: +2787240508610041",
+	"SETTINGS_USERNAME":"Username",
+	"SETTINGS_PASSWORD":"Password",
+	"SETTINGS_URL":"ODK Url",
+
+	"HEADER_ABALOBI_FISHER":"Abalobi Fisher",
+	"HEADER_LOGBOOK_SETTINGS":"Logbook Settings",
+	"HEADER_ABALOBI_SETTINGS":"Abalobi Settings"
+}
