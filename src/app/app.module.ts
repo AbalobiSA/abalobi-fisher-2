@@ -10,20 +10,20 @@ import {HttpModule, Http} from '@angular/http';
 
 import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
-import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
-import {StartPage} from "../pages/start/start"
+import {HomePage} from "../pages/home/home"
+import {LoginPage} from "../pages/login/login";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import { AppstarterProvider } from '../providers/appstarter/appstarter';
+import {AppstarterProvider} from '../providers/appstarter/appstarter';
 
 let pages = [
     AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
-    StartPage
+    HomePage,
+    LoginPage
 ];
 
 export function createTranslateLoader(http: Http) {
@@ -56,7 +56,7 @@ export function createTranslateLoader(http: Http) {
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AppstarterProvider
+        AppstarterProvider
     ]
 })
 export class AppModule {

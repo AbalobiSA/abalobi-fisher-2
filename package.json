@@ -9,7 +9,9 @@
         "build": "ionic-app-scripts build",
         "lint": "ionic-app-scripts lint",
         "ionic:build": "ionic-app-scripts build",
-        "ionic:serve": "ionic-app-scripts serve"
+        "ionic:serve": "ionic-app-scripts serve",
+        "clean-build": "./scripts/build_and_run.sh",
+        "apk": "./scripts/create_apk.sh"
     },
     "dependencies": {
         "@angular/common": "4.1.3",

@@ -3,15 +3,16 @@ import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from '@ngx-translate/core';
+import {LoginPage} from "../pages/login/login";
 
 import {TabsPage} from '../pages/tabs/tabs';
-import {StartPage} from "../pages/start/start"
+import {HomePage} from "../pages/home/home"
 
 @Component({
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage: any = StartPage;
+    rootPage: any = LoginPage;
 
     constructor(platform: Platform,
                 statusBar: StatusBar,

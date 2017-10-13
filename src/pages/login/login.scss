@@ -1,0 +1,56 @@
+page-login {
+    .page-content {
+        //background-color: #30475e;
+        background-image: url("../assets/images/water_blurred.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        //background-color: darkslategray;
+    }
+
+    .main-header {
+        color: white;
+        font-size: 4em;
+        font-family: 'Open Sans Condensed', sans-serif;
+    }
+
+    .login-button-large {
+        height: 50px;
+        margin-bottom: 15px;
+        background-color: #00cac8;
+
+        &:hover, &:active{
+            background-color: #00cac8 !important;
+        }
+    }
+
+    .image-container {
+        text-align: center;
+    }
+
+    .title-image {
+        display: inline-block;
+        //max-height: 10%;
+        max-width: 60%;
+        //margin-top: 15px;
+        ////width: 55%;
+        ////height: 55%;
+        //height: 200px;
+        //width: auto;
+        //text-align: center;
+    }
+
+    .fixed-button-container {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        z-index: 100;
+        padding: 15px;
+        //padding-right: 30px;
+    }
+
+    .content-centered {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

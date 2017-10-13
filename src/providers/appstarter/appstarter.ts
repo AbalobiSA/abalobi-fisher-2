@@ -47,7 +47,7 @@ export class AppstarterProvider {
                     console.log(error);
                 })
             } catch (ex) {
-                console.log("appstarter: unable to start " + packagename);
+                console.log("appstarter: unable to home " + packagename);
                 console.log(ex);
             }
         });
