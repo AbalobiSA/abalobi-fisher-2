@@ -19,6 +19,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppstarterProvider} from '../providers/appstarter/appstarter';
 import { ErrorsProvider } from '../providers/errors/errors';
+import { AuthProvider } from '../providers/auth/auth';
 
 let pages = [
     AnalyticsHomePage,
@@ -60,7 +61,8 @@ export function createTranslateLoader(http: Http) {
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AppstarterProvider,
-    ErrorsProvider
+    ErrorsProvider,
+    AuthProvider
     ]
 })
 export class AppModule {
