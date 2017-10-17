@@ -4,8 +4,6 @@
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
-@import "_fonts.scss";
-@import "_buttons.scss";
 
 
 // The app direction is used to include
@@ -15,6 +13,8 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
+
+
 
 
 // Shared Variables
@@ -103,6 +103,9 @@ $tabs-md-tab-color-active: white;
 // default are overridden.
 
 @import "ionic.theme.default";
+
+@import "_fonts.scss";
+@import "_globals.scss";
 
 
 // Ionicons

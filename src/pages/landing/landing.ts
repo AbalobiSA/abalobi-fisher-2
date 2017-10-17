@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
+import {RegisterHomePage} from "../register-home/register-home";
 
 /**
  * Generated class for the LandingPage page.
@@ -27,6 +28,10 @@ export class LandingPage {
     login(): void {
         // this.
         this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+    }
+
+    register(): void {
+        this.navCtrl.push(RegisterHomePage, {}, {animate: true, direction: 'forward'});
     }
 
     // register(): void {

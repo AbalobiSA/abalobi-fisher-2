@@ -19,6 +19,9 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppstarterProvider} from '../providers/appstarter/appstarter';
 import { ErrorsProvider } from '../providers/errors/errors';
+import {RegisterHomePage} from "../pages/register-home/register-home";
+import { RegistrationProvider } from '../providers/registration/registration.provider';
+import {RegisterAgreementPage} from "../pages/register-home/register-agreement/register-agreement";
 
 let pages = [
     AnalyticsHomePage,
@@ -26,7 +29,9 @@ let pages = [
     TabsPage,
     HomePage,
     LandingPage,
-    SettingsPage
+    SettingsPage,
+    RegisterHomePage,
+    RegisterAgreementPage
 ];
 
 export function createTranslateLoader(http: Http) {
@@ -60,7 +65,8 @@ export function createTranslateLoader(http: Http) {
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AppstarterProvider,
-    ErrorsProvider
+    ErrorsProvider,
+    RegistrationProvider
     ]
 })
 export class AppModule {

@@ -14,3 +14,44 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.hacker-console {
+    margin-top: 50px;
+    border: 0;
+    color: #93a1a1;
+    background-color: #002b36;
+    font-family: Monaco,Menlo,"Ubuntu Mono",Consolas,source-code-pro,monospace;
+    font-size: 14px;
+    max-height: 100vh;
+}
+
+
+
+.ablb-button {
+    height: 50px;
+    margin-bottom: 8px;
+    text-transform: none;
+    font-size: 1.6em;
+    font-weight: 400;
+}
+
+.abalobi-button-cyan {
+    color: white !important;
+    background-color: #95bbc3 !important;
+    //font-size: 25px;
+}
+
+.abalobi-button-darkblue {
+    color: white !important;
+    background-color: #0f4162 !important;
+    //font-size: 25px;
+}
+
+.abalobi-button-brown {
+    color: white !important;
+    background-color: #5c6f68 !important;
+    //font-size: 25px;
+}
+
+
+
