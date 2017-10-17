@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {RegistrationProvider} from "../../../providers/registration/registration.provider";
+import {RegisterPersonalDetailsPage} from "../register-personal-details/register-personal-details";
 
 /**
  * Generated class for the RegisterAgreementPage page.
@@ -15,11 +17,18 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 })
 export class RegisterAgreementPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public reg: RegistrationProvider) {
+
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad RegisterAgreementPage');
+    }
+
+    continue(): void {
+        this.navCtrl.push(RegisterPersonalDetailsPage, {}, {animate: true, direction: 'forward'});
     }
 
 }

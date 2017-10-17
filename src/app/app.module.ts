@@ -5,6 +5,7 @@ import {MyApp} from './app.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpModule, Http} from '@angular/http';
+import {DatePicker} from '@ionic-native/date-picker';
 // import { HttpClient, HttpClientModule } from "@angular/http";
 // import {HttpClientModule} from '@angular/common/http';
 
@@ -18,10 +19,12 @@ import {SettingsPage} from "../pages/settings/settings";
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppstarterProvider} from '../providers/appstarter/appstarter';
-import { ErrorsProvider } from '../providers/errors/errors';
+import {ErrorsProvider} from '../providers/errors/errors';
 import {RegisterHomePage} from "../pages/register-home/register-home";
-import { RegistrationProvider } from '../providers/registration/registration.provider';
+import {RegistrationProvider} from '../providers/registration/registration.provider';
 import {RegisterAgreementPage} from "../pages/register-home/register-agreement/register-agreement";
+import {RegisterPersonalDetailsPage} from "../pages/register-home/register-personal-details/register-personal-details";
+import {RegisterContactDetailsPage} from "../pages/register-home/register-contact-details/register-contact-details";
 
 let pages = [
     AnalyticsHomePage,
@@ -31,7 +34,9 @@ let pages = [
     LandingPage,
     SettingsPage,
     RegisterHomePage,
-    RegisterAgreementPage
+    RegisterAgreementPage,
+    RegisterPersonalDetailsPage,
+    RegisterContactDetailsPage
 ];
 
 export function createTranslateLoader(http: Http) {
@@ -65,8 +70,9 @@ export function createTranslateLoader(http: Http) {
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AppstarterProvider,
-    ErrorsProvider,
-    RegistrationProvider
+        ErrorsProvider,
+        RegistrationProvider,
+        DatePicker
     ]
 })
 export class AppModule {

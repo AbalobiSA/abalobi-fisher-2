@@ -87,4 +87,5 @@
     <plugin name="com.lampa.startapp" spec="^0.1.4" />
     <plugin name="cordova-plugin-appversion" spec="^1.0.0" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
 </widget>
