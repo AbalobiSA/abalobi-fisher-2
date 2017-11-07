@@ -15,6 +15,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {HomePage} from "../pages/home/home"
 import {LandingPage} from "../pages/landing/landing";
 import {SettingsPage} from "../pages/settings/settings";
+import {LoginPage} from "../pages/login/login";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -36,7 +37,8 @@ let pages = [
     RegisterHomePage,
     RegisterAgreementPage,
     RegisterPersonalDetailsPage,
-    RegisterContactDetailsPage
+    RegisterContactDetailsPage,
+    LoginPage
 ];
 
 export function createTranslateLoader(http: Http) {

@@ -15,7 +15,7 @@ export class ErrorsProvider {
 
     constructor(public http: Http,
                 public toastCtrl: ToastController) {
-        this.showErrors = true;
+        this.showErrors = false;
     }
 
     presentToast(text: string): void {

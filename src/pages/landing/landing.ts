@@ -18,7 +18,11 @@ import {RegisterHomePage} from "../register-home/register-home";
 })
 export class LandingPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams
+    ) {
+
     }
 
     ionViewDidLoad() {
