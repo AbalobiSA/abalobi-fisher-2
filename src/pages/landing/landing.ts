@@ -1,3 +1,4 @@
+import {LoginPage} from './../login/login';
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
@@ -31,7 +32,8 @@ export class LandingPage {
 
     login(): void {
         // this.
-        this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+        // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+        this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
     }
 
     register(): void {
