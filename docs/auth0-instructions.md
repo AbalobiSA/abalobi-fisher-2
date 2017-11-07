@@ -48,7 +48,7 @@ install this plugin as well.
 
 ```
 # replace YOUR_PACKAGE_ID with your app identifier
-ionic cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME={YOUR_PACKAGE_ID} --variable ANDROID_SCHEME={YOUR_PACKAGE_ID} --variable ANDROID_HOST=abalobi.eu.auth0.com --variable ANDROID_PATHPREFIX=/cordova/{YOUR_PACKAGE_ID}/callback
+ionic cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=com.abalobi.fisher --variable ANDROID_SCHEME=com.abalobi.fisher --variable ANDROID_HOST=abalobi.eu.auth0.com --variable ANDROID_PATHPREFIX=/cordova/com.abalobi.fisher/callback
 ```
 
 ### Modify config.xml
