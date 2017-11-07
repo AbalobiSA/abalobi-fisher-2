@@ -4,6 +4,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {TranslateService} from '@ngx-translate/core';
 import {LandingPage} from "../pages/landing/landing";
+import Auth0Cordova from '@auth0/cordova';
 
 import {TabsPage} from '../pages/tabs/tabs';
 import {HomePage} from "../pages/home/home"
@@ -24,6 +25,10 @@ export class MyApp {
             translate.setDefaultLang('en');
             statusBar.styleDefault();
             splashScreen.hide();
+
+            (<any>window).handleOpenURL = (url) => {
+                Auth0Cordova.onRedirectUri(url);
+            };
         });
     }
 }
