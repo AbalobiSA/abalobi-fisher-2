@@ -44,13 +44,59 @@ export class UserProvider {
             this.http.get(query, options)
                 .map(response => response.json())
                 .toPromise()
-                    .then(result => {
-                        this.currentUser = result as User;
-                        resolve(this.currentUser);
-                    })
-                    .catch(ex => {
-                        reject(ex);
-                    })
+                .then(result => {
+                    this.currentUser = result as User;
+                    resolve(this.currentUser);
+                })
+                .catch(ex => {
+                    reject(ex);
+                })
+        })
+    }
+
+    updateUser(user: User, token: string): Promise<User> {
+        return new Promise((resolve, reject) => {
+
+            if (!user) {
+                return reject()
+            }
+
+            const access_token = token.split("\"").join("");
+            const query = this.BASE_URL + '/fisher/user/update';
+            const headers = new Headers();
+            const options = new RequestOptions({
+                headers: headers,
+                params: {
+                    access_token
+                }
+            });
+
+            const updateFields = [
+                "Id",
+                "Email__c",
+                "contact_mobile_num__c",
+                "share_data_with_daff__c",
+                "share_data_with_local_impl__c"
+            ];
+
+            let body = {};
+
+            for (const field of updateFields) {
+                body[field] = user[field];
+            }
+
+            this.http.post(query, body, options)
+                // .map(response => response.json())
+                .toPromise()
+                .then(result => {
+                    for (const key of updateFields) {
+                        this.currentUser[key] = user[key];
+                    }
+                    resolve();
+                })
+                .catch(ex => {
+                    reject(ex);
+                })
         })
     }
 

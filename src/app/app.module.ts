@@ -29,6 +29,7 @@ import {UserProvider} from '../providers/user/user';
 import {LoaderProvider} from "../providers/loader.service";
 
 import {TranslatePipe} from "@ngx-translate/core";
+import {SettingsEditPage} from "../pages/settings/settings-edit/settings-edit";
 
 
 export function createTranslateLoader(http: Http) {
@@ -48,6 +49,7 @@ export function createTranslateLoader(http: Http) {
         RegisterAgreementPage,
         RegisterPersonalDetailsPage,
         RegisterContactDetailsPage,
+        SettingsEditPage
     ],
     imports: [
         HttpModule,
@@ -74,6 +76,7 @@ export function createTranslateLoader(http: Http) {
         RegisterAgreementPage,
         RegisterPersonalDetailsPage,
         RegisterContactDetailsPage,
+        SettingsEditPage
     ],
     providers: [
         StatusBar,

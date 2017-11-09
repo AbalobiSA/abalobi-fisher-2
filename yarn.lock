@@ -51,9 +51,9 @@
     auth0-js "^8.5.0"
     url-parse "^1.1.8"
 
-"@ionic-native/core@3.12.1":
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-3.12.1.tgz#5b7c7a4f5adfc8da0b9197e1843e5893acf66021"
+"@ionic-native/core@^4.3.3":
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.3.3.tgz#d527a577207843f5bdf853ea78ed79daf986b067"
 
 "@ionic-native/date-picker@^4.3.1":
   version "4.3.1"
@@ -121,6 +121,10 @@
 "@types/localforage@0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/localforage/-/localforage-0.0.30.tgz#3d60a6bf6dda38e3f8a469611598379f1f649509"
+
+"@types/lodash@^4.14.83":
+  version "4.14.83"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.83.tgz#2f2154797ce8fd8d6ea91a8d304a4e44ee95920c"
 
 Base64@~0.2.0:
   version "0.2.1"

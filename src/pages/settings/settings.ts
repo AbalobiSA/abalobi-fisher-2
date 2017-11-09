@@ -8,6 +8,7 @@ import {AuthProvider} from "../../providers/auth/auth";
 import {User} from "../../classes/fisher/user.class";
 import {UserProvider} from "../../providers/user/user";
 import {Keyboard} from "ionic-angular";
+import {SettingsEditPage} from "./settings-edit/settings-edit";
 
 /**
  * Generated class for the SettingsPage page.
@@ -40,26 +41,8 @@ export class SettingsPage {
     }
 
     ngOnInit() {
-        // window.addEventListener('native.keyboardshow',(e)=>{this.keyboardHandler(e)});
-        // window.addEventListener('native.keyboardhide',(e)=>{this.keyboardHandler(e)});
-    }
 
-    // keyboardHandler(e): void {
-    //     setTimeout(()=>{
-    //         this.removeClone();
-    //     }, 800);
-    // }
-    //
-    // removeClone(){
-    //     let clonedInputList = this.inputText.getNativeElement().getElementsByClassName('cloned-input');
-    //     if(clonedInputList.length > 0){
-    //         this.inputText.getNativeElement().getElementsByClassName('cloned-input')[0].remove();
-    //         this.inputText.getNativeElement().getElementsByClassName('input-ios')[0].style.pointerEvents = '';
-    //         this.inputText.getNativeElement().getElementsByClassName('input-ios')[0].style.opacity = '';
-    //         this.inputText.getNativeElement().getElementsByClassName('input-ios')[0].style.transform = '';
-    //         this.inputText.getNativeElement().getElementsByClassName('text-input-ios')[0].style.transform = '';
-    //     }
-    // }
+    }
 
     ionViewDidLoad() {
         // console.log('ionViewDidLoad SettingsPage');
@@ -123,16 +106,17 @@ export class SettingsPage {
     }
 
     toggleEditMode(): void {
-        // switch(this.editMode) {
-        //     case true: this.editMode = false; break;
-        //     case false: this.editMode = true; break;
-        // }
+        this.navCtrl.push(SettingsEditPage, {}, {animate: true, direction: 'forward'});
     }
 
     logout(): void {
         let rootNav = this.getRootNav(this.navCtrl);
         this.auth.logout();
         rootNav.setRoot(LandingPage, {}, {animate: true, direction: 'backward'});
+    }
+
+    printUser(): void {
+        console.log(this.fisher.currentUser);
     }
 
     /**

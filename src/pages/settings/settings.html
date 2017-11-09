@@ -29,6 +29,19 @@
 
         <br>
 
+        <div class="fullwidth text-center">
+            <div class="cs-btn-centered">
+                <button ion-button (click)="toggleEditMode()"
+                        class="ablb-button abalobi-button-brown ">
+                    <!--<span *ngIf="!this.editMode">Edit profile</span>-->
+                    <!--<span *ngIf="this.editMode">Save Changes</span>-->
+                    Edit Profile
+                </button>
+            </div>
+        </div>
+
+        <br>
+
         <ion-list-header>
             Logged in user
         </ion-list-header>
@@ -87,16 +100,7 @@
 
     </ion-list>
 
-    <div class="fullwidth text-center">
-        <div class="cs-btn-centered">
-            <button ion-button (click)="toggleEditMode()"
-                    class="ablb-button abalobi-button-brown ">
-                <!--<span *ngIf="!this.editMode">Edit profile</span>-->
-                <!--<span *ngIf="this.editMode">Save Changes</span>-->
-                Edit Profile
-            </button>
-        </div>
-    </div>
+
 
 
 
@@ -115,7 +119,6 @@
             <ion-icon name='cog' item-start></ion-icon>
         </ion-item>
 
-
         <ion-item>
             <ion-icon name='chatbubbles' item-start></ion-icon>
             English
@@ -133,6 +136,14 @@
                 <!--Lambert's Bay-->
             <!--</ion-note>-->
         </ion-item>
+
+        <button ion-item
+            (click)="printUser()"
+        >
+            <ion-icon name='call' item-start></ion-icon>
+            Log User
+
+        </button>
 
 
     </ion-list>

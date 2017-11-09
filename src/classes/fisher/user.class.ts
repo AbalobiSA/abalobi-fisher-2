@@ -2,6 +2,8 @@ import {Community} from "./community.class";
 
 export class User {
 
+    Id: string;
+
     abalobi_id__c: string;
     abalobi_usertype__c: string;
     contact_mobile_num__c: string;

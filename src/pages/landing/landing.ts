@@ -58,7 +58,10 @@ export class LandingPage {
         //          this.loader.dismissLoader();
         //     });
 
-        this.fisher.getUserInfo("ys57a8kBmCCrcmBrOP-FhwAY9A-pr8xF")
+        window.localStorage.setItem("access_token", "ys57a8kBmCCrcmBrOP-FhwAY9A-pr8xF");
+        const token = window.localStorage.getItem("access_token");
+
+        this.fisher.getUserInfo(token)
             .then(fisher => {
                 this.loader.dismissLoader();
                 this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
