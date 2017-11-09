@@ -5,6 +5,7 @@ import {TabsPage} from "../tabs/tabs";
 import {RegisterHomePage} from "../register-home/register-home";
 import {AuthProvider} from "../../providers/auth/auth";
 import {UserProvider} from "../../providers/user/user";
+import {LoaderProvider} from "../../providers/loader.service";
 
 /**
  * Generated class for the LandingPage page.
@@ -23,7 +24,8 @@ export class LandingPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         public auth: AuthProvider,
-        public fisher: UserProvider
+        public fisher: UserProvider,
+        public loader: LoaderProvider
     ) {
 
     }
@@ -37,16 +39,34 @@ export class LandingPage {
         // Using the auth token, Query the server for the user's actual fisher data
         // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
 
-        this.auth.loginPromise()
-            .then(done => {
-                console.log("WE HAVE RESOLVED");
-                const token = window.localStorage.getItem('access_token');
-                return this.fisher.getUserInfo(token)
-            })
+        this.loader.presentLoader("Logging in. Please wait...");
+
+        // this.auth.loginPromise()
+        //     .then(done => {
+        //         console.log("WE HAVE RESOLVED");
+        //
+        //         const token = window.localStorage.getItem('access_token');
+        //         console.log(token);
+        //         return this.fisher.getUserInfo(token)
+        //     })
+        //     .then(fisher => {
+        //      this.loader.dismissLoader();
+        //         this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+        //     })
+        //     .catch(ex => {
+        //          console.log(ex)
+        //          this.loader.dismissLoader();
+        //     });
+
+        this.fisher.getUserInfo("ys57a8kBmCCrcmBrOP-FhwAY9A-pr8xF")
             .then(fisher => {
+                this.loader.dismissLoader();
                 this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
             })
-            .catch(ex => console.log(ex));
+            .catch(ex => {
+                console.log(ex);
+                this.loader.dismissLoader();
+            });
     }
 
     register(): void {

@@ -17,7 +17,7 @@ import {Community} from "../../classes/fisher/community.class";
 export class UserProvider {
 
     // BASE_URL: string = "http://server.abalobi.info";
-    BASE_URL: string = "http://10.0.0.100:8080";
+    BASE_URL: string = "http://localhost:8080";
     currentUser: User;
 
     constructor(public http: Http) {
@@ -26,6 +26,11 @@ export class UserProvider {
 
     getUserInfo(token: string): Promise<User> {
         return new Promise((resolve, reject) => {
+
+            if (!token) {
+                return reject()
+            }
+
             const access_token = token.split("\"").join("");
             const query = this.BASE_URL + '/fisher/user';
             const headers = new Headers();

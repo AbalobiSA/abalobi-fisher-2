@@ -26,6 +26,8 @@ import {RegisterContactDetailsPage} from "../pages/register-home/register-contac
 import {AuthProvider} from '../providers/auth/auth';
 import {UserProvider} from '../providers/user/user';
 
+import {LoaderProvider} from "../providers/loader.service";
+
 import {TranslatePipe} from "@ngx-translate/core";
 
 
@@ -82,7 +84,8 @@ export function createTranslateLoader(http: Http) {
         RegistrationProvider,
         DatePicker,
         AuthProvider,
-        UserProvider
+        UserProvider,
+        LoaderProvider
     ]
 })
 export class AppModule {

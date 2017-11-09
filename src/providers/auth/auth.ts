@@ -41,7 +41,16 @@ export class AuthProvider {
     }
 
     private getStorageVariable(name) {
-        return JSON.parse(window.localStorage.getItem(name));
+        let storageVariable = null;
+        try {
+            const tempVar = window.localStorage.getItem(name);
+            console.log("tempvar: ", tempVar);
+            storageVariable = JSON.parse(tempVar);
+        } catch (ex) {
+            console.log("warning: encountered null storage variable");
+            // console.log(ex);
+        }
+        return storageVariable;
     }
 
     private setStorageVariable(name, data) {

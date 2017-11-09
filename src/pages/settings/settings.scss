@@ -1,3 +1,37 @@
 page-settings {
 
+    .image-wrapper {
+        text-align: center;
+    }
+
+    .image-container{
+
+        height: 40vw;
+        width: 40vw;
+        display: inline-block;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .fisher-profile {
+
+        object-fit: contain;
+        //background-color: #0f4162;
+        image-rendering: auto;
+        //border: 3px solid #0f4162;
+
+
+
+    }
+
+    .cs-btn-centered {
+        //margin: 0 auto;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .fullwidth {
+        width: 100%;
+        text-align: center;
+    }
 }

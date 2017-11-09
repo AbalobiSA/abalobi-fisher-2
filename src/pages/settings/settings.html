@@ -30,11 +30,21 @@
         <!--</ion-card>-->
         <!--<button ion-button block color="primary" (click)="auth.logout()">Logout</button>-->
         <!--</div>-->
+        <div class="image-wrapper">
+            <div class="image-container">
+                <img
+                    class="fisher-profile"
+                    src="{{fisher.currentUser.image_url__c}}" alt="">
+            </div>
+        </div>
+
+        <br>
+
 
         <ion-item>
             <ion-icon name='person' item-start></ion-icon>
             <span *ngIf="fisher.currentUser">
-                {{fisher.currentUser.FirstName__c + " " + fisher.currentUser.LastName__c}}
+                {{processName((fisher.currentUser.FirstName__c + " " + fisher.currentUser.LastName__c))}}
             </span>
             <span *ngIf="!fisher.currentUser">No user found!</span>
             <button ion-button outline item-end icon-left (click)="presentLogoutModal()">
@@ -47,7 +57,7 @@
             <ion-icon name='contact' item-start></ion-icon>
             User Type
             <ion-note item-end>
-                {{fisher.currentUser.abalobi_usertype__c}}
+                {{processUsertype(fisher.currentUser.abalobi_usertype__c)   }}
             </ion-note>
         </button>
 
@@ -59,7 +69,6 @@
             </ion-note>
         </button>
 
-
         <button ion-item>
             <ion-icon name='map' item-start></ion-icon>
             Community
@@ -68,14 +77,34 @@
             </ion-note>
         </button>
 
+        <button ion-item>
+            <ion-icon name='call' item-start></ion-icon>
+            Cell
+            <ion-note item-end>
+                {{fisher.currentUser.contact_mobile_num__c}}
+            </ion-note>
+        </button>
 
-        <!--<button ion-item>-->
-            <!--<ion-icon name='exit' item-start></ion-icon>-->
-            <!--Log Out-->
-        <!--</button>-->
-
+        <button ion-item>
+            <ion-icon name='mail' item-start></ion-icon>
+            Email
+            <ion-note item-end>
+                {{fisher.currentUser.Email__c}}
+            </ion-note>
+        </button>
 
     </ion-list>
+
+    <div class="fullwidth text-center">
+        <div class="cs-btn-centered">
+            <button ion-button (click)="toggleEditMode()"
+                    class="ablb-button abalobi-button-brown ">
+                <!--<span *ngIf="!this.editMode">Edit profile</span>-->
+                <!--<span *ngIf="this.editMode">Save Changes</span>-->
+                Edit Profile
+            </button>
+        </div>
+    </div>
 
 
 

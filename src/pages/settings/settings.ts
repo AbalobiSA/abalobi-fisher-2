@@ -7,6 +7,7 @@ import {LandingPage} from "../landing/landing";
 import {AuthProvider} from "../../providers/auth/auth";
 import {User} from "../../classes/fisher/user.class";
 import {UserProvider} from "../../providers/user/user";
+import {Keyboard} from "ionic-angular";
 
 /**
  * Generated class for the SettingsPage page.
@@ -24,6 +25,7 @@ let cordova: any;
 export class SettingsPage {
 
     app_version: string;
+    editMode: boolean;
 
     constructor(
         public navCtrl: NavController,
@@ -32,14 +34,32 @@ export class SettingsPage {
         public errors: ErrorsProvider,
         public alertCtrl: AlertController,
         public auth: AuthProvider,
-        public fisher: UserProvider
+        public fisher: UserProvider,
     ) {
-
+        this.editMode = false;
     }
 
     ngOnInit() {
-
+        // window.addEventListener('native.keyboardshow',(e)=>{this.keyboardHandler(e)});
+        // window.addEventListener('native.keyboardhide',(e)=>{this.keyboardHandler(e)});
     }
+
+    // keyboardHandler(e): void {
+    //     setTimeout(()=>{
+    //         this.removeClone();
+    //     }, 800);
+    // }
+    //
+    // removeClone(){
+    //     let clonedInputList = this.inputText.getNativeElement().getElementsByClassName('cloned-input');
+    //     if(clonedInputList.length > 0){
+    //         this.inputText.getNativeElement().getElementsByClassName('cloned-input')[0].remove();
+    //         this.inputText.getNativeElement().getElementsByClassName('input-ios')[0].style.pointerEvents = '';
+    //         this.inputText.getNativeElement().getElementsByClassName('input-ios')[0].style.opacity = '';
+    //         this.inputText.getNativeElement().getElementsByClassName('input-ios')[0].style.transform = '';
+    //         this.inputText.getNativeElement().getElementsByClassName('text-input-ios')[0].style.transform = '';
+    //     }
+    // }
 
     ionViewDidLoad() {
         // console.log('ionViewDidLoad SettingsPage');
@@ -59,6 +79,23 @@ export class SettingsPage {
 
     ionViewDidEnter() {
 
+    }
+
+    processUsertype(input: string): string {
+        return input.replace('_', ' ')
+            .split(' ')
+            .map(piece => {
+                return piece.charAt(0).toUpperCase() + piece.slice(1);
+            }).join(' ');
+    }
+
+    processName(input: string): string {
+        return input
+            .split(" ")
+            .map(item => {
+                return item.charAt(0).toUpperCase() + item.substr(1);
+            })
+            .join(" ");
     }
 
     presentLogoutModal(): void {
@@ -83,6 +120,13 @@ export class SettingsPage {
             ]
         });
         confirm.present();
+    }
+
+    toggleEditMode(): void {
+        // switch(this.editMode) {
+        //     case true: this.editMode = false; break;
+        //     case false: this.editMode = true; break;
+        // }
     }
 
     logout(): void {
