@@ -1,9 +1,10 @@
-import {LoginPage} from './../login/login';
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
 import {RegisterHomePage} from "../register-home/register-home";
+import {AuthProvider} from "../../providers/auth/auth";
+import {UserProvider} from "../../providers/user/user";
 
 /**
  * Generated class for the LandingPage page.
@@ -20,8 +21,10 @@ import {RegisterHomePage} from "../register-home/register-home";
 export class LandingPage {
 
     constructor(
-        public navCtrl: NavController, 
-        public navParams: NavParams
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public auth: AuthProvider,
+        public fisher: UserProvider
     ) {
 
     }
@@ -31,9 +34,20 @@ export class LandingPage {
     }
 
     login(): void {
-        // this.
+
+        // Using the auth token, Query the server for the user's actual fisher data
         // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
-        this.navCtrl.push(LoginPage, {}, {animate: true, direction: 'forward'});
+
+        this.auth.loginPromise()
+            .then(done => {
+                console.log("WE HAVE RESOLVED");
+                const token = window.localStorage.getItem('access_token');
+                return this.fisher.getUserInfo(token)
+            })
+            .then(fisher => {
+                this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+            })
+            .catch(ex => console.log(ex));
     }
 
     register(): void {

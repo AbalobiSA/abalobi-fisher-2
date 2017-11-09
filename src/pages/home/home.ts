@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Platform} from "ionic-angular";
 import {AppstarterProvider} from "../../providers/appstarter/appstarter";
+import {AuthProvider} from "../../providers/auth/auth";
 
 let startApp: any;
 
@@ -20,7 +21,8 @@ let startApp: any;
 export class HomePage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
-                public platform: Platform, public appstarter: AppstarterProvider) {
+                public platform: Platform, public appstarter: AppstarterProvider,
+                public auth: AuthProvider) {
     }
 
     ionViewDidLoad() {

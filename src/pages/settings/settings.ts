@@ -4,6 +4,9 @@ import {OnInit} from "@angular/core";
 import {ErrorsProvider} from "../../providers/errors/errors";
 import {AlertController} from 'ionic-angular';
 import {LandingPage} from "../landing/landing";
+import {AuthProvider} from "../../providers/auth/auth";
+import {User} from "../../classes/fisher/user.class";
+import {UserProvider} from "../../providers/user/user";
 
 /**
  * Generated class for the SettingsPage page.
@@ -23,11 +26,16 @@ export class SettingsPage {
 
     app_version: string;
 
-    constructor(public navCtrl: NavController,
-                public navParams: NavParams,
-                public platform: Platform,
-                public errors: ErrorsProvider,
-                public alertCtrl: AlertController) {
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public platform: Platform,
+        public errors: ErrorsProvider,
+        public alertCtrl: AlertController,
+        public auth: AuthProvider,
+        public fisher: UserProvider
+    ) {
+
     }
 
     ngOnInit() {
@@ -80,6 +88,7 @@ export class SettingsPage {
 
     logout(): void {
         let rootNav = this.getRootNav(this.navCtrl);
+        this.auth.logout();
         rootNav.setRoot(LandingPage, {}, {animate: true, direction: 'backward'});
     }
 

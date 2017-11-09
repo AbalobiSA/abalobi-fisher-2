@@ -21,9 +21,22 @@
             Logged in user
         </ion-list-header>
 
+        <!--<div *ngIf="auth.isAuthenticated()">-->
+        <!--<ion-card>-->
+        <!--<img [src]="auth.user.picture" />-->
+        <!--<ion-card-content>-->
+        <!--<ion-card-title>{{ auth.user.name }}</ion-card-title>-->
+        <!--</ion-card-content>-->
+        <!--</ion-card>-->
+        <!--<button ion-button block color="primary" (click)="auth.logout()">Logout</button>-->
+        <!--</div>-->
+
         <ion-item>
             <ion-icon name='person' item-start></ion-icon>
-            Joe Soap
+            <span *ngIf="fisher.currentUser">
+                {{fisher.currentUser.FirstName__c + " " + fisher.currentUser.LastName__c}}
+            </span>
+            <span *ngIf="!fisher.currentUser">No user found!</span>
             <button ion-button outline item-end icon-left (click)="presentLogoutModal()">
                 <!--<ion-icon name="star"></ion-icon>-->
                 Log Out
@@ -34,7 +47,7 @@
             <ion-icon name='contact' item-start></ion-icon>
             User Type
             <ion-note item-end>
-                Fisher
+                {{fisher.currentUser.abalobi_usertype__c}}
             </ion-note>
         </button>
 
@@ -42,7 +55,7 @@
             <ion-icon name='chatbubbles' item-start></ion-icon>
             Language
             <ion-note item-end>
-                English
+                {{fisher.currentUser.preferred_language__c}}
             </ion-note>
         </button>
 
@@ -51,7 +64,7 @@
             <ion-icon name='map' item-start></ion-icon>
             Community
             <ion-note item-end>
-                Lambert's Bay
+                {{fisher.currentUser.full_community_info.name_eng__c}};
             </ion-note>
         </button>
 

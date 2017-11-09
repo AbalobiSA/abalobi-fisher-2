@@ -15,7 +15,6 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {HomePage} from "../pages/home/home"
 import {LandingPage} from "../pages/landing/landing";
 import {SettingsPage} from "../pages/settings/settings";
-import {LoginPage} from "../pages/login/login";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -26,6 +25,8 @@ import {RegistrationProvider} from '../providers/registration/registration.provi
 import {RegisterAgreementPage} from "../pages/register-home/register-agreement/register-agreement";
 import {RegisterPersonalDetailsPage} from "../pages/register-home/register-personal-details/register-personal-details";
 import {RegisterContactDetailsPage} from "../pages/register-home/register-contact-details/register-contact-details";
+import { AuthProvider } from '../providers/auth/auth';
+import { UserProvider } from '../providers/user/user';
 
 let pages = [
     AnalyticsHomePage,
@@ -38,7 +39,6 @@ let pages = [
     RegisterAgreementPage,
     RegisterPersonalDetailsPage,
     RegisterContactDetailsPage,
-    LoginPage
 ];
 
 export function createTranslateLoader(http: Http) {
@@ -74,7 +74,9 @@ export function createTranslateLoader(http: Http) {
         AppstarterProvider,
         ErrorsProvider,
         RegistrationProvider,
-        DatePicker
+        DatePicker,
+    AuthProvider,
+    UserProvider
     ]
 })
 export class AppModule {
