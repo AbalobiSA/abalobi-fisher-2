@@ -13,7 +13,6 @@ import {UserProvider} from "../../providers/user/user";
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
     selector: 'page-landing',
     templateUrl: 'landing.html',

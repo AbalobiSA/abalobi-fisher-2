@@ -17,7 +17,6 @@ import {UserProvider} from "../../providers/user/user";
 
 let cordova: any;
 
-@IonicPage()
 @Component({
     selector: 'page-settings',
     templateUrl: 'settings.html',

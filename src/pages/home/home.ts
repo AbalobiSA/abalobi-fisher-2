@@ -13,7 +13,6 @@ let startApp: any;
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html',

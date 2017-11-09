@@ -9,7 +9,6 @@ import {RegistrationProvider} from "../../../providers/registration/registration
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
     selector: 'page-register-contact-details',
     templateUrl: 'register-contact-details.html',

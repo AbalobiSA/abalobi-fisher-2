@@ -6,8 +6,6 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpModule, Http} from '@angular/http';
 import {DatePicker} from '@ionic-native/date-picker';
-// import { HttpClient, HttpClientModule } from "@angular/http";
-// import {HttpClientModule} from '@angular/common/http';
 
 import {AnalyticsHomePage} from '../pages/analytics-home/analytics-home';
 import {ContactPage} from '../pages/contact/contact';
@@ -25,21 +23,11 @@ import {RegistrationProvider} from '../providers/registration/registration.provi
 import {RegisterAgreementPage} from "../pages/register-home/register-agreement/register-agreement";
 import {RegisterPersonalDetailsPage} from "../pages/register-home/register-personal-details/register-personal-details";
 import {RegisterContactDetailsPage} from "../pages/register-home/register-contact-details/register-contact-details";
-import { AuthProvider } from '../providers/auth/auth';
-import { UserProvider } from '../providers/user/user';
+import {AuthProvider} from '../providers/auth/auth';
+import {UserProvider} from '../providers/user/user';
 
-let pages = [
-    AnalyticsHomePage,
-    ContactPage,
-    TabsPage,
-    HomePage,
-    LandingPage,
-    SettingsPage,
-    RegisterHomePage,
-    RegisterAgreementPage,
-    RegisterPersonalDetailsPage,
-    RegisterContactDetailsPage,
-];
+import {TranslatePipe} from "@ngx-translate/core";
+
 
 export function createTranslateLoader(http: Http) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,7 +36,16 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
     declarations: [
         MyApp,
-        pages
+        AnalyticsHomePage,
+        ContactPage,
+        TabsPage,
+        HomePage,
+        LandingPage,
+        SettingsPage,
+        RegisterHomePage,
+        RegisterAgreementPage,
+        RegisterPersonalDetailsPage,
+        RegisterContactDetailsPage,
     ],
     imports: [
         HttpModule,
@@ -65,7 +62,16 @@ export function createTranslateLoader(http: Http) {
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        pages
+        AnalyticsHomePage,
+        ContactPage,
+        TabsPage,
+        HomePage,
+        LandingPage,
+        SettingsPage,
+        RegisterHomePage,
+        RegisterAgreementPage,
+        RegisterPersonalDetailsPage,
+        RegisterContactDetailsPage,
     ],
     providers: [
         StatusBar,
@@ -75,8 +81,8 @@ export function createTranslateLoader(http: Http) {
         ErrorsProvider,
         RegistrationProvider,
         DatePicker,
-    AuthProvider,
-    UserProvider
+        AuthProvider,
+        UserProvider
     ]
 })
 export class AppModule {

@@ -55,7 +55,7 @@
             <ion-icon name='chatbubbles' item-start></ion-icon>
             Language
             <ion-note item-end>
-                {{fisher.currentUser.preferred_language__c}}
+                {{fisher.currentUser.preferred_language__c || "No preference"}}
             </ion-note>
         </button>
 
@@ -64,7 +64,7 @@
             <ion-icon name='map' item-start></ion-icon>
             Community
             <ion-note item-end>
-                {{fisher.currentUser.full_community_info.name_eng__c}};
+                {{fisher.currentUser.full_community_info.name_eng__c}}
             </ion-note>
         </button>
 

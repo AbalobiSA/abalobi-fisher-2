@@ -11,7 +11,6 @@ import {RegisterContactDetailsPage} from "../register-contact-details/register-c
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
     selector: 'page-register-personal-details',
     templateUrl: 'register-personal-details.html',

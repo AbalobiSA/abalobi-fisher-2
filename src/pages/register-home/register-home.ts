@@ -10,7 +10,6 @@ import {RegisterAgreementPage} from "./register-agreement/register-agreement";
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
     selector: 'page-register-home',
     templateUrl: 'register-home.html',

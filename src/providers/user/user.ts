@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/filter';
 
 import {User} from "../../classes/fisher/user.class";
 import {Community} from "../../classes/fisher/community.class";
@@ -14,15 +16,17 @@ import {Community} from "../../classes/fisher/community.class";
 @Injectable()
 export class UserProvider {
 
-    BASE_URL: string = "http://server.abalobi.info";
+    // BASE_URL: string = "http://server.abalobi.info";
+    BASE_URL: string = "http://10.0.0.100:8080";
     currentUser: User;
 
     constructor(public http: Http) {
         // console.log('Hello UserProvider Provider');
     }
 
-    getUserInfo(access_token: string): Promise<User> {
+    getUserInfo(token: string): Promise<User> {
         return new Promise((resolve, reject) => {
+            const access_token = token.split("\"").join("");
             const query = this.BASE_URL + '/fisher/user';
             const headers = new Headers();
             const options = new RequestOptions({
