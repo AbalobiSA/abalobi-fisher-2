@@ -29,19 +29,6 @@
 
         <br>
 
-        <div class="fullwidth text-center">
-            <div class="cs-btn-centered">
-                <button ion-button (click)="toggleEditMode()"
-                        class="ablb-button abalobi-button-brown ">
-                    <!--<span *ngIf="!this.editMode">Edit profile</span>-->
-                    <!--<span *ngIf="this.editMode">Save Changes</span>-->
-                    Edit Profile
-                </button>
-            </div>
-        </div>
-
-        <br>
-
         <ion-list-header>
             Logged in user
         </ion-list-header>
@@ -100,10 +87,22 @@
 
     </ion-list>
 
+    <hr />
 
+    <br>
 
+    <div class="fullwidth text-center">
+        <div class="cs-btn-centered">
+            <button ion-button (click)="toggleEditMode()"
+                    class="ablb-button abalobi-button-brown ">
+                <!--<span *ngIf="!this.editMode">Edit profile</span>-->
+                <!--<span *ngIf="this.editMode">Save Changes</span>-->
+                Edit Profile
+            </button>
+        </div>
+    </div>
 
-
+    <br>
 
     <ion-list>
 
@@ -140,7 +139,7 @@
         <button ion-item
             (click)="printUser()"
         >
-            <ion-icon name='android' item-start></ion-icon>
+            <ion-icon name='logo-android' item-start></ion-icon>
             Print user object
         </button>
 
