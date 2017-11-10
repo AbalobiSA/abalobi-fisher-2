@@ -6,6 +6,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpModule, Http} from '@angular/http';
 import {DatePicker} from '@ionic-native/date-picker';
+import {FormsModule} from "@angular/forms";
 
 import {AnalyticsHomePage} from '../pages/analytics-home/analytics-home';
 import {ContactPage} from '../pages/contact/contact';
@@ -54,6 +55,7 @@ export function createTranslateLoader(http: Http) {
     imports: [
         HttpModule,
         BrowserModule,
+        FormsModule,
         IonicModule.forRoot(MyApp),
         TranslateModule.forRoot({
             loader: {
