@@ -17,7 +17,8 @@ import {Community} from "../../classes/fisher/community.class";
 export class UserProvider {
 
     // BASE_URL: string = "http://server.abalobi.info";
-    BASE_URL: string = "http://localhost:8080";
+    BASE_URL: string = "http://10.0.0.100:8080";
+    // BASE_URL: string = "http://localhost:8080";
     currentUser: User;
 
     constructor(public http: Http) {

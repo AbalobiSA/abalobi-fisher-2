@@ -38,26 +38,36 @@ export class LandingPage {
 
         // Using the auth token, Query the server for the user's actual fisher data
         // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+        this.loginMobile();
 
+    }
+
+    register(): void {
+        this.navCtrl.push(RegisterHomePage, {}, {animate: true, direction: 'forward'});
+    }
+
+    loginMobile(): void {
+        this.auth.loginPromise()
+            .then(done => {
+                console.log("WE HAVE RESOLVED");
+                this.loader.presentLoader("Logging in. Please wait...");
+
+                const token = window.localStorage.getItem('access_token');
+                console.log(token);
+                return this.fisher.getUserInfo(token)
+            })
+            .then(fisher => {
+             this.loader.dismissLoader();
+                this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+            })
+            .catch(ex => {
+                 console.log(ex);
+                 this.loader.dismissLoader();
+            });
+    }
+
+    loginBrowser(): void {
         this.loader.presentLoader("Logging in. Please wait...");
-
-        // this.auth.loginPromise()
-        //     .then(done => {
-        //         console.log("WE HAVE RESOLVED");
-        //
-        //         const token = window.localStorage.getItem('access_token');
-        //         console.log(token);
-        //         return this.fisher.getUserInfo(token)
-        //     })
-        //     .then(fisher => {
-        //      this.loader.dismissLoader();
-        //         this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
-        //     })
-        //     .catch(ex => {
-        //          console.log(ex)
-        //          this.loader.dismissLoader();
-        //     });
-
         window.localStorage.setItem("access_token", "ys57a8kBmCCrcmBrOP-FhwAY9A-pr8xF");
         const token = window.localStorage.getItem("access_token");
 
@@ -70,10 +80,6 @@ export class LandingPage {
                 console.log(ex);
                 this.loader.dismissLoader();
             });
-    }
-
-    register(): void {
-        this.navCtrl.push(RegisterHomePage, {}, {animate: true, direction: 'forward'});
     }
 
     // register(): void {
