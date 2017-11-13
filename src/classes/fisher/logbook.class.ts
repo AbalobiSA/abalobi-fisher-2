@@ -7,6 +7,11 @@ class TripDetails {
     no_trip_reason: string;
     no_trip_reason_other: string;
 
+    trip_type: string;
+
+    trip_home_community: boolean;
+    trip_location: string;
+
     constructor() {
 
     }

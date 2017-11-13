@@ -6,13 +6,136 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>logbook-trip-location</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>logbook-trip-location</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+    <form #tripLocationForm="ngForm">
+        <ion-list required radio-group [(ngModel)]="logbook.tripdetails.trip_home_community"
+                  name="trip_home_community"
+                  #trip_home_community="ngModel">
+            <ion-list-header text-wrap>
+                <span *ngIf="logbook.tripdetails.trip_exists === true">
+                    Did you fish from
+                </span>
+
+                <span *ngIf="logbook.tripdetails.trip_exists === false">
+                    If you had gone fishing today, would you have fished from
+                </span>
+
+                <span>
+                    <strong>{{mainUser.full_community_info.name_eng__c}}</strong>
+                </span>?
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Yes</ion-label>
+                <ion-radio [value]="true"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio [value]="false"></ion-radio>
+            </ion-item>
+
+
+        </ion-list>
+
+        <ion-list radio-group *ngIf="logbook.tripdetails.trip_home_community === false">
+            <ion-list-header>
+                Select Province
+            </ion-list-header>
+
+            <ion-item *ngFor="let province of communities.getProvinces()"
+            >
+                <ion-label>{{province.name}}</ion-label>
+                <ion-radio [value]="province.key"></ion-radio>
+            </ion-item>
+
+        </ion-list>
+
+        <!--<div *ngIf="logbook.tripdetails.trip_exists === false">-->
+        <!--<ion-list required radio-group [(ngModel)]="logbook.tripdetails.no_trip_reason"-->
+        <!--name="no_trip_reason"-->
+        <!--required-->
+        <!--#no_trip_reason="ngModel">-->
+
+        <!--<ion-list-header>-->
+        <!--Why didn't you go fishing-->
+        <!--<span *ngIf="logbook.tripdetails.trip_today === true">today</span>-->
+        <!--<span *ngIf="logbook.tripdetails.trip_today === false">on this day</span>-->
+        <!--?-->
+        <!--</ion-list-header>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>There is mist/fog</ion-label>-->
+        <!--<ion-radio value="mist_fog"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>Weather is bad</ion-label>-->
+        <!--<ion-radio value="bad_weather"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>The boat needs to be fixed</ion-label>-->
+        <!--<ion-radio value="boat_needs_repair"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>The boat is not licenced</ion-label>-->
+        <!--<ion-radio value="boat_needs_licence"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>I don't have a valid permit</ion-label>-->
+        <!--<ion-radio value="no_permit"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>There are no fish at the moment</ion-label>-->
+        <!--<ion-radio value="no_fish"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>I am waiting for the start of the season</ion-label>-->
+        <!--<ion-radio value="wait_for_season_start"></ion-radio>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item text-wrap>-->
+        <!--<ion-label>Other (not on list)</ion-label>-->
+        <!--<ion-radio value="other"></ion-radio>-->
+        <!--</ion-item>-->
+
+
+        <!--</ion-list>-->
+
+        <!--<div padding *ngIf="logbook.tripdetails.no_trip_reason === 'other'">-->
+        <!--<textarea-->
+        <!--padding-->
+        <!--aria-placeholder="No trip reason"-->
+        <!--class="ablb-textarea"-->
+        <!--[(ngModel)]="logbook.tripdetails.no_trip_reason_other"-->
+        <!--name="no_trip_reason_other"-->
+        <!--#no_trip_reason_other="ngModel"-->
+        <!--&gt;</textarea>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+        <div padding>
+            <button ion-button block (click)="next()"
+                    [disabled]="!tripLocationForm.form.valid"
+                    class="ablb-button abalobi-button-brown">
+                Continue
+            </button>
+        </div>
+
+    </form>
 
 </ion-content>

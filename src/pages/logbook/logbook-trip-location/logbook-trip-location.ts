@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Logbook} from "../../../classes/fisher/logbook.class";
+import {LogbookProvider} from "../../../providers/logbook/logbook";
+import {UserProvider} from "../../../providers/user/user";
+import {User} from "../../../classes/fisher/user.class";
+import {CommunityData} from "../../../classes/data/communities.data.class";
 
 /**
  * Generated class for the LogbookTripLocationPage page.
@@ -10,16 +15,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-logbook-trip-location',
-  templateUrl: 'logbook-trip-location.html',
+    selector: 'page-logbook-trip-location',
+    templateUrl: 'logbook-trip-location.html',
 })
 export class LogbookTripLocationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    logbook: Logbook;
+    mainUser: User;
+    communities: CommunityData = new CommunityData();
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LogbookTripLocationPage');
-  }
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public log: LogbookProvider,
+                public user: UserProvider) {
+        this.logbook = log.logbook;
+        this.mainUser = user.currentUser;
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad LogbookTripLocationPage');
+    }
+
+    next(): void {
+        if (this.logbook.tripdetails.trip_home_community === true) {
+            this.logbook.tripdetails.trip_location = this.mainUser.full_community_info.name_key;
+            // this.navCtrl.push(LogbookTripTypePage, {}, {animate: true, direction: 'forward'});
+        } else {
+            // this.navCtrl.push(LogbookTripLocationPage, {}, {animate: true, direction: 'forward'});
+        }
+    }
 
 }
