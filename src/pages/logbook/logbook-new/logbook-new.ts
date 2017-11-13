@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {LogbookProvider} from "../../../providers/logbook/logbook";
 import {Logbook} from "../../../classes/fisher/logbook.class";
+import {LogbookTripExistsPage} from "../logbook-trip-exists/logbook-trip-exists";
 
 /**
  * Generated class for the LogbookNewPage page.
@@ -18,7 +19,6 @@ import {Logbook} from "../../../classes/fisher/logbook.class";
 export class LogbookNewPage {
 
     logbook: Logbook;
-    datetime: string = 'test';
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -28,6 +28,10 @@ export class LogbookNewPage {
 
     ionViewDidLoad() {
         // console.log('ionViewDidLoad LogbookNewPage');
+    }
+
+    next(): void {
+        this.navCtrl.push(LogbookTripExistsPage, {}, {animate: true, direction: 'forward'});
     }
 
 }

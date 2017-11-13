@@ -1,0 +1,126 @@
+<!--
+  Generated template for the LogbookTripExistsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>logbook-trip-exists</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <form #tripExistsForm="ngForm">
+        <ion-list required radio-group [(ngModel)]="logbook.tripdetails.trip_exists"
+                  name="trip_exists"
+                  #trip_exists="ngModel">
+            <ion-list-header>
+                Did you go fishing
+                <span *ngIf="logbook.tripdetails.trip_today === true">today</span>
+                <span *ngIf="logbook.tripdetails.trip_today === false">on this day</span>
+                ?
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Yes</ion-label>
+                <ion-radio [value]="true"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio [value]="false"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <div *ngIf="logbook.tripdetails.trip_exists === false">
+            <ion-list required radio-group [(ngModel)]="logbook.tripdetails.no_trip_reason"
+                      name="no_trip_reason"
+                      required
+                      #no_trip_reason="ngModel">
+
+                <ion-list-header>
+                    Why didn't you go fishing
+                    <span *ngIf="logbook.tripdetails.trip_today === true">today</span>
+                    <span *ngIf="logbook.tripdetails.trip_today === false">on this day</span>
+                    ?
+                </ion-list-header>
+
+                <ion-item text-wrap>
+                    <ion-label>There is mist/fog</ion-label>
+                    <ion-radio value="mist_fog"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>Weather is bad</ion-label>
+                    <ion-radio value="bad_weather"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>The boat needs to be fixed</ion-label>
+                    <ion-radio value="boat_needs_repair"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>The boat is not licenced</ion-label>
+                    <ion-radio value="boat_needs_licence"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>I don't have a valid permit</ion-label>
+                    <ion-radio value="no_permit"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>There are no fish at the moment</ion-label>
+                    <ion-radio value="no_fish"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>I am waiting for the start of the season</ion-label>
+                    <ion-radio value="wait_for_season_start"></ion-radio>
+                </ion-item>
+
+                <ion-item text-wrap>
+                    <ion-label>Other (not on list)</ion-label>
+                    <ion-radio value="other"></ion-radio>
+                </ion-item>
+
+
+
+
+
+            </ion-list>
+
+            <div padding *ngIf="logbook.tripdetails.no_trip_reason === 'other'">
+                <textarea
+                    padding
+                    aria-placeholder="No trip reason"
+                    class="ablb-textarea"
+                    [(ngModel)]="logbook.tripdetails.no_trip_reason_other"
+                    name="no_trip_reason_other"
+                    #no_trip_reason_other="ngModel"
+                ></textarea>
+            </div>
+        </div>
+
+
+
+        <div padding>
+            <button ion-button block (click)="next()"
+                    [disabled]="!tripExistsForm.form.valid"
+                    class="ablb-button abalobi-button-brown">
+                Continue
+            </button>
+        </div>
+
+    </form>
+
+    <pre padding
+         class="hacker-console">{{log.print()}}</pre>
+
+</ion-content>

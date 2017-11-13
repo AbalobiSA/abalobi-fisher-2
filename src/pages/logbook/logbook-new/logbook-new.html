@@ -33,10 +33,13 @@
             </ion-list>
 
             <div *ngIf="logbook.tripdetails.trip_today === false">
-                <span padding>The trip is a previous day</span>
+                <ion-list-header>
+                    Please specify the trip date
+                </ion-list-header>
                 <ion-item>
                     <ion-label>Trip Date</ion-label>
                     <ion-datetime
+                        required
                         [(ngModel)]="logbook.tripdetails.trip_datestring"
                         name="trip_date"
                         #trip_date="ngModel"
@@ -46,16 +49,21 @@
                 <!--{{logbook.tripdetails.trip_datestring}}-->
             </div>
 
-            <pre padding>{{log.print()}}</pre>
+
 
             <div padding>
-                <button ion-button block
-                        class="ablb-button abalobi-button-brown">
+                <button
+                    [disabled]="!tripDetailsForm.form.valid"
+                    ion-button block (click)="next()"
+                    class="ablb-button abalobi-button-brown">
                     Continue
                 </button>
             </div>
 
         </form>
+
+        <pre padding
+             class="hacker-console">{{log.print()}}</pre>
     </div>
 
     {{log.today_or_previous}}

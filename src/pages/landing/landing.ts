@@ -32,6 +32,7 @@ export class LandingPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad LandingPage');
+        this.loginBrowser();
     }
 
     login(): void {

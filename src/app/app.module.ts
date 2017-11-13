@@ -34,11 +34,20 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {SettingsEditPage} from "../pages/settings/settings-edit/settings-edit";
 import {LogbookNewPage} from "../pages/logbook/logbook-new/logbook-new";
 import {LogbookProvider} from '../providers/logbook/logbook';
+import {LogbookTripExistsPage} from "../pages/logbook/logbook-trip-exists/logbook-trip-exists";
+import {LogbookTripLocationPage} from "../pages/logbook/logbook-trip-location/logbook-trip-location";
+import {LogbookTripTypePage} from "../pages/logbook/logbook-trip-type/logbook-trip-type";
 
 
 export function createTranslateLoader(http: Http) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+const pages = [
+    LogbookTripExistsPage,
+    LogbookTripLocationPage,
+    LogbookTripTypePage
+];
 
 @NgModule({
     declarations: [
@@ -54,7 +63,8 @@ export function createTranslateLoader(http: Http) {
         RegisterPersonalDetailsPage,
         RegisterContactDetailsPage,
         SettingsEditPage,
-        LogbookNewPage
+        LogbookNewPage,
+        pages
     ],
     imports: [
         HttpModule,
@@ -83,7 +93,8 @@ export function createTranslateLoader(http: Http) {
         RegisterPersonalDetailsPage,
         RegisterContactDetailsPage,
         SettingsEditPage,
-        LogbookNewPage
+        LogbookNewPage,
+        pages
     ],
     providers: [
         StatusBar,
