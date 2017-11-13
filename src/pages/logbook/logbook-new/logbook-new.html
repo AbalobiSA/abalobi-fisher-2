@@ -1,0 +1,62 @@
+<!--
+  Generated template for the LogbookNewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>logbook-new</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <div>
+        <form #tripDetailsForm="ngForm">
+            <ion-list required radio-group [(ngModel)]="logbook.tripdetails.trip_today"
+                      name="trip_today"
+                      #trip_today="ngModel">
+                <ion-list-header>
+                    Which day is this fishing log for?
+                </ion-list-header>
+
+                <ion-item>
+                    <ion-label>Today</ion-label>
+                    <ion-radio [value]="true"></ion-radio>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Previous</ion-label>
+                    <ion-radio [value]="false"></ion-radio>
+                </ion-item>
+            </ion-list>
+
+            <div *ngIf="logbook.tripdetails.trip_today === false">
+                <span padding>The trip is a previous day</span>
+                <ion-item>
+                    <ion-label>Trip Date</ion-label>
+                    <ion-datetime
+                        [(ngModel)]="logbook.tripdetails.trip_datestring"
+                        name="trip_date"
+                        #trip_date="ngModel"
+                    ></ion-datetime>
+                </ion-item>
+
+                <!--{{logbook.tripdetails.trip_datestring}}-->
+            </div>
+
+            <pre padding>{{log.print()}}</pre>
+
+            <div padding>
+                <button ion-button block
+                        class="ablb-button abalobi-button-brown">
+                    Continue
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    {{log.today_or_previous}}
+</ion-content>

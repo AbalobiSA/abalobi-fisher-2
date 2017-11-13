@@ -68,7 +68,7 @@ export class LandingPage {
 
     loginBrowser(): void {
         this.loader.presentLoader("Logging in. Please wait...");
-        window.localStorage.setItem("access_token", "ys57a8kBmCCrcmBrOP-FhwAY9A-pr8xF");
+        window.localStorage.setItem("access_token", "2XufAKxdvlPRmrHFrCkz5wmFUSHrYBSg");
         const token = window.localStorage.getItem("access_token");
 
         this.fisher.getUserInfo(token)

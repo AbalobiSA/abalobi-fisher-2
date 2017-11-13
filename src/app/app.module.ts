@@ -7,6 +7,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpModule, Http} from '@angular/http';
 import {DatePicker} from '@ionic-native/date-picker';
 import {FormsModule} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 
 import {AnalyticsHomePage} from '../pages/analytics-home/analytics-home';
 import {ContactPage} from '../pages/contact/contact';
@@ -31,6 +32,8 @@ import {LoaderProvider} from "../providers/loader.service";
 
 import {TranslatePipe} from "@ngx-translate/core";
 import {SettingsEditPage} from "../pages/settings/settings-edit/settings-edit";
+import {LogbookNewPage} from "../pages/logbook/logbook-new/logbook-new";
+import {LogbookProvider} from '../providers/logbook/logbook';
 
 
 export function createTranslateLoader(http: Http) {
@@ -50,7 +53,8 @@ export function createTranslateLoader(http: Http) {
         RegisterAgreementPage,
         RegisterPersonalDetailsPage,
         RegisterContactDetailsPage,
-        SettingsEditPage
+        SettingsEditPage,
+        LogbookNewPage
     ],
     imports: [
         HttpModule,
@@ -78,7 +82,8 @@ export function createTranslateLoader(http: Http) {
         RegisterAgreementPage,
         RegisterPersonalDetailsPage,
         RegisterContactDetailsPage,
-        SettingsEditPage
+        SettingsEditPage,
+        LogbookNewPage
     ],
     providers: [
         StatusBar,
@@ -90,7 +95,8 @@ export function createTranslateLoader(http: Http) {
         DatePicker,
         AuthProvider,
         UserProvider,
-        LoaderProvider
+        LoaderProvider,
+        LogbookProvider
     ]
 })
 export class AppModule {

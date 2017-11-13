@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Platform} from "ionic-angular";
 import {AppstarterProvider} from "../../providers/appstarter/appstarter";
 import {AuthProvider} from "../../providers/auth/auth";
+import {LogbookNewPage} from "../logbook/logbook-new/logbook-new";
 
 let startApp: any;
 
@@ -30,12 +31,14 @@ export class HomePage {
 
     startODK(): void {
 
-        this.appstarter.start(
-            "org.odk.collect.android",
-            "You need OpenDataKit to log your catch, but it is not installed. " +
-                            "\n\nWould you like to install it now using the Google Play Store?",
-            'https://play.google.com/store/apps/details?id=org.odk.collect.android'
-        );
+        // this.appstarter.start(
+        //     "org.odk.collect.android",
+        //     "You need OpenDataKit to log your catch, but it is not installed. " +
+        //                     "\n\nWould you like to install it now using the Google Play Store?",
+        //     'https://play.google.com/store/apps/details?id=org.odk.collect.android'
+        // );
+
+        this.navCtrl.push(LogbookNewPage, {}, {animate: true, direction: 'forward'});
     }
 
     startAnalytics(): void {
