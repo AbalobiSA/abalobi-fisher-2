@@ -6,9 +6,9 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>register-contact-details</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>register-contact-details</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -16,9 +16,76 @@
 <ion-content>
 
 
+    <form #registerContactForm="ngForm">
+        <h3 text-center>Contact information</h3>
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>ID Number</ion-label>
+                <ion-input type="number" [(ngModel)]="reg.registration.user.id_number"
+                           name="user_id_number"
+                           #user_id_number="ngModel"
+                           required>
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input type="text" [(ngModel)]="reg.registration.user.email"
+                           name="user_email"
+                           #user_email="ngModel"
+                           required>
+                </ion-input>
+            </ion-item>
+
+            <div padding *ngIf="user_email.invalid && (user_email.dirty || user_email.touched)">
+                <span class="validation-warning">Email address is required!</span>
+            </div>
+
+            <ion-item>
+                <ion-label stacked>Personal Cellphone Number</ion-label>
+                <ion-input type="number" [(ngModel)]="reg.registration.user.mobile_number"
+                           name="mobile_number"
+                           #mobile_number="ngModel"
+                           required>
+                </ion-input>
+            </ion-item>
+        </ion-list>
 
 
+        <!--Is this your email address-->
+        <ion-list radio-group
+                  name="user_email_own"
+                  #user_email_own="ngModel"
+                  required
+                  [(ngModel)]="reg.registration.user.email_own">
+            <ion-list-header text-wrap>
+                Is this your own email address? Or someone else's?
+            </ion-list-header>
 
+            <ion-item>
+                <ion-label>Mine</ion-label>
+                <ion-radio [value]="true"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Someone else's</ion-label>
+                <ion-radio [value]="false"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <!--ID Number-->
+
+        <!--Date of birth-->
+
+        <!--Personal Cellphone number-->
+
+        <button ion-button block class="ablb-button abalobi-button-darkblue"
+                [disabled]="!registerContactForm.form.valid"
+                (click)="continue()">Continue
+        </button>
+
+
+    </form>
 
 
     <pre class="hacker-console" padding>{{this.reg.printRegistration()}}</pre>

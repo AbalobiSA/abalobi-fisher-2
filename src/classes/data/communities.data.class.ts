@@ -26,7 +26,6 @@ const lookupProvince = (provinceKey: string): any => {
             return province;
         }
     }
-    return (new Province({ name: "Other", key: "OTHER" }));
 };
 
 export class CommunityData {
@@ -734,9 +733,17 @@ export class CommunityData {
     }
 
     getProvinces(): Province[] {
-        return _.uniq(this.communities
-            .map(community => community.province_abbreviation__c)
-            .map(key => lookupProvince(key)));
+        return _.uniq(
+            this.communities
+            .map(community => community.province_abbreviation__c))
+            .map(key => lookupProvince(key))
+            .filter(item => item !== undefined);
 
+    }
+
+    getFilteredCommunities(province_key: string): any[] {
+        return _.sortBy(this.communities
+            .filter(item => item['province_abbreviation__c'] === province_key),
+            "unique_ext_id__c")
     }
 }

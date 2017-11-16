@@ -36,11 +36,9 @@ export class LandingPage {
     }
 
     login(): void {
-
         // Using the auth token, Query the server for the user's actual fisher data
         // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
         this.loginMobile();
-
     }
 
     register(): void {
@@ -52,7 +50,6 @@ export class LandingPage {
             .then(done => {
                 console.log("WE HAVE RESOLVED");
                 this.loader.presentLoader("Logging in. Please wait...");
-
                 const token = window.localStorage.getItem('access_token');
                 console.log(token);
                 return this.fisher.getUserInfo(token)
@@ -69,7 +66,7 @@ export class LandingPage {
 
     loginBrowser(): void {
         this.loader.presentLoader("Logging in. Please wait...");
-        window.localStorage.setItem("access_token", "2XufAKxdvlPRmrHFrCkz5wmFUSHrYBSg");
+        window.localStorage.setItem("access_token", "Wy_3ZSIDYA-zO7RGJapnnEKaTRfHD83H");
         const token = window.localStorage.getItem("access_token");
 
         this.fisher.getUserInfo(token)

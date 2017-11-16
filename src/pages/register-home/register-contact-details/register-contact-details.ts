@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {RegistrationProvider} from "../../../providers/registration/registration.provider";
+import {RegisterPasswordPage} from "../register-password/register-password";
 
 /**
  * Generated class for the RegisterContactDetailsPage page.
@@ -25,7 +26,7 @@ export class RegisterContactDetailsPage {
     }
 
     continue(): void {
-        // this.navCtrl.push(RegisterContactDetailsPage, {}, {animate: true, direction: 'forward'});
+        this.navCtrl.push(RegisterPasswordPage, {}, {animate: true, direction: 'forward'});
     }
 
 }

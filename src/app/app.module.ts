@@ -37,6 +37,8 @@ import {LogbookProvider} from '../providers/logbook/logbook';
 import {LogbookTripExistsPage} from "../pages/logbook/logbook-trip-exists/logbook-trip-exists";
 import {LogbookTripLocationPage} from "../pages/logbook/logbook-trip-location/logbook-trip-location";
 import {LogbookTripTypePage} from "../pages/logbook/logbook-trip-type/logbook-trip-type";
+import {RegisterPasswordPage} from "../pages/register-home/register-password/register-password";
+import {RegisterFisherInfoPage} from "../pages/register-home/register-fisher-info/register-fisher-info";
 
 
 export function createTranslateLoader(http: Http) {
@@ -46,7 +48,9 @@ export function createTranslateLoader(http: Http) {
 const pages = [
     LogbookTripExistsPage,
     LogbookTripLocationPage,
-    LogbookTripTypePage
+    LogbookTripTypePage,
+    RegisterPasswordPage,
+    RegisterFisherInfoPage
 ];
 
 @NgModule({

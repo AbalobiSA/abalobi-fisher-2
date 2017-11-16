@@ -6,9 +6,9 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Personal Details</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Personal Details</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -18,96 +18,121 @@
         <strong>{{"PERSONAL_REQUIRED" | translate}}</strong>
     </div>
 
-    <ion-list>
-        <ion-item text-wrap>
-            <ion-label>Preferred Language</ion-label>
-            <ion-select [(ngModel)]="reg.registration.user_language">
-                <ion-option value="eng">English</ion-option>
-                <ion-option value="afr">Afrikaans</ion-option>
-                <ion-option value="xh">isiXhosa</ion-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
+    <form #registerPersonalForm="ngForm">
+
+        <ion-list>
+            <ion-item text-wrap>
+                <ion-label>Preferred Language</ion-label>
+                <ion-select [(ngModel)]="reg.registration.user.language"
+                            name="user_language"
+                            required
+                            #user_language="ngModel">
+                    <ion-option value="eng">English</ion-option>
+                    <ion-option value="afr">Afrikaans</ion-option>
+                    <ion-option value="xh">isiXhosa</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
 
 
-    <ion-list>
+        <ion-list>
+
+            <ion-item>
+                <ion-label stacked>{{"PERSONAL_NAME_LABEL" | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="reg.registration.user.firstname"
+                           name="user_firstname"
+                           #user_firstname="ngModel"
+                           required
+                           placeholder="{{'PERSONAL_NAME_PH' | translate}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>{{"PERSONAL_SURNAME_LABEL" | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="reg.registration.user.lastname"
+                           name="user_lastname"
+                           #user_lastname="ngModel"
+                           required
+                           placeholder="{{'PERSONAL_SURNAME_PH' | translate}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>{{"PERSONAL_NICKNAME_LABEL" | translate }}</ion-label>
+                <ion-input type="text" [(ngModel)]="reg.registration.user.nickname"
+                           name="user_nickname"
+                           #user_nickname="ngModel"
+                           placeholder="{{'PERSONAL_NICKNAME_PH' | translate}}"></ion-input>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list>
+            <ion-item text-wrap>
+                <ion-label>{{"PERSONAL_GENDER_REQUIRED" | translate}}</ion-label>
+                <ion-select
+                    [(ngModel)]="reg.registration.user.gender"
+                    name="user_gender"
+                    required
+                    #user_gender="ngModel">
+                    <ion-option value="male">{{"PERSONAL_GENDER_MALE" | translate}}</ion-option>
+                    <ion-option value="female">{{"PERSONAL_GENDER_FEMALE" | translate}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
 
         <ion-item>
-            <ion-label stacked>{{"PERSONAL_NAME_LABEL" | translate}}</ion-label>
-            <ion-input type="text" [(ngModel)]="reg.registration.user_firstname"
-                       placeholder="{{'PERSONAL_NAME_PH' | translate}}"></ion-input>
+            <ion-label>{{"PERSONAL_DATE_LABEL" | translate}}</ion-label>
+            <ion-datetime displayFormat="DD MMM , YYYY" pickerFormat="DD MMM , YYYY"
+                          [(ngModel)]="reg.registration.user.birthdate"
+                          name="user_birthdate"
+                          #user_birthdate="ngModel"></ion-datetime>
+            <p>DATE: {{reg.registration.user.birthdate}}</p>
         </ion-item>
 
-        <ion-item>
-            <ion-label stacked>{{"PERSONAL_SURNAME_LABEL" | translate }}</ion-label>
-            <ion-input type="text" [(ngModel)]="reg.registration.user_lastname"
-                       placeholder="{{'PERSONAL_SURNAME_PH' | translate}}"></ion-input>
-        </ion-item>
+        <br>
 
-        <ion-item>
-            <ion-label stacked>{{"PERSONAL_NICKNAME_LABEL" | translate }}</ion-label>
-            <ion-input type="text" [(ngModel)]="reg.registration.user_nickname"
-                       placeholder="{{'PERSONAL_NICKNAME_PH' | translate}}"></ion-input>
-        </ion-item>
 
-    </ion-list>
+        <!--[disabled]="!registerPersonalForm.form.valid"-->
 
-    <ion-list>
-        <ion-item text-wrap>
-            <ion-label>{{"PERSONAL_GENDER_REQUIRED" | translate}}</ion-label>
-            <ion-select [(ngModel)]="reg.registration.user_gender">
-                <ion-option value="male">{{"PERSONAL_GENDER_MALE" | translate}}</ion-option>
-                <ion-option value="female">{{"PERSONAL_GENDER_FEMALE" | translate}}</ion-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
+        <button ion-button block class="ablb-button abalobi-button-darkblue"
 
-    <ion-item>
-        <ion-label>{{"PERSONAL_DATE_LABEL" | translate}}</ion-label>
-        <ion-datetime displayFormat="DD MMM , YYYY" pickerFormat="DD MMM , YYYY" [(ngModel)]="reg.registration.user_birthdate"></ion-datetime>
-        <p>DATE: {{reg.registration.user_birthdate}}</p>
-    </ion-item>
+                (click)="continue()">Continue
+        </button>
 
-    <br>
-
-    <button ion-button block class="ablb-button abalobi-button-darkblue"
-    (click)="continue()">Continue</button>
+    </form>
 
     <!--<button class="ablb-button abalobi-button-brown" (click)="selectDate()">Input date</button>-->
 
     <!--<ion-list>-->
-        <!--<ion-item>-->
-            <!--<ion-label stacked>{{"PERSONAL_EMAIL_LABEL" | translate }}</ion-label>-->
-            <!--<ion-input type="text" [(ngModel)]="reg.registration.user_email"-->
-                       <!--placeholder="{{'PERSONAL_EMAIL_PH' | translate}}"></ion-input>-->
-        <!--</ion-item>-->
+    <!--<ion-item>-->
+    <!--<ion-label stacked>{{"PERSONAL_EMAIL_LABEL" | translate }}</ion-label>-->
+    <!--<ion-input type="text" [(ngModel)]="reg.registration.user_email"-->
+    <!--placeholder="{{'PERSONAL_EMAIL_PH' | translate}}"></ion-input>-->
+    <!--</ion-item>-->
     <!--</ion-list>-->
 
     <!--<ion-list radio-group [(ngModel)]="reg.registration.user_email_own">-->
-        <!--<ion-list-header>-->
-            <!--{{"PERSONAL_EMAIL_OWNERSHIP_QUESTION" | translate}}-->
-        <!--</ion-list-header>-->
+    <!--<ion-list-header>-->
+    <!--{{"PERSONAL_EMAIL_OWNERSHIP_QUESTION" | translate}}-->
+    <!--</ion-list-header>-->
 
-        <!--<ion-item>-->
-            <!--<ion-label>{{"PERSONAL_EMAIL_OWN_EMAIL" | translate}}</ion-label>-->
-            <!--<ion-radio checked="true" [value]="true"></ion-radio>-->
-        <!--</ion-item>-->
+    <!--<ion-item>-->
+    <!--<ion-label>{{"PERSONAL_EMAIL_OWN_EMAIL" | translate}}</ion-label>-->
+    <!--<ion-radio checked="true" [value]="true"></ion-radio>-->
+    <!--</ion-item>-->
 
-        <!--<ion-item>-->
-            <!--<ion-label>{{"PERSONAL_EMAIL_NOT_OWN_EMAIL" | translate}}</ion-label>-->
-            <!--<ion-radio [value]="false"></ion-radio>-->
-        <!--</ion-item>-->
+    <!--<ion-item>-->
+    <!--<ion-label>{{"PERSONAL_EMAIL_NOT_OWN_EMAIL" | translate}}</ion-label>-->
+    <!--<ion-radio [value]="false"></ion-radio>-->
+    <!--</ion-item>-->
     <!--</ion-list>-->
 
     <!--<ion-list>-->
-        <!--<ion-item>-->
-            <!--<ion-label stacked>{{"PERSONAL_EMAIL_LABEL" | translate }}</ion-label>-->
-            <!--<ion-input type="text" [(ngModel)]="reg.registration.user_email"-->
-                       <!--placeholder="{{'PERSONAL_EMAIL_PH' | translate}}"></ion-input>-->
-        <!--</ion-item>-->
+    <!--<ion-item>-->
+    <!--<ion-label stacked>{{"PERSONAL_EMAIL_LABEL" | translate }}</ion-label>-->
+    <!--<ion-input type="text" [(ngModel)]="reg.registration.user_email"-->
+    <!--placeholder="{{'PERSONAL_EMAIL_PH' | translate}}"></ion-input>-->
+    <!--</ion-item>-->
     <!--</ion-list>-->
-
-
 
 
     <pre class="hacker-console" padding>{{this.reg.printRegistration()}}</pre>
