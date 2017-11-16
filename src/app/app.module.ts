@@ -39,6 +39,7 @@ import {LogbookTripLocationPage} from "../pages/logbook/logbook-trip-location/lo
 import {LogbookTripTypePage} from "../pages/logbook/logbook-trip-type/logbook-trip-type";
 import {RegisterPasswordPage} from "../pages/register-home/register-password/register-password";
 import {RegisterFisherInfoPage} from "../pages/register-home/register-fisher-info/register-fisher-info";
+import {RegisterBoatPage} from "../pages/register-home/register-boat/register-boat";
 
 
 export function createTranslateLoader(http: Http) {
@@ -50,7 +51,8 @@ const pages = [
     LogbookTripLocationPage,
     LogbookTripTypePage,
     RegisterPasswordPage,
-    RegisterFisherInfoPage
+    RegisterFisherInfoPage,
+    RegisterBoatPage
 ];
 
 @NgModule({

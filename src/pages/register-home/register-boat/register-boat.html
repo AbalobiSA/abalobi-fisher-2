@@ -1,0 +1,189 @@
+<!--
+  Generated template for the RegisterBoatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>register-boat-page</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <form #registerBoatForm="ngForm">
+        <h3 text-center>Boat / Shore info</h3>
+        <ion-list>
+            <ion-list-header>
+                Which of these do you fish from?
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Shore</ion-label>
+                <ion-checkbox
+                    [(ngModel)]="reg.registration.user.fishes_from_shore"
+                    name="fishes_from_shore"
+                    #fishes_from_shore="ngModel"
+                    color="dark">
+                </ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Boat</ion-label>
+                <ion-checkbox
+                    [(ngModel)]="reg.registration.user.fishes_from_boat"
+                    name="fishes_from_boat"
+                    #fishes_from_boat="ngModel"
+                    color="dark">
+                    >
+                </ion-checkbox>
+            </ion-item>
+
+        </ion-list>
+        <ion-list *ngIf="reg.registration.user.fishes_from_boat === true">
+            <ion-list-header>
+                Whose boat do you normally fish from?
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>My own</ion-label>
+                <ion-checkbox
+                    [(ngModel)]="reg.registration.user.boat_used_own"
+                    name="boat_used_own"
+                    #boat_used_own="ngModel"
+                    color="dark">
+                    >
+                </ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Someone else's</ion-label>
+                <ion-checkbox
+                    [(ngModel)]="reg.registration.user.boat_used_others"
+                    name="boat_used_others"
+                    #boat_used_others="ngModel"
+                    color="dark">
+                </ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngIf="reg.registration.user.boat_used_own">
+            <ion-list-header>
+                Please fill in the boat information form below.
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label floating>Boat Name</ion-label>
+                <ion-input type="text"
+                           [(ngModel)]="reg.registration.boat_info.name"
+                           name="boatName"
+                           required
+                           #boatName="ngModel"
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Boat Registration Number</ion-label>
+                <ion-input type="text"
+                           [(ngModel)]="reg.registration.boat_info.registration_number"
+                           name="boatRegistration"
+                           #boatRegistration="ngModel"
+                ></ion-input>
+            </ion-item>
+
+            <br>
+
+            <ion-item>
+                <ion-label>Boat Type?</ion-label>
+                <ion-select [(ngModel)]="reg.registration.boat_info.type"
+                            name="boatType"
+                            required
+                            #boatType="ngModel">
+                    <ion-option value="bakkie">Bakkie</ion-option>
+                    <ion-option value="chukkie">Chukkie</ion-option>
+                    <ion-option value="ski">Skiboat</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <br>
+
+            <ion-item>
+                <ion-label>Boat Registration Expiry</ion-label>
+                <ion-datetime displayFormat="DD MMM , YYYY" pickerFormat="DD MMM , YYYY"
+                              [(ngModel)]="reg.registration.boat_info.registration_expiry_date"
+                              name="user_birthdate"
+                              required
+                              #user_birthdate="ngModel"></ion-datetime>
+            </ion-item>
+        </ion-list>
+
+        <ion-list
+            *ngIf="reg.registration.user.boat_used_own"
+            [(ngModel)]="reg.registration.boat_info.has_engine"
+            name="has_engine"
+            #has_engine="ngModel"
+            required
+            radio-group>
+
+            <ion-list-header>
+                Does your boat have an engine?
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Yes</ion-label>
+                <ion-radio [value]="true"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio [value]="false"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <ion-list
+            *ngIf="reg.registration.boat_info.has_engine"
+            [(ngModel)]="reg.registration.boat_info.engine_power_type"
+            name="engine_power_type"
+            #engine_power_type="ngModel"
+            radio-group>
+
+            <ion-list-header>
+                What is the type of your boat's engine?
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Horsepower</ion-label>
+                <ion-radio [value]="'hp'"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>CC</ion-label>
+                <ion-radio [value]="'cc'"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngIf="reg.registration.boat_info.has_engine && !!reg.registration.boat_info.engine_power_type">
+            <ion-list-header>
+                Please fill in the engine capacity ({{reg.registration.boat_info.engine_power_type}})
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label floating>Engine Capacity</ion-label>
+                <ion-input type="number"
+                           [(ngModel)]="reg.registration.boat_info.engine_power"
+                           name="engine_power"
+                           #engine_power="ngModel"
+                ></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <button ion-button block class="ablb-button abalobi-button-darkblue"
+                [disabled]="(!registerBoatForm.form.valid) || (customFormValid() === false)"
+                (click)="continue()">Continue
+        </button>
+
+    </form>
+
+    <pre class="hacker-console" padding>{{this.reg.printRegistration()}}</pre>
+</ion-content>

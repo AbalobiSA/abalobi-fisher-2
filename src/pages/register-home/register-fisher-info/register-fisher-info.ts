@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {RegistrationProvider} from "../../../providers/registration/registration.provider";
 import {CommunityData} from "../../../classes/data/communities.data.class";
 import {Community} from "../../../classes/fisher/community.class";
+import {RegisterBoatPage} from "../register-boat/register-boat";
 
 /**
  * Generated class for the RegisterFisherInfoPage page.
@@ -19,7 +20,6 @@ import {Community} from "../../../classes/fisher/community.class";
 export class RegisterFisherInfoPage {
 
     comms: CommunityData = new CommunityData();
-    selectedProvince: string;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -32,6 +32,10 @@ export class RegisterFisherInfoPage {
 
     resetCommunity() {
         this.reg.registration.user.community = undefined;
+    }
+
+    continue(): void {
+        this.navCtrl.push(RegisterBoatPage, {}, {animate: true, direction: 'forward'});
     }
 
 }
