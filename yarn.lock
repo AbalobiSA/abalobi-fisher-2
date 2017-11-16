@@ -61,6 +61,10 @@
     auth0-js "^8.5.0"
     url-parse "^1.1.8"
 
+"@ionic-native/camera@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.4.2.tgz#bbdd689a20652bd300ce9fed8a5d5bc5a6d38187"
+
 "@ionic-native/core@^4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.3.3.tgz#d527a577207843f5bdf853ea78ed79daf986b067"
@@ -1624,6 +1628,10 @@ cordova-plugin-app-version@^0.1.9:
 cordova-plugin-appversion@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-appversion/-/cordova-plugin-appversion-1.0.0.tgz#b60a3913e475935f9008930b469725c263942891"
+
+cordova-plugin-camera@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-camera/-/cordova-plugin-camera-3.0.0.tgz#9212ff0e2a211ee840d8a83f051d37d0dec0bd1f"
 
 cordova-plugin-console@^1.0.5:
   version "1.1.0"

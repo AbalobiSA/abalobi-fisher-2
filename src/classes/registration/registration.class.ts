@@ -13,6 +13,8 @@ export class Registration {
 
     boat_info: BoatInfo = new BoatInfo();
 
+    profileImage: string;
+
     constructor(init?: any) {
         this.usertype = 'fisher';
 

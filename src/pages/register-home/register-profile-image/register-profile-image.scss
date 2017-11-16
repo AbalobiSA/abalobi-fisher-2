@@ -1,0 +1,16 @@
+page-register-profile-image {
+    .profile-image-container {
+        text-align: center;
+    }
+
+    .profile-image-staging {
+        display: inline-block;
+        text-align: center;
+        max-height: 60%;
+        width: auto;
+    }
+
+    .page-bg {
+        background-color: $cloud;
+    }
+}

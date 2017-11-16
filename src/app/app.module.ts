@@ -45,6 +45,9 @@ import {LogbookNoTripPage} from "../pages/logbook/logbook-no-trip/logbook-no-tri
 import {LogbookTripLocationShorespotsPage} from "../pages/logbook/logbook-trip-location-shorespots/logbook-trip-location-shorespots";
 import {LogbookTripLocationHarbourPage} from "../pages/logbook/logbook-trip-location-harbour/logbook-trip-location-harbour";
 import {LogbookWeatherPage} from "../pages/logbook/logbook-weather/logbook-weather";
+import {RegisterProfileImagePage} from "../pages/register-home/register-profile-image/register-profile-image";
+
+import {Camera, CameraOptions} from '@ionic-native/camera';
 
 
 export function createTranslateLoader(http: Http) {
@@ -62,7 +65,8 @@ const pages = [
     RegisterPasswordPage,
     RegisterFisherInfoPage,
     LogbookWeatherPage,
-    RegisterBoatPage
+    RegisterBoatPage,
+    RegisterProfileImagePage
 ];
 
 @NgModule({
@@ -123,7 +127,8 @@ const pages = [
         AuthProvider,
         UserProvider,
         LoaderProvider,
-        LogbookProvider
+        LogbookProvider,
+        Camera
     ]
 })
 export class AppModule {
