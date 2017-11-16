@@ -12,7 +12,7 @@ import {RegisterBoatPage} from "../register-boat/register-boat";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-register-fisher-info',
     templateUrl: 'register-fisher-info.html',

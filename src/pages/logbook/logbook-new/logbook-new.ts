@@ -11,7 +11,7 @@ import {LogbookTripExistsPage} from "../logbook-trip-exists/logbook-trip-exists"
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-logbook-new',
     templateUrl: 'logbook-new.html',

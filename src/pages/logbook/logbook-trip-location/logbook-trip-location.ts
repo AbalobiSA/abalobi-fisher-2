@@ -13,7 +13,7 @@ import {CommunityData} from "../../../classes/data/communities.data.class";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-logbook-trip-location',
     templateUrl: 'logbook-trip-location.html',

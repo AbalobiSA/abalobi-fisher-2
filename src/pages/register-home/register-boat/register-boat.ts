@@ -9,7 +9,7 @@ import {RegistrationProvider} from "../../../providers/registration/registration
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-register-boat',
     templateUrl: 'register-boat.html',

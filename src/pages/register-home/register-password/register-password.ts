@@ -10,7 +10,7 @@ import {RegisterFisherInfoPage} from "../register-fisher-info/register-fisher-in
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-register-password',
     templateUrl: 'register-password.html',

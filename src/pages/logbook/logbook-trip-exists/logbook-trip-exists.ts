@@ -12,7 +12,7 @@ import {LogbookProvider} from "../../../providers/logbook/logbook";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-logbook-trip-exists',
     templateUrl: 'logbook-trip-exists.html',

@@ -40,6 +40,11 @@ import {LogbookTripTypePage} from "../pages/logbook/logbook-trip-type/logbook-tr
 import {RegisterPasswordPage} from "../pages/register-home/register-password/register-password";
 import {RegisterFisherInfoPage} from "../pages/register-home/register-fisher-info/register-fisher-info";
 import {RegisterBoatPage} from "../pages/register-home/register-boat/register-boat";
+import {LogbookCurrentsPage} from "../pages/logbook/logbook-currents/logbook-currents";
+import {LogbookNoTripPage} from "../pages/logbook/logbook-no-trip/logbook-no-trip";
+import {LogbookTripLocationShorespotsPage} from "../pages/logbook/logbook-trip-location-shorespots/logbook-trip-location-shorespots";
+import {LogbookTripLocationHarbourPage} from "../pages/logbook/logbook-trip-location-harbour/logbook-trip-location-harbour";
+import {LogbookWeatherPage} from "../pages/logbook/logbook-weather/logbook-weather";
 
 
 export function createTranslateLoader(http: Http) {
@@ -47,11 +52,16 @@ export function createTranslateLoader(http: Http) {
 }
 
 const pages = [
+    LogbookCurrentsPage,
     LogbookTripExistsPage,
     LogbookTripLocationPage,
     LogbookTripTypePage,
+    LogbookNoTripPage,
+    LogbookTripLocationShorespotsPage,
+    LogbookTripLocationHarbourPage,
     RegisterPasswordPage,
     RegisterFisherInfoPage,
+    LogbookWeatherPage,
     RegisterBoatPage
 ];
 

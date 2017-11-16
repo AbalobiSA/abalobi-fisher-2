@@ -11,7 +11,7 @@ import {LogbookTripLocationPage} from "../logbook-trip-location/logbook-trip-loc
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
     selector: 'page-logbook-trip-type',
     templateUrl: 'logbook-trip-type.html',
