@@ -1,34 +1,15 @@
-class RegUser {
-    firstname: string;
-    lastname: string;
-    nickname: string;
-    gender: string;
-    email: string;
-    email_own: boolean;
-    birthdate: string;
-    language: string;
-    id_number: string;
-    mobile_number: string;
-
-    password: string;
-    password_confirm: string;
-
-    community: string;
-    community_custom: string;
-}
-
 export class Registration {
-    // User Details
+    // Personal Information
+    user: RegUser = new RegUser();
+
+    // Registration Details
     usertype: string;
     manager_is_fisher: boolean;
 
-    // Permissions
+    // User Permissions
     permissions_abalobi: boolean;
     permissions_daff: boolean;
     permissions_manager: boolean;
-
-    // Personal Information
-    user: RegUser = new RegUser();
 
     constructor(init?: any) {
         this.usertype = 'fisher';
@@ -61,4 +42,38 @@ export class Registration {
         this.permissions_abalobi = true;
         this.permissions_manager = true;
     }
+}
+
+class RegUser {
+    firstname: string;
+    lastname: string;
+    nickname: string;
+    gender: string;
+    email: string;
+    email_own: boolean;
+    birthdate: string;
+    language: string;
+    id_number: string;
+    mobile_number: string;
+
+    password: string;
+    password_confirm: string;
+
+    community: string;
+    community_custom: string;
+    community_province: string;
+
+    permits = new PermitInfo();
+}
+
+class PermitInfo {
+    permit_irp: boolean = false;
+    permit_commercial: boolean = false;
+    permit_recreational: boolean = false;
+
+    permit_com_wcrl: boolean = false;
+    permit_com_tlf: boolean = false;
+    permit_com_other: boolean = false;
+
+    permit_com_other_type: string;
 }
