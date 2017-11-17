@@ -116,7 +116,6 @@ export class AuthProvider {
     }
 
     public loginPromise() {
-
         return new Promise((resolve, reject) => {
 
             let client = new Auth0Cordova(auth0Config);
@@ -155,8 +154,85 @@ export class AuthProvider {
                 });
             });
         });
+    }
 
+    public loginManual(email, password) {
+        return new Promise((resolve, reject) => {
+            this.auth0.login({
+                connection: 'AbalobiUsers',
+                email: email,
+                password: password,
+                scope: 'openid profile offline_access',
+                device: 'mobile',
+                // clientID: 'UzuSWzByJ71RvE72tftmlZVfDmPWfCXc',
+                // clientId: 'UzuSWzByJ71RvE72tftmlZVfDmPWfCXc',
+                // domain: 'abalobi.eu.auth0.com',
+                // callbackURL: location.href,
+                redirectUri: location.href,
+                // packageIdentifier: 'com.abalobi.fisher',
+                responseType: 'token'// test
+            }, (err, authResult) => {
+                if (err){
+                    console.error(err);
+                    reject(err);
+                    return;
+                }else{
+                    console.log("authprovider: user has been successfully authorized!");
 
+                    this.setIdToken(authResult.idToken);
+                    this.setAccessToken(authResult.accessToken);
+
+                    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+                    this.setStorageVariable('expires_at', expiresAt);
+
+                    // Fetch profile information
+                    this.auth0.client.userInfo(this.accessToken, (err, profile) => {
+                        if(err) {
+                            reject();
+                            throw err;
+                        }
+
+                        profile.user_metadata = profile.user_metadata || {};
+                        this.setStorageVariable('profile', profile);
+
+                        this.zone.run(() => {
+                            this.user = profile;
+                            console.log("Updating zone ");
+                            resolve();
+                        });
+                    });
+                }
+            });
+        });
+    }
+
+    public injectToken(authResult) {
+        return new Promise((resolve, reject) => {
+            console.log("authprovider: user has been successfully authorized!");
+
+            this.setIdToken(authResult.id_token);
+            this.setAccessToken(authResult.access_token);
+
+            const expiresAt = JSON.stringify((authResult.expires_in * 1000) + new Date().getTime());
+            this.setStorageVariable('expires_at', expiresAt);
+
+            // Fetch profile information
+            this.auth0.client.userInfo(this.accessToken, (err, profile) => {
+                if(err) {
+                    reject();
+                    throw err;
+                }
+
+                profile.user_metadata = profile.user_metadata || {};
+                this.setStorageVariable('profile', profile);
+
+                this.zone.run(() => {
+                    this.user = profile;
+                    console.log("Updating zone ");
+                    resolve();
+                });
+            });
+        })
     }
 
     public logout() {

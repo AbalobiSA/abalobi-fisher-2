@@ -32,6 +32,50 @@ export class LandingPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad LandingPage');
+        const url = location.href;
+
+        try {
+            const parseQueryString = () => {
+                let str = location.href;
+                str = str.substring(str.indexOf('#') + 1);
+                let objURL = {};
+
+                str.replace(
+                    new RegExp( "([^?=&]+)(=([^&]*))?", "g" ),
+                    ( $0, $1, $2, $3 ) => {
+                        objURL[ $1 ] = $3;
+                        return "";
+                    }
+                );
+                return objURL;
+            };
+
+            const params = parseQueryString();
+            console.log(params);
+            // const access_token = params.access_token;
+
+            this.auth.injectToken(params)
+                .then(success => {
+                    console.log("Job well done!");
+                    console.log("WE HAVE RESOLVED");
+                    this.loader.presentLoader("Logging in. Please wait...");
+                    const token = window.localStorage.getItem('access_token');
+                    console.log(token);
+                    return this.fisher.getUserInfo(token)
+                })
+                .then(fisher => {
+                    this.loader.dismissLoader();
+                    this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+                })
+                .catch(ex => {
+                    console.log(ex);
+                    this.loader.dismissLoader();
+                });
+
+        } catch (ex) {
+
+        }
+
         // this.loginBrowser();
     }
 
@@ -46,7 +90,8 @@ export class LandingPage {
     }
 
     loginMobile(): void {
-        this.auth.loginPromise()
+        // this.auth.loginPromise()
+        this.auth.loginManual("nicodwal@gmail.com", "tIGER1970")
             .then(done => {
                 console.log("WE HAVE RESOLVED");
                 this.loader.presentLoader("Logging in. Please wait...");

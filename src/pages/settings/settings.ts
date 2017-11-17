@@ -112,6 +112,7 @@ export class SettingsPage {
     logout(): void {
         let rootNav = this.getRootNav(this.navCtrl);
         this.auth.logout();
+        location.href = "";
         rootNav.setRoot(LandingPage, {}, {animate: true, direction: 'backward'});
     }
 
