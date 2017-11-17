@@ -48,6 +48,7 @@ import {LogbookWeatherPage} from "../pages/logbook/logbook-weather/logbook-weath
 import {RegisterProfileImagePage} from "../pages/register-home/register-profile-image/register-profile-image";
 
 import {Camera, CameraOptions} from '@ionic-native/camera';
+import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 
 
 export function createTranslateLoader(http: Http) {
@@ -66,7 +67,8 @@ const pages = [
     RegisterFisherInfoPage,
     LogbookWeatherPage,
     RegisterBoatPage,
-    RegisterProfileImagePage
+    RegisterProfileImagePage,
+    RegisterSummaryPage
 ];
 
 @NgModule({

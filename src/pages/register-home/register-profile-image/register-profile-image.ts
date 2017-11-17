@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {RegistrationProvider} from "../../../providers/registration/registration.provider";
 import {Camera, CameraOptions} from '@ionic-native/camera';
+import {RegisterSummaryPage} from "../register-summary/register-summary";
 
 /**
  * Generated class for the RegisterProfileImagePage page.
@@ -73,7 +74,7 @@ export class RegisterProfileImagePage {
 
     continue(): void {
         this.reg.registration.profileImage = this.profileImage;
-        // this.navCtrl.push(RegisterBoatPage, {}, {animate: true, direction: 'forward'});
+        this.navCtrl.push(RegisterSummaryPage, {}, {animate: true, direction: 'forward'});
     }
 
 }

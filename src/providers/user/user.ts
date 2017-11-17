@@ -6,6 +6,7 @@ import 'rxjs/add/operator/filter';
 
 import {User} from "../../classes/fisher/user.class";
 import {Community} from "../../classes/fisher/community.class";
+import {Registration} from "../../classes/registration/registration.class";
 
 /*
   Generated class for the UserProvider provider.
@@ -16,8 +17,8 @@ import {Community} from "../../classes/fisher/community.class";
 @Injectable()
 export class UserProvider {
 
-    BASE_URL: string = "http://server.abalobi.info";
-    // BASE_URL: string = "http://10.0.0.100:8080";
+    // BASE_URL: string = "http://server.abalobi.info";
+    BASE_URL: string = "http://10.0.0.101:8080";
     // BASE_URL: string = "http://localhost:8080";
     currentUser: User;
 
@@ -99,6 +100,17 @@ export class UserProvider {
                     reject(ex);
                 })
         })
+    }
+
+    submitRegistration(reg: Registration): Promise<any> {
+            const query = this.BASE_URL + '/register';
+            const headers = new Headers();
+            const options = new RequestOptions({
+                headers: headers
+            });
+            return this.http.post(query, reg, options)
+                // .map(response => response.json())
+                .toPromise()
     }
 
 }
