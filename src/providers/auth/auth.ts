@@ -28,6 +28,7 @@ const auth0Config = {
 export class AuthProvider {
 
     auth0 = new Auth0.WebAuth(auth0Config);
+    lock;
     accessToken: string;
     idToken: string;
     user: any;

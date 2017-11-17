@@ -16,16 +16,17 @@ export class AuthProvider {
     constructor(protected app: App) {
         this.lock = new Auth0Lock(
             environment.CLIENT_ID,
-            environment.DOMAIN,
-            {
-                theme: {
-                    logo: "assets/images/abalobi_logo.png",
-                    primaryColor: '#31324F',
-                    languageDictionary: {
-                        title: "Login to Abalobi"
-                    }
-                }
-            });
+            environment.DOMAIN
+        );
+            // {
+            //     theme: {
+            //         logo: "assets/images/abalobi_logo.png",
+            //         primaryColor: '#31324F',
+            //         languageDictionary: {
+            //             title: "Login to Abalobi"
+            //         }
+            //     }
+            // });
 
         this.handleAuthentication();
     }
