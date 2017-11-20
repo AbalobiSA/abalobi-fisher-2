@@ -24,31 +24,49 @@
                 <ion-input type="number" [(ngModel)]="reg.registration.user.id_number"
                            name="user_id_number"
                            #user_id_number="ngModel"
+                           [minlength]="13"
+                           [maxlength]="13"
                            required>
                 </ion-input>
             </ion-item>
+
+            <div padding *ngIf="user_id_number.invalid && (user_id_number.dirty || user_id_number.touched)">
+                <span class="validation-warning">A standard South African ID number is 13 digits long.</span>
+            </div>
 
             <ion-item>
                 <ion-label stacked>Email</ion-label>
                 <ion-input type="text" [(ngModel)]="reg.registration.user.email"
                            name="user_email"
                            #user_email="ngModel"
+                           [pattern]="this.EMAIL_REGEX"
                            required>
                 </ion-input>
             </ion-item>
 
-            <div padding *ngIf="user_email.invalid && (user_email.dirty || user_email.touched)">
-                <span class="validation-warning">Email address is required!</span>
-            </div>
+            <div *ngIf="user_email.invalid && (user_email.dirty || user_email.touched)"
+                  padding
+                  class="validation-warning">That is not a valid email address.</div>
+
+            <!--<div padding *ngIf="user_email.invalid && (user_email.dirty || user_email.touched)">-->
+                <!--<span class="validation-warning">Email address is required!</span>-->
+            <!--</div>-->
 
             <ion-item>
                 <ion-label stacked>Personal Cellphone Number</ion-label>
                 <ion-input type="number" [(ngModel)]="reg.registration.user.mobile_number"
                            name="mobile_number"
                            #mobile_number="ngModel"
+                           [minlength]="10"
+                           [maxlength]="10"
                            required>
                 </ion-input>
             </ion-item>
+
+            <div *ngIf="mobile_number.invalid && (mobile_number.dirty || mobile_number.touched)"
+                 padding
+                 class="validation-warning">SA mobile numbers are 10 digits long.</div>
+
         </ion-list>
 
 
