@@ -7,6 +7,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpModule, Http} from '@angular/http';
 import {DatePicker} from '@ionic-native/date-picker';
 import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 
 import {AnalyticsHomePage} from '../pages/analytics-home/analytics-home';
@@ -92,6 +93,7 @@ const pages = [
         HttpModule,
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         IonicModule.forRoot(MyApp),
         TranslateModule.forRoot({
             loader: {

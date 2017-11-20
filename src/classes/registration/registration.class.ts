@@ -4,19 +4,19 @@ export class Registration {
 
     // Registration Details
     usertype: string;
-    manager_is_fisher: boolean = false;
+    manager_is_fisher: boolean;
 
     // User Permissions
-    permissions_abalobi: boolean = false;
-    permissions_daff: boolean = false;
-    permissions_manager: boolean = false;
+    permissions_abalobi: boolean;
+    permissions_daff: boolean;
+    permissions_manager: boolean;
 
     boat_info: BoatInfo = new BoatInfo();
 
     profileImage: string;
 
     constructor(init?: any) {
-        this.usertype = 'fisher';
+        // this.usertype = 'fisher';
 
         // Leave this here for any parameters we passed through
         if (init) {
@@ -64,7 +64,7 @@ class RegUser {
     nickname: string;
     gender: string;
     email: string;
-    email_own: boolean = false;
+    email_own: boolean;
     birthdate: string;
     language: string;
     id_number: string;
