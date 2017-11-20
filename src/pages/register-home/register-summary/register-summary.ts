@@ -41,12 +41,29 @@ export class RegisterSummaryPage {
         this.data.submitRegistration(this.reg.registration)
             .then(() => {
                 this.loader.dismissLoader();
+                alert("Success! Please check your SMS inbox for further instructions.");
+                let rootNav = getRootNav(this.navCtrl);
+                rootNav.setRoot(LandingPage, {}, {animate: true, direction: 'backward'});
             })
             .catch(ex => {
                 console.log(ex);
                 this.loader.dismissLoader();
+                alert("Whoops! Something went wrong. Please check your mobile data settings and try again.");
             })
         // this.navCtrl.setRoot(LandingPage, {}, {animate: true, direction: 'forward'});
     }
-
 }
+
+/**
+ * Get the very first navcontroller
+ * to navigate away from the tabs page
+ * @param {NavController} nav
+ * @returns {NavController}
+ */
+const getRootNav = (nav: NavController): NavController => {
+    let root = nav;
+    while (root.parent != null) {
+        root = root.parent;
+    }
+    return root;
+};
