@@ -52,6 +52,7 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 import {IonicStorageModule} from "@ionic/storage";
 import {CircleLoaderComponent} from "../components/circle-loader/circle-loader";
+import {AnalyticsTripViewPage} from "../pages/analytics-home/analytics-trip-view/analytics-trip-view";
 
 
 export function createTranslateLoader(http: Http) {
@@ -71,7 +72,8 @@ const pages = [
     LogbookWeatherPage,
     RegisterBoatPage,
     RegisterProfileImagePage,
-    RegisterSummaryPage
+    RegisterSummaryPage,
+    AnalyticsTripViewPage
 ];
 
 @NgModule({
