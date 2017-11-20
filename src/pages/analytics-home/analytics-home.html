@@ -1,11 +1,43 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Analytics
-    </ion-title>
-  </ion-navbar>
+    <!--<ion-navbar>-->
+        <!--<ion-title>-->
+            <!--&lt;!&ndash;Analytics&ndash;&gt;-->
+        <!--</ion-title>-->
+    <!--</ion-navbar>-->
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="menu" color="white">
+            <ion-segment-button value="trips">
+                Trips
+            </ion-segment-button>
+            <ion-segment-button value="stats">
+                Stats
+            </ion-segment-button>
+            <ion-segment-button value="finance">
+                Finance
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+    <div [hidden]="menu !== 'trips'">
+        <ion-list>
+            <ion-item text-wrap tappable *ngFor="let trip of [1,2,3,4,5,6,7,8]">
+                Trip {{trip}} <br>
+                <span class="scan_date">{{today()}}</span>
+            </ion-item>
+        </ion-list>
+    </div>
 
+    <div [hidden]="menu !== 'finance'">
+        <h3 text-center>
+            <circle-loader></circle-loader>
+        </h3>
+    </div>
+
+    <div [hidden]="menu !== 'stats'">
+        <h3 text-center>
+            <circle-loader></circle-loader>
+        </h3>
+    </div>
 </ion-content>

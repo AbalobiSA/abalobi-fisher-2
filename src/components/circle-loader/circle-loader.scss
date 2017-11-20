@@ -1,0 +1,17 @@
+circle-loader {
+    .loader-container {
+        //background-color: black;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .loader {
+        text-align: center;
+        height: 100%;
+    }
+
+    .loader-image {
+        display: inline-block;
+        height: 100%;
+    }
+}

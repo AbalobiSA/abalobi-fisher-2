@@ -7,8 +7,14 @@ import {NavController} from 'ionic-angular';
 })
 export class AnalyticsHomePage {
 
+    menu: string = "trips";
+
     constructor(public navCtrl: NavController) {
 
+    }
+
+    today(): string {
+        return (new Date()).toDateString();
     }
 
 }

@@ -51,6 +51,7 @@ import {RegisterProfileImagePage} from "../pages/register-home/register-profile-
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 import {IonicStorageModule} from "@ionic/storage";
+import {CircleLoaderComponent} from "../components/circle-loader/circle-loader";
 
 
 export function createTranslateLoader(http: Http) {
@@ -88,6 +89,7 @@ const pages = [
         RegisterContactDetailsPage,
         SettingsEditPage,
         LogbookNewPage,
+        CircleLoaderComponent,
         pages
     ],
     imports: [
