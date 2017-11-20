@@ -14,6 +14,7 @@
 
 
 <ion-content>
+
     <div padding="">
         <strong>{{"PERSONAL_REQUIRED" | translate}}</strong>
     </div>
@@ -94,6 +95,7 @@
         <!--[disabled]="!registerPersonalForm.form.valid"-->
 
         <button ion-button block class="ablb-button abalobi-button-darkblue"
+                [disabled]="!registerPersonalForm.form.valid"
                 (click)="continue()">Continue
         </button>
 
