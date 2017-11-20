@@ -113,4 +113,25 @@ export class UserProvider {
                 .toPromise()
     }
 
+    downloadImage(url: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            const query = url;
+            const headers = new Headers();
+            // headers.append("Access-Control-Allow-Origin", "true");
+            const options = new RequestOptions({
+                headers: headers
+            });
+
+            this.http.get(query, options)
+                // .map(response => response.json())
+                .toPromise()
+                .then(result => {
+                    resolve(result);
+                })
+                .catch(ex => {
+                    reject(ex);
+                })
+        })
+    }
+
 }

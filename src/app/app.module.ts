@@ -50,6 +50,7 @@ import {RegisterProfileImagePage} from "../pages/register-home/register-profile-
 
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
+import {IonicStorageModule} from "@ionic/storage";
 
 
 export function createTranslateLoader(http: Http) {
@@ -95,6 +96,7 @@ const pages = [
         FormsModule,
         ReactiveFormsModule,
         IonicModule.forRoot(MyApp),
+        IonicStorageModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

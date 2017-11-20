@@ -9,6 +9,7 @@ import {User} from "../../classes/fisher/user.class";
 import {UserProvider} from "../../providers/user/user";
 import {Keyboard} from "ionic-angular";
 import {SettingsEditPage} from "./settings-edit/settings-edit";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the SettingsPage page.
@@ -36,6 +37,7 @@ export class SettingsPage {
         public alertCtrl: AlertController,
         public auth: AuthProvider,
         public fisher: UserProvider,
+        public storage: Storage
     ) {
         this.editMode = false;
     }
@@ -111,8 +113,14 @@ export class SettingsPage {
 
     logout(): void {
         let rootNav = this.getRootNav(this.navCtrl);
-        this.auth.logout();
-        rootNav.setRoot(LandingPage, {}, {animate: true, direction: 'backward'});
+        this.storage.remove("cachedUser")
+            .then(() => {
+                return rootNav.setRoot(LandingPage, {}, {animate: true, direction: 'backward'})
+            })
+            .then(() => {
+                this.auth.logout();
+            })
+            .catch(ex => console.log(ex));
     }
 
     printUser(): void {

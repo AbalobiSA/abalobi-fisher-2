@@ -6,6 +6,8 @@ import {RegisterHomePage} from "../register-home/register-home";
 import {AuthProvider} from "../../providers/auth/auth";
 import {UserProvider} from "../../providers/user/user";
 import {LoaderProvider} from "../../providers/loader.service";
+import {User} from "../../classes/fisher/user.class";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the LandingPage page.
@@ -20,19 +22,33 @@ import {LoaderProvider} from "../../providers/loader.service";
 })
 export class LandingPage {
 
-    constructor(
-        public navCtrl: NavController,
-        public navParams: NavParams,
-        public auth: AuthProvider,
-        public fisher: UserProvider,
-        public loader: LoaderProvider
-    ) {
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public auth: AuthProvider,
+                public fisher: UserProvider,
+                public loader: LoaderProvider,
+                public storage: Storage) {
 
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad LandingPage');
         // this.loginBrowser();
+    }
+
+    ionViewDidEnter() {
+        // Check for a saved user.
+        this.storage.get("cachedUser")
+            .then(cachedUser => {
+                // If saved user exists, login with saved offline information.
+                console.log(cachedUser);
+                if (cachedUser !== undefined && cachedUser !== null && cachedUser !== "") {
+                    this.fisher.currentUser = cachedUser;
+                    this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+                    return;
+                }
+            })
+            .catch(ex => console.log(ex));
     }
 
     login(): void {
@@ -46,46 +62,43 @@ export class LandingPage {
     }
 
     loginMobile(): void {
+        let cacheFisher: User;
+
         this.auth.loginPromise()
             .then(done => {
                 console.log("WE HAVE RESOLVED");
                 this.loader.presentLoader("Logging in. Please wait...");
                 const token = window.localStorage.getItem('access_token');
                 console.log(token);
-                return this.fisher.getUserInfo(token)
+                return this.setupFisher(token);
             })
-            .then(fisher => {
-             this.loader.dismissLoader();
-                this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
-            })
-            .catch(ex => {
-                 console.log(ex);
-                 this.loader.dismissLoader();
-            });
+            .then(() => {})
+            .catch(ex => { console.log(ex); });
     }
 
     loginBrowser(): void {
         this.loader.presentLoader("Logging in. Please wait...");
-        window.localStorage.setItem("access_token", "Wy_3ZSIDYA-zO7RGJapnnEKaTRfHD83H");
+        window.localStorage.setItem("access_token", "5ijpyrL_kYqCOr2wpVwBcESynhfrw3kx");
         const token = window.localStorage.getItem("access_token");
 
-        this.fisher.getUserInfo(token)
+        let cacheFisher;
+        this.setupFisher(token)
+            .then(() => {})
+            .catch(ex => console.log(ex));
+    }
+
+    setupFisher(token: string): Promise<any> {
+        let cacheFisher;
+        return this.fisher.getUserInfo(token)
             .then(fisher => {
+                cacheFisher = fisher;
                 this.loader.dismissLoader();
-                this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+                return this.storage.set("cachedUser", cacheFisher);
             })
+            .then(() => this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'}))
             .catch(ex => {
                 console.log(ex);
                 this.loader.dismissLoader();
             });
     }
-
-    // register(): void {
-    //     this.navCtrl.push(RegisterPage, {}, {animate: true, direction: 'forward'});
-    // }
-    //
-    // navigate_home(user: User): void {
-    //     this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: 'forward'});
-    // }
-
 }
