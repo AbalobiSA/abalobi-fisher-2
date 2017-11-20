@@ -22,6 +22,36 @@ export class RegisterPasswordPage {
                 public reg: RegistrationProvider) {
     }
 
+    passwordsMatch() {
+        return this.reg.registration.user.password === this.reg.registration.user.password_confirm
+    }
+
+    passwordValid(): boolean {
+        let valid = true;
+
+        const protectIfUndefined = (input) =>{
+            if (input === undefined || input === null){
+                return "";
+            } else{
+                return input.toLowerCase();
+            }
+        };
+
+        const regExp = new RegExp("(" + protectIfUndefined(this.reg.registration.user.lastname)
+            + "|" + protectIfUndefined(this.reg.registration.user.firstname)
+            + "|" + "password)", "gi");
+
+        if (regExp.test(this.reg.registration.user.password)) {
+            valid = false;
+        }
+
+        if (!this.passwordsMatch()) {
+            valid = false;
+        }
+
+        return valid;
+    };
+
     ionViewDidLoad() {
         console.log('ionViewDidLoad RegisterPasswordPage');
     }
