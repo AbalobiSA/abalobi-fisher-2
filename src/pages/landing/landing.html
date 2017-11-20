@@ -20,6 +20,13 @@
         </div>
         <h1 text-center class="main-header">Abalobi Fisher</h1>
         <button ion-button block round
+                *ngIf="!!GLOBAL_CACHED_USER"
+                class="login-button-large abalobi-button-brown"
+                (click)="unlock()">
+            <i class="fa fa-lock" aria-hidden="true"></i>&nbsp;UNLOCK
+        </button>
+        <button ion-button block round
+                *ngIf="!GLOBAL_CACHED_USER"
                 class="login-button-large abalobi-button-brown"
                 (click)="login()">
             {{"LANDING_LOG_IN" | translate}}
@@ -31,6 +38,7 @@
         </button>
         <button ion-button block round
                 class="login-button-large abalobi-button-cyan"
+                *ngIf="!GLOBAL_CACHED_USER"
                 (click)="loginBrowser()">
             {{"Debug Login"}}
         </button>

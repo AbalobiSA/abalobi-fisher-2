@@ -4,6 +4,7 @@ import {Platform} from "ionic-angular";
 import {AppstarterProvider} from "../../providers/appstarter/appstarter";
 import {AuthProvider} from "../../providers/auth/auth";
 import {LogbookNewPage} from "../logbook/logbook-new/logbook-new";
+import {User} from "../../classes/fisher/user.class";
 
 let startApp: any;
 
@@ -19,7 +20,6 @@ let startApp: any;
     templateUrl: 'home.html',
 })
 export class HomePage {
-
     constructor(public navCtrl: NavController, public navParams: NavParams,
                 public platform: Platform, public appstarter: AppstarterProvider,
                 public auth: AuthProvider) {

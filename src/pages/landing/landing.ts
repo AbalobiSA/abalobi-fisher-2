@@ -22,6 +22,8 @@ import {Storage} from "@ionic/storage";
 })
 export class LandingPage {
 
+    GLOBAL_CACHED_USER: User;
+
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public auth: AuthProvider,
@@ -43,9 +45,10 @@ export class LandingPage {
                 // If saved user exists, login with saved offline information.
                 console.log(cachedUser);
                 if (cachedUser !== undefined && cachedUser !== null && cachedUser !== "") {
+                    this.GLOBAL_CACHED_USER = cachedUser;
                     this.fisher.currentUser = cachedUser;
-                    this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
-                    return;
+                    // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
+                    // return;
                 }
             })
             .catch(ex => console.log(ex));
@@ -55,6 +58,10 @@ export class LandingPage {
         // Using the auth token, Query the server for the user's actual fisher data
         // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
         this.loginMobile();
+    }
+
+    unlock(): void {
+        this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
     }
 
     register(): void {
