@@ -4,7 +4,7 @@ import {RegistrationProvider} from "../../../providers/registration/registration
 import {HomePage} from "../../home/home";
 import {LandingPage} from "../../landing/landing";
 import {LoaderProvider} from "../../../providers/loader.service";
-import {UserProvider} from "../../../providers/user/user";
+import {DataProvider} from "../../../providers/data/data";
 
 /**
  * Generated class for the RegisterSummaryPage page.
@@ -23,7 +23,7 @@ export class RegisterSummaryPage {
                 public navParams: NavParams,
                 public reg: RegistrationProvider,
                 public loader: LoaderProvider,
-                public data: UserProvider) {
+                public data: DataProvider) {
     }
 
     ionViewDidLoad() {

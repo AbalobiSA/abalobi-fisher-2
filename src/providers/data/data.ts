@@ -9,13 +9,13 @@ import {Community} from "../../classes/fisher/community.class";
 import {Registration} from "../../classes/registration/registration.class";
 
 /*
-  Generated class for the UserProvider provider.
+  Generated class for the DataProvider provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
 @Injectable()
-export class UserProvider {
+export class DataProvider {
 
     BASE_URL: string = "http://server.abalobi.info";
     // BASE_URL: string = "http://10.0.0.101:8080";
@@ -23,7 +23,7 @@ export class UserProvider {
     currentUser: User;
 
     constructor(public http: Http) {
-        // console.log('Hello UserProvider Provider');
+        // console.log('Hello DataProvider Provider');
     }
 
     getUserInfo(token: string): Promise<User> {
@@ -34,7 +34,7 @@ export class UserProvider {
             }
 
             const access_token = token.split("\"").join("");
-            const query = this.BASE_URL + '/fisher/user';
+            const query = this.BASE_URL + '/fisher/data';
             const headers = new Headers();
             const options = new RequestOptions({
                 headers: headers,
@@ -64,7 +64,7 @@ export class UserProvider {
             }
 
             const access_token = token.split("\"").join("");
-            const query = this.BASE_URL + '/fisher/user/update';
+            const query = this.BASE_URL + '/fisher/data/update';
             const headers = new Headers();
             const options = new RequestOptions({
                 headers: headers,

@@ -4,7 +4,7 @@ import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
 import {RegisterHomePage} from "../register-home/register-home";
 import {AuthProvider} from "../../providers/auth/auth";
-import {UserProvider} from "../../providers/user/user";
+import {DataProvider} from "../../providers/data/data";
 import {LoaderProvider} from "../../providers/loader.service";
 import {User} from "../../classes/fisher/user.class";
 import {Storage} from "@ionic/storage";
@@ -28,7 +28,7 @@ export class LandingPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public auth: AuthProvider,
-                public fisher: UserProvider,
+                public fisher: DataProvider,
                 public loader: LoaderProvider,
                 public storage: Storage,
                 public odk: OdkProvider) {
@@ -41,10 +41,10 @@ export class LandingPage {
     }
 
     ionViewDidEnter() {
-        // Check for a saved user.
+        // Check for a saved data.
         this.storage.get("cachedUser")
             .then(cachedUser => {
-                // If saved user exists, login with saved offline information.
+                // If saved data exists, login with saved offline information.
                 console.log(cachedUser);
                 if (cachedUser !== undefined && cachedUser !== null && cachedUser !== "") {
                     this.GLOBAL_CACHED_USER = cachedUser;
@@ -57,7 +57,7 @@ export class LandingPage {
     }
 
     login(): void {
-        // Using the auth token, Query the server for the user's actual fisher data
+        // Using the auth token, Query the server for the data's actual fisher data
         // this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'});
         this.loginMobile();
     }

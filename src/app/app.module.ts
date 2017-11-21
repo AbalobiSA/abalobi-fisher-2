@@ -27,7 +27,7 @@ import {RegisterAgreementPage} from "../pages/register-home/register-agreement/r
 import {RegisterPersonalDetailsPage} from "../pages/register-home/register-personal-details/register-personal-details";
 import {RegisterContactDetailsPage} from "../pages/register-home/register-contact-details/register-contact-details";
 import {AuthProvider} from '../providers/auth/auth';
-import {UserProvider} from '../providers/user/user';
+import {DataProvider} from '../providers/data/data';
 
 import {LoaderProvider} from "../providers/loader.service";
 
@@ -139,7 +139,7 @@ const pages = [
         RegistrationProvider,
         DatePicker,
         AuthProvider,
-        UserProvider,
+        DataProvider,
         LoaderProvider,
         LogbookProvider,
         Camera,

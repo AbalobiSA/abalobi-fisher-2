@@ -92,7 +92,7 @@ export class AuthProvider {
                 throw err;
             }
 
-            console.log("authprovider: user has been successfully authorized!");
+            console.log("authprovider: data has been successfully authorized!");
 
             this.setIdToken(authResult.idToken);
             this.setAccessToken(authResult.accessToken);
@@ -130,7 +130,7 @@ export class AuthProvider {
                     throw err;
                 }
 
-                console.log("authprovider: user has been successfully authorized!");
+                console.log("authprovider: data has been successfully authorized!");
 
                 this.setIdToken(authResult.idToken);
                 this.setAccessToken(authResult.accessToken);

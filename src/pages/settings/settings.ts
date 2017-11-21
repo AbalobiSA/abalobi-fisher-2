@@ -6,7 +6,7 @@ import {AlertController} from 'ionic-angular';
 import {LandingPage} from "../landing/landing";
 import {AuthProvider} from "../../providers/auth/auth";
 import {User} from "../../classes/fisher/user.class";
-import {UserProvider} from "../../providers/user/user";
+import {DataProvider} from "../../providers/data/data";
 import {Keyboard} from "ionic-angular";
 import {SettingsEditPage} from "./settings-edit/settings-edit";
 import {Storage} from "@ionic/storage";
@@ -36,7 +36,7 @@ export class SettingsPage {
         public errors: ErrorsProvider,
         public alertCtrl: AlertController,
         public auth: AuthProvider,
-        public fisher: UserProvider,
+        public fisher: DataProvider,
         public storage: Storage
     ) {
         this.editMode = false;

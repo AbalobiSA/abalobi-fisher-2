@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {UserProvider} from "../../../providers/user/user";
+import {DataProvider} from "../../../providers/data/data";
 import {User} from "../../../classes/fisher/user.class";
 import _ from 'lodash';
 import {LoaderProvider} from "../../../providers/loader.service";
@@ -23,7 +23,7 @@ export class SettingsEditPage {
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        public fisher: UserProvider,
+        public fisher: DataProvider,
         public loader: LoaderProvider
     ) {
         this.user = _.cloneDeep(this.fisher.currentUser);

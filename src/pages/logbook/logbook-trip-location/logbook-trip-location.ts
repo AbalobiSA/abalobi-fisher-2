@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Logbook} from "../../../classes/fisher/logbook.class";
 import {LogbookProvider} from "../../../providers/logbook/logbook";
-import {UserProvider} from "../../../providers/user/user";
+import {DataProvider} from "../../../providers/data/data";
 import {User} from "../../../classes/fisher/user.class";
 import {CommunityData} from "../../../classes/data/communities.data.class";
 
@@ -27,7 +27,7 @@ export class LogbookTripLocationPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public log: LogbookProvider,
-                public user: UserProvider) {
+                public user: DataProvider) {
         this.logbook = log.logbook;
         this.mainUser = user.currentUser;
     }
