@@ -53,6 +53,8 @@ import {RegisterSummaryPage} from "../pages/register-home/register-summary/regis
 import {IonicStorageModule} from "@ionic/storage";
 import {CircleLoaderComponent} from "../components/circle-loader/circle-loader";
 import {AnalyticsTripViewPage} from "../pages/analytics-home/analytics-trip-view/analytics-trip-view";
+import {OdkProvider} from '../providers/odk/odk';
+import {File} from "@ionic-native/file";
 
 
 export function createTranslateLoader(http: Http) {
@@ -138,7 +140,9 @@ const pages = [
         UserProvider,
         LoaderProvider,
         LogbookProvider,
-        Camera
+        Camera,
+        OdkProvider,
+        File
     ]
 })
 export class AppModule {

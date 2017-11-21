@@ -8,6 +8,7 @@ import {UserProvider} from "../../providers/user/user";
 import {LoaderProvider} from "../../providers/loader.service";
 import {User} from "../../classes/fisher/user.class";
 import {Storage} from "@ionic/storage";
+import {OdkProvider} from "../../providers/odk/odk";
 
 /**
  * Generated class for the LandingPage page.
@@ -29,7 +30,8 @@ export class LandingPage {
                 public auth: AuthProvider,
                 public fisher: UserProvider,
                 public loader: LoaderProvider,
-                public storage: Storage) {
+                public storage: Storage,
+                public odk: OdkProvider) {
 
     }
 
@@ -70,6 +72,7 @@ export class LandingPage {
 
     loginMobile(): void {
         let cacheFisher: User;
+        let _token;
 
         this.auth.loginPromise()
             .then(done => {
@@ -77,6 +80,7 @@ export class LandingPage {
                 this.loader.presentLoader("Logging in. Please wait...");
                 const token = window.localStorage.getItem('access_token');
                 console.log(token);
+                _token = token;
                 return this.setupFisher(token);
             })
             .then(() => {})
@@ -95,7 +99,7 @@ export class LandingPage {
     }
 
     setupFisher(token: string): Promise<any> {
-        let cacheFisher;
+        let cacheFisher: User;
         return this.fisher.getUserInfo(token)
             .then(fisher => {
                 cacheFisher = fisher;
@@ -103,6 +107,10 @@ export class LandingPage {
                 return this.storage.set("cachedUser", cacheFisher);
             })
             .then(() => this.navCtrl.setRoot(TabsPage, {}, {animate: true, direction: 'forward'}))
+            .then(() => {
+                return this.odk.writeSettings(cacheFisher.Username__c, cacheFisher.password)
+            })
+            .then(() => console.log("WROTE SETTINGS!!!"))
             .catch(ex => {
                 console.log(ex);
                 this.loader.dismissLoader();

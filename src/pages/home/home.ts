@@ -31,14 +31,14 @@ export class HomePage {
 
     startODK(): void {
 
-        // this.appstarter.start(
-        //     "org.odk.collect.android",
-        //     "You need OpenDataKit to log your catch, but it is not installed. " +
-        //                     "\n\nWould you like to install it now using the Google Play Store?",
-        //     'https://play.google.com/store/apps/details?id=org.odk.collect.android'
-        // );
+        this.appstarter.start(
+            "org.odk.collect.android",
+            "You need OpenDataKit to log your catch, but it is not installed. " +
+                            "\n\nWould you like to install it now using the Google Play Store?",
+            'https://play.google.com/store/apps/details?id=org.odk.collect.android'
+        );
 
-        this.navCtrl.push(LogbookNewPage, {}, {animate: true, direction: 'forward'});
+        // this.navCtrl.push(LogbookNewPage, {}, {animate: true, direction: 'forward'});
     }
 
     startAnalytics(): void {

@@ -24,6 +24,8 @@ export class User {
     share_data_with_local_impl__c: boolean;
     Username__c: string;
 
+    password: string;
+
     full_community_info: Community;
 
     constructor(init?: any) {
