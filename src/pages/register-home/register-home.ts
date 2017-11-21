@@ -37,6 +37,7 @@ export class RegisterHomePage {
                 this.reg.registration.device.version = this.device.version;
                 this.reg.registration.device.serial = this.device.serial;
                 this.reg.registration.device.uuid = this.device.uuid;
+                console.log("DONE!")
             })
             .catch(ex => console.log(ex));
 
