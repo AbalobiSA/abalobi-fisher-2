@@ -55,6 +55,8 @@ import {CircleLoaderComponent} from "../components/circle-loader/circle-loader";
 import {AnalyticsTripViewPage} from "../pages/analytics-home/analytics-trip-view/analytics-trip-view";
 import {OdkProvider} from '../providers/odk/odk';
 import {File} from "@ionic-native/file";
+import {Device} from "@ionic-native/device";
+import {AppVersion} from "@ionic-native/app-version";
 
 
 export function createTranslateLoader(http: Http) {
@@ -142,7 +144,9 @@ const pages = [
         LogbookProvider,
         Camera,
         OdkProvider,
-        File
+        File,
+        Device,
+        AppVersion
     ]
 })
 export class AppModule {

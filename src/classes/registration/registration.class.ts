@@ -1,6 +1,7 @@
 export class Registration {
     // Personal Information
     user: RegUser = new RegUser();
+    device: DeviceInfo = new DeviceInfo();
 
     // Registration Details
     usertype: string;
@@ -108,4 +109,15 @@ class BoatInfo {
     has_engine: boolean = false;
     engine_power_type: string;
     engine_power: number;
+}
+
+class DeviceInfo {
+    cordova: string;
+    manufacturer: string;
+    model: string;
+    platform: string;
+    serial: string;
+    uuid: string;
+    version: string;
+    appVersion: string;
 }
