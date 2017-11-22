@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import moment from 'moment';
 
 /**
  * Generated class for the AnalyticsTripViewPage page.
@@ -22,6 +23,28 @@ export class AnalyticsTripViewPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad AnalyticsTripViewPage');
+    }
+
+    viewTrip(trip: any): string {
+        return JSON.stringify(trip, null, 4);
+    }
+
+    getKeyItems(trip: any) {
+        const items = [];
+        for (const key in trip) {
+            if (trip.hasOwnProperty(key) && trip[key] !== null) {
+                items.push({
+                    key,
+                    value: trip[key]
+                })
+            }
+        }
+        return items;
+    }
+
+    tripDate(trip: any): string {
+        return moment(trip.trip_date__c).format('dddd')
+            + " - " + moment(trip.trip_date__c).locale('en-gb').format('L');
     }
 
 }

@@ -7,13 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Trip {{trip}}</ion-title>
+    <ion-title>{{trip.trip_date__c}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <h3 text-center>Trip {{trip}}</h3>
-    <p text-center>Details coming soon!</p>
+<ion-content>
+    <div padding>
+        <h3 text-center>{{tripDate(trip)}}</h3>
+        <p text-center>Details coming soon!</p>
+    </div>
+    <ion-list>
+        <ion-item *ngFor="let item of getKeyItems(trip)">
+            {{item.key}}
+            <ion-note item-end>
+                {{item.value}}
+            </ion-note>
+
+        </ion-item>
+    </ion-list>
+    <pre padding>
+        {{viewTrip(trip)}}
+    </pre>
 </ion-content>

@@ -8,6 +8,8 @@ import {User} from "../../classes/fisher/user.class";
 import {Community} from "../../classes/fisher/community.class";
 import {Registration} from "../../classes/registration/registration.class";
 
+import {AnalyticsTrip} from "../../classes/analytics/AnalyticsTrip";
+
 /*
   Generated class for the DataProvider provider.
 
@@ -17,10 +19,16 @@ import {Registration} from "../../classes/registration/registration.class";
 @Injectable()
 export class DataProvider {
 
-    BASE_URL: string = "http://server.abalobi.info";
+    // BASE_URL: string = "http://server.abalobi.info";
     // BASE_URL: string = "http://10.0.0.101:8080";
-    // BASE_URL: string = "http://localhost:8080";
+    BASE_URL: string = "http://localhost:8080";
     currentUser: User;
+
+    // Analytics Data
+    cachedTrips: AnalyticsTrip[];
+
+
+
 
     constructor(public http: Http) {
         // console.log('Hello DataProvider Provider');
@@ -34,7 +42,7 @@ export class DataProvider {
             }
 
             const access_token = token.split("\"").join("");
-            const query = this.BASE_URL + '/fisher/data';
+            const query = this.BASE_URL + '/fisher/user';
             const headers = new Headers();
             const options = new RequestOptions({
                 headers: headers,
@@ -64,7 +72,7 @@ export class DataProvider {
             }
 
             const access_token = token.split("\"").join("");
-            const query = this.BASE_URL + '/fisher/data/update';
+            const query = this.BASE_URL + '/fisher/user/update';
             const headers = new Headers();
             const options = new RequestOptions({
                 headers: headers,
@@ -132,6 +140,25 @@ export class DataProvider {
                     reject(ex);
                 })
         })
+    }
+
+    getTripLog(): Promise<any> {
+        const access_token = window.localStorage.getItem('access_token');
+        const query = this.BASE_URL + '/analytics/trips';
+        const headers = new Headers();
+        const options = new RequestOptions({
+            headers: headers,
+            params: {access_token}
+        });
+        console.log("dataservice: querying 1 month of trips...");
+        return this.http.get(query, options)
+            .map(response => response.json())
+            .toPromise()
+            .then(trips => {
+                console.log("dataservice: query complete.");
+                this.cachedTrips = trips as AnalyticsTrip[];
+                return Promise.resolve(this.cachedTrips);
+            })
     }
 
 }

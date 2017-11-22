@@ -6,13 +6,13 @@
     <!--</ion-navbar>-->
     <ion-toolbar no-border-top>
         <ion-segment [(ngModel)]="menu" color="white">
-            <ion-segment-button value="trips">
+            <ion-segment-button value="1">
+                Calendar
+            </ion-segment-button>
+            <ion-segment-button value="2">
                 Trips
             </ion-segment-button>
-            <ion-segment-button value="stats">
-                Stats
-            </ion-segment-button>
-            <ion-segment-button value="finance">
+            <ion-segment-button value="3">
                 Finance
             </ion-segment-button>
         </ion-segment>
@@ -20,23 +20,28 @@
 </ion-header>
 
 <ion-content>
-    <div [hidden]="menu !== 'trips'">
-        <ion-list>
-            <ion-item text-wrap tappable *ngFor="let trip of [1,2,3,4,5,6,7,8]"
+    <div [hidden]="menu !== '2'">
+        <div *ngIf="!data.cachedTrips">
+            <br>
+            <circle-loader></circle-loader>
+        </div>
+
+        <ion-list *ngIf="!!data.cachedTrips">
+            <ion-item text-wrap tappable *ngFor="let trip of data.cachedTrips"
             (click)="tripView(trip)">
-                Trip {{trip}} <br>
-                <span class="scan_date">{{today()}}</span>
+                {{tripDate(trip)}} <br>
+                <span class="scan_date">Catches: {{trip.rpt_catches.length}}</span>
             </ion-item>
         </ion-list>
     </div>
 
-    <div [hidden]="menu !== 'finance'">
+    <div [hidden]="menu !== '1'">
         <h3 text-center>
             <circle-loader></circle-loader>
         </h3>
     </div>
 
-    <div [hidden]="menu !== 'stats'">
+    <div [hidden]="menu !== '3'">
         <h3 text-center>
             <circle-loader></circle-loader>
         </h3>
