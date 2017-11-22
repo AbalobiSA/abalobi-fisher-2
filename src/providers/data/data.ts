@@ -27,9 +27,6 @@ export class DataProvider {
     // Analytics Data
     cachedTrips: AnalyticsTrip[];
 
-
-
-
     constructor(public http: Http) {
         // console.log('Hello DataProvider Provider');
     }
