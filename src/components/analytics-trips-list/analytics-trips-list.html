@@ -1,0 +1,13 @@
+<!-- Generated template for the AnalyticsTripsListComponent component -->
+<div *ngIf="!trips">
+    <br>
+    <circle-loader></circle-loader>
+</div>
+
+<ion-list *ngIf="!!trips">
+    <ion-item text-wrap tappable *ngFor="let trip of trips"
+              (click)="handleTripView(trip)">
+        {{tripDate(trip)}} <br>
+        <span class="scan_date">Catches: {{trip.rpt_catches.length}}</span>
+    </ion-item>
+</ion-list>

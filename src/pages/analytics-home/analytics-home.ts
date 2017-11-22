@@ -32,7 +32,8 @@ export class AnalyticsHomePage {
         return (new Date()).toDateString();
     }
 
-    tripView(trip: string): void {
+    tripView(trip: any): void {
+        console.log("received trip params: ", trip);
         this.navCtrl.push(AnalyticsTripViewPage, {trip}, {animate: true, direction: 'forward'});
     }
 

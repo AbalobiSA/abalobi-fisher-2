@@ -20,28 +20,20 @@
 </ion-header>
 
 <ion-content>
-    <div [hidden]="menu !== '2'">
-        <div *ngIf="!data.cachedTrips">
-            <br>
-            <circle-loader></circle-loader>
-        </div>
-
-        <ion-list *ngIf="!!data.cachedTrips">
-            <ion-item text-wrap tappable *ngFor="let trip of data.cachedTrips"
-            (click)="tripView(trip)">
-                {{tripDate(trip)}} <br>
-                <span class="scan_date">Catches: {{trip.rpt_catches.length}}</span>
-            </ion-item>
-        </ion-list>
-    </div>
-
     <div [hidden]="menu !== '1'">
         <h3 text-center>
             <circle-loader></circle-loader>
         </h3>
     </div>
 
+    <div [hidden]="menu !== '2'">
+        <analytics-trips-list
+            [trips]="data.cachedTrips"
+            (tripView)="tripView($event)"
+        ></analytics-trips-list>
+    </div>
+
     <div [hidden]="menu !== '3'">
-        <page-finances></page-finances>
+
     </div>
 </ion-content>

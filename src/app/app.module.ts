@@ -59,6 +59,8 @@ import {OdkProvider} from '../providers/odk/odk';
 import {File} from "@ionic-native/file";
 import {Device} from "@ionic-native/device";
 import {AppVersion} from "@ionic-native/app-version";
+import {AnalyticsTripsListComponent} from "../components/analytics-trips-list/analytics-trips-list";
+import {AnalyticsCalendarComponent} from "../components/analytics-calendar/analytics-calendar";
 
 
 export function createTranslateLoader(http: Http) {
@@ -83,6 +85,11 @@ const pages = [
     FinancesPage
 ];
 
+const components = [
+    AnalyticsTripsListComponent,
+    AnalyticsCalendarComponent
+];
+
 @NgModule({
     declarations: [
         MyApp,
@@ -99,7 +106,8 @@ const pages = [
         SettingsEditPage,
         LogbookNewPage,
         CircleLoaderComponent,
-        pages
+        pages,
+        components
     ],
     imports: [
         HttpModule,
