@@ -34,8 +34,6 @@ export class AnalyticsCalendarComponent {
     preBlocksArray: number[];
     postBlocksArray: number[];
 
-
-
     constructor() {
         // console.log("SENT MONTH: ", this.month);
         this.renderCalendar();
@@ -69,6 +67,13 @@ export class AnalyticsCalendarComponent {
 
     addDay(): void {
 
+    }
+
+    displayImage(day): string {
+        if (day['log_has'] === "no") return "none";
+        else if (day['trip_has'] === "no") return "anchor";
+        else if (day['catch_has'] === "no") return "boat";
+        else if (day['catch_has'] === "yes") return "fish";
     }
 }
 

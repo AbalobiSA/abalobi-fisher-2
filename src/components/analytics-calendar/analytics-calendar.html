@@ -15,7 +15,7 @@
 
             </div>
             <div class="cs-cal-day-block" *ngFor="let day of daysArray">
-                {{day.day}} <br> T: {{day.trip_has}} | C: {{day.catch_has}}
+                {{day.day}} I: {{displayImage(day)}}
             </div>
             <div class="cs-cal-day-block" *ngFor="let day of postBlocksArray">
 
