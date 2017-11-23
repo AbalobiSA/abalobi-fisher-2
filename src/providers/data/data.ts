@@ -161,6 +161,7 @@ export class DataProvider {
 
         if (!!this.cachedTrips) {
             if (Object.keys(this.cachedTrips).indexOf(key) !== -1) {
+                console.log(key, 'is cached locally. Not querying server');
                 return Promise.resolve(this.cachedTrips[key]);
             }
 

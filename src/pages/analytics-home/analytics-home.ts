@@ -12,19 +12,20 @@ import moment from 'moment';
 export class AnalyticsHomePage {
 
     menu: string = "1";
+
+    selectedDate: String;
     trips: AnalyticsTrip[];
 
-    constructor(public navCtrl: NavController,
-                public data: DataProvider) {
+    constructor(
+        public navCtrl: NavController,
+        public data: DataProvider) {
 
+        let now = new Date();
+        this.selectedDate = [now.getFullYear(), now.getMonth() + 1].join('-');
     }
 
     ionViewDidEnter(): void {
-        this.data.getTripLog().then(trips => {
-            this.trips = trips;
-        }).catch(ex => {
-            console.log(ex);
-        })
+        this.getDataForMonth();
     }
 
     today(): string {
@@ -37,7 +38,16 @@ export class AnalyticsHomePage {
     }
 
     tripDate(trip: any): string {
-        return moment(trip.trip_date__c).format('dddd')
-            + " - " + moment(trip.trip_date__c).locale('en-gb').format('L');
+        return moment(trip.trip_date__c).format('dddd') + " - " + moment(trip.trip_date__c).locale('en-gb').format('L');
+    }
+
+    getDataForMonth() {
+        this.trips = null;
+        this.data.getTripLog(this.selectedDate.split('-')[0], parseInt(this.selectedDate.split('-')[1]) - 1).then(result => {
+            this.trips = result;
+        }).catch(err => {
+            alert(err);
+            console.log(err);
+        });
     }
 }

@@ -1,28 +1,40 @@
 <div>
-    <ion-card>
-        <ion-card-header>
-            Profit
-        </ion-card-header>
-        <ion-item>Income: </ion-item>
-        <ion-item>Expense: </ion-item>
-        <ion-item>Diff: </ion-item>
-    </ion-card>
 
-    <ion-card>
-        <ion-card-header>
-            Income
-        </ion-card-header>
-        <ion-card-content>
-            Weehoo
-        </ion-card-content>
-    </ion-card>
+    <div *ngIf="!trips">
+        <br>
+        <circle-loader></circle-loader>
+    </div>
 
-    <ion-card>
-        <ion-card-header>
-            Expense
-        </ion-card-header>
-        <ion-card-content>
-            Weehoo
-        </ion-card-content>
-    </ion-card>
+    <div *ngIf="!!trips">
+        <ion-card>
+            <ion-card-header>
+                <h3>Profit</h3>
+            </ion-card-header>
+            <ion-item>Income: {{this.income}}</ion-item>
+            <ion-item>Expense: {{this.expense}}</ion-item>
+            <ion-item>Diff: {{this.income - this.expense}}</ion-item>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                Income
+            </ion-card-header>
+            <ion-card-content>
+                Weehoo
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                Expense
+            </ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <div class="ion_item" *ngFor="let cost of this.validCosts">{{this.prettyCost(cost)}}: {{this.costs[cost]}}</div>
+                </ion-list>
+
+
+            </ion-card-content>
+        </ion-card>
+    </div>
 </div>

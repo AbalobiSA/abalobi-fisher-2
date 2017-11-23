@@ -21,6 +21,7 @@
 
 <ion-content>
 
+    Select Date: <ion-datetime displayFormat="MMMM YYYY" pickerFormat="MMMM YYYY" [(ngModel)]="this.selectedDate" (ngModelChange)="this.getDataForMonth()" ></ion-datetime>
 
     <div [hidden]="menu !== '1'">
         <analytics-calendar
@@ -33,9 +34,10 @@
             [trips]="this.trips"
             (tripView)="tripView($event)"
         ></analytics-trips-list>
+        <h3 *ngIf="!!this.trips && this.trips.length === 0">No trips logged for selected month</h3>
     </div>
 
     <div [hidden]="menu !== '3'">
-        <finance></finance>
+        <finance [trips]="this.trips"></finance>
     </div>
 </ion-content>
