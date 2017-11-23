@@ -24,18 +24,18 @@
 
     <div [hidden]="menu !== '1'">
         <analytics-calendar
-            [trips]="data.cachedTrips"
+            [trips]="this.trips"
         ></analytics-calendar>
     </div>
 
     <div [hidden]="menu !== '2'">
         <analytics-trips-list
-            [trips]="data.cachedTrips"
+            [trips]="this.trips"
             (tripView)="tripView($event)"
         ></analytics-trips-list>
     </div>
 
     <div [hidden]="menu !== '3'">
-
+        <finance></finance>
     </div>
 </ion-content>

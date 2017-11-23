@@ -25,7 +25,7 @@ export class DataProvider {
     currentUser: User;
 
     // Analytics Data
-    cachedTrips: AnalyticsTrip[];
+    cachedTrips = {};
 
     constructor(public http: Http) {
         // console.log('Hello DataProvider Provider');
@@ -139,23 +139,52 @@ export class DataProvider {
         })
     }
 
-    getTripLog(): Promise<any> {
+    getTripLog(year=null, month=null): Promise<any> {
+        if (!year || !month) {
+            year = new Date().getFullYear();
+            month = new Date().getMonth();
+        }
+
         const access_token = window.localStorage.getItem('access_token');
         const query = this.BASE_URL + '/analytics/trips';
         const headers = new Headers();
         const options = new RequestOptions({
             headers: headers,
-            params: {access_token}
+            params: {access_token, year, month}
         });
-        console.log("dataservice: querying 1 month of trips...");
-        return this.http.get(query, options)
-            .map(response => response.json())
-            .toPromise()
-            .then(trips => {
-                console.log("dataservice: query complete.");
-                this.cachedTrips = trips as AnalyticsTrip[];
-                return Promise.resolve(this.cachedTrips);
-            })
-    }
 
+        // AnalyticsTrip[];
+        console.log("dataservice: querying 1 month of trips...");
+
+        const key = [parseInt(month), year].join("-");
+        console.log(key);
+
+        if (!!this.cachedTrips) {
+            if (Object.keys(this.cachedTrips).indexOf(key) !== -1) {
+                return Promise.resolve(this.cachedTrips[key]);
+            }
+
+            return this.http.get(query, options)
+                .map(response => response.json())
+                .toPromise()
+                .then(trips => {
+                    console.log("dataservice: query complete.");
+
+                    this.cachedTrips[key] = trips as AnalyticsTrip[];
+
+                    return Promise.resolve(this.cachedTrips[key]);
+                });
+        } else {
+            return this.http.get(query, options)
+                .map(response => response.json())
+                .toPromise()
+                .then(trips => {
+                    console.log("dataservice: query complete.");
+
+                    this.cachedTrips[key] = trips as AnalyticsTrip[];
+
+                    return Promise.resolve(this.cachedTrips[key]);
+                });
+        }
+    }
 }

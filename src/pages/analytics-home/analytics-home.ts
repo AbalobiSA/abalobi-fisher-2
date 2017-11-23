@@ -12,6 +12,7 @@ import moment from 'moment';
 export class AnalyticsHomePage {
 
     menu: string = "1";
+    trips: AnalyticsTrip[];
 
     constructor(public navCtrl: NavController,
                 public data: DataProvider) {
@@ -19,13 +20,11 @@ export class AnalyticsHomePage {
     }
 
     ionViewDidEnter(): void {
-        this.data.getTripLog()
-            .then(trips => {
-
-            })
-            .catch(ex => {
-                console.log(ex);
-            })
+        this.data.getTripLog().then(trips => {
+            this.trips = trips;
+        }).catch(ex => {
+            console.log(ex);
+        })
     }
 
     today(): string {
