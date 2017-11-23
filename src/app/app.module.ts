@@ -48,8 +48,6 @@ import {LogbookTripLocationHarbourPage} from "../pages/logbook/logbook-trip-loca
 import {LogbookWeatherPage} from "../pages/logbook/logbook-weather/logbook-weather";
 import {RegisterProfileImagePage} from "../pages/register-home/register-profile-image/register-profile-image";
 
-import {FinancesPage} from "../pages/analytics-home/finances/finances";
-
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 import {IonicStorageModule} from "@ionic/storage";
@@ -82,7 +80,6 @@ const pages = [
     RegisterProfileImagePage,
     RegisterSummaryPage,
     AnalyticsTripViewPage,
-    FinancesPage
 ];
 
 const components = [
