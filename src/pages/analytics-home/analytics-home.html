@@ -20,10 +20,12 @@
 </ion-header>
 
 <ion-content>
+
+
     <div [hidden]="menu !== '1'">
-        <h3 text-center>
-            <circle-loader></circle-loader>
-        </h3>
+        <analytics-calendar
+            [trips]="data.cachedTrips"
+        ></analytics-calendar>
     </div>
 
     <div [hidden]="menu !== '2'">

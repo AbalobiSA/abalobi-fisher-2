@@ -1,4 +1,30 @@
-<!-- Generated template for the AnalyticsCalendarComponent component -->
-<div>
-  {{text}}
+<!-- Generated template for the AnalyticsTripsListComponent component -->
+<script src="../analytics-trips-list/analytics-trips-list.ts"></script>
+<div *ngIf="!trips">
+    <br>
+    <circle-loader></circle-loader>
 </div>
+
+<ion-list *ngIf="!!trips">
+    <div class="calendar">
+        <div class="row">
+            <div class="col calendar-header">S</div>
+            <div class="col calendar-header">M</div>
+            <div class="col calendar-header">D</div>
+            <div class="col calendar-header">W</div>
+            <div class="col calendar-header">D</div>
+            <div class="col calendar-header">V</div>
+            <div class="col calendar-header">S</div>
+        </div>
+
+        <div *ngFor="let week of WEEKS" class="row">
+            <div *ngFor="let day of week" class="col calendar-entry">
+                <div class="date">{{(day.day > 0) ? day.day : ''}}</div>
+                <img *ngIf="day.day > 0" class="calendar-icon" src="{{$ctrl.getCalendarIcon(day)}}" />
+                     <!--tooltips tooltip-template="{{$ctrl.getTooltipTemplate(day)}}"-->
+                     <!--tooltip-side="{{$ctrl.getTooltipPosition($index, day)}}" tooltip-show-trigger="click"-->
+                     <!--(click)="$ctrl.calendarClickEvt($evt, day.day)"-->
+            </div>
+        </div>
+    </div>
+</ion-list>
