@@ -99,9 +99,11 @@ const buildDays = (days, trips) => {
         };
 
         if (!currentTrip) {
+            dayObject['log_has'] = "no";
             dayObject['trip_has'] = "no";
             dayObject['catch_has'] = "no";
         } else {
+            dayObject['log_has'] = "yes";
             dayObject['trip_has'] = currentTrip.trip_has__c || "no";
             dayObject['catch_has'] = currentTrip.catch_has__c || "no";
         }
