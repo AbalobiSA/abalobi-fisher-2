@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import moment from 'moment';
+import _ from 'lodash';
 
 /**
  * Generated class for the AnalyticsCalendarComponent component.
@@ -11,44 +13,101 @@ import {Component, Input} from '@angular/core';
     templateUrl: 'analytics-calendar.html'
 })
 export class AnalyticsCalendarComponent {
+    // Constants
 
-    text: string;
+    @Input() trips: any[] = null;
+    @Input() month: string;
 
-    YEAR: any;
-    WEEKS: any;
+    DAY_NAMES: string[] = [
+        "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
+    ];
 
-    @Input() trips: any[];
+    SELECTED_MONTH: string;
+    DAYS_IN_MONTH: number;
+    START_DAY: number;
+
+    daysArray: any[];
+
+    numPreBlocks: number;
+    numPostBlocks: number;
+
+    preBlocksArray: number[];
+    postBlocksArray: number[];
+
+
 
     constructor() {
-        this.YEAR = 2017;
-        this.buildCalendarConfig({
-            month: 3,
-            days: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-        })
+        // console.log("SENT MONTH: ", this.month);
+        this.renderCalendar();
     }
 
-    buildCalendarConfig(selectedMonth) {
-        const weeks = [];
-        const month = new Date(this.YEAR, selectedMonth.month - 1, 1);
-        const day = month.getDay();
-        const totalWeeks = Math.ceil(selectedMonth.days.length / 7);
-
-        for (let i = 0; i < totalWeeks * 7; i += 7) {
-            let week = [];
-            if (i === 0) {
-                for (let k = 0; k < day; k++) {
-                    week.push({day: 0, out: false, catch: false, species: []});
-                }
-            }
-            week = week.concat(selectedMonth.days.slice(Math.max(i - day, 0), i + 7 - day));
-            while (week.length < 7) {
-                week.push({day: 0, out: false, catch: false, species: []});
-            }
-            weeks.push(week);
-        }
-        this.WEEKS = weeks;
+    ngOnChanges(changes) {
+        this.renderCalendar();
     }
 
+
+    renderCalendar(): void {
+        this.DAYS_IN_MONTH = daysInMonth(this.month);
+        const firstDay = this.month + "-01";
+        console.log("First day of month: ", firstDay);
+        this.START_DAY = moment(firstDay).day();
+
+        let calendar = [];
+        this.numPreBlocks = this.START_DAY;
+        this.numPostBlocks = 35 - this.DAYS_IN_MONTH - this.numPreBlocks;
+
+        // if (this.numPreBlocks === 0) { this.numPostBlocks -= 1 };
+
+        this.daysArray = buildDays(this.DAYS_IN_MONTH, this.trips);
+
+        this.postBlocksArray = _.clone([]);
+        this.preBlocksArray = _.clone([]);
+
+        if (this.numPreBlocks !== 0) for (let i = 0; i < this.numPreBlocks; i++ ) { this.preBlocksArray.push(0) }
+        if (this.numPostBlocks !== 0) for (let i = 0; i < this.numPostBlocks; i++ ) { this.postBlocksArray.push(0) }
+    }
+
+    addDay(): void {
+
+    }
 }
 
+const daysInMonth = (MONTH_BASE_ONE) => {
+    let days = moment(MONTH_BASE_ONE).daysInMonth();
+    console.log("debug: days in month: ", days);
+    return days;
+};
 
+const buildDays = (days, trips) => {
+    const daysArray = [];
+    for (let i = 0; i < days; i++ ) {
+
+        let currentTrip;
+
+        if (!!trips) {
+            for (const trip of trips) {
+                const tripDay = moment(trip.trip_date__c).date();
+                if (tripDay === (i+1)) {
+                    currentTrip = trip;
+                }
+            }
+        }
+
+
+        let dayObject = {
+            day: (i+1)
+        };
+
+        if (!currentTrip) {
+            dayObject['trip_has'] = "no";
+            dayObject['catch_has'] = "no";
+        } else {
+            dayObject['trip_has'] = currentTrip.trip_has__c || "no";
+            dayObject['catch_has'] = currentTrip.catch_has__c || "no";
+        }
+
+        daysArray.push(dayObject);
+    }
+
+    return daysArray;
+};

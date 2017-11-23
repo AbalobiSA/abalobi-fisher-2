@@ -21,11 +21,25 @@
 
 <ion-content>
 
-    Select Date: <ion-datetime displayFormat="MMMM YYYY" pickerFormat="MMMM YYYY" [(ngModel)]="this.selectedDate" (ngModelChange)="this.getDataForMonth()" ></ion-datetime>
+    <ion-item>
+        <ion-label>Select Date:</ion-label>
+        <ion-datetime displayFormat="MMMM YYYY"
+                      pickerFormat="MMMM YYYY"
+                      [(ngModel)]="this.selectedDate"
+                      (ngModelChange)="this.getDataForMonth()" >
+        </ion-datetime>
+    </ion-item>
+
+    <br>
+
+    <!--<div>-->
+        <!--SELECTED DATE: {{selectedDate}}-->
+    <!--</div>-->
 
     <div [hidden]="menu !== '1'">
-        <analytics-calendar
-            [trips]="this.trips"
+        <analytics-calendar *ngIf="selectedDate"
+            [trips]="trips"
+            [month]="selectedDate"
         ></analytics-calendar>
     </div>
 

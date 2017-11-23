@@ -33,6 +33,8 @@ export class FinanceComponent implements OnChanges {
     }
 
     ngOnChanges(changes) {
+        console.log("finance component: trips: ", this.trips);
+
         if (!!this.trips) {
             this.calcIncomeExpense();
         }
@@ -45,7 +47,15 @@ export class FinanceComponent implements OnChanges {
         this.chartLabels = [];
 
         for (let validCost of this.validCosts) {
-            let cost = this.trips.map(item => item[validCost] || 0.0).reduce((prev, x) => (prev || 0.0) + x);
+            let cost;
+            try {
+                cost = this.trips
+                    .map(item => item[validCost] || 0.0)
+                    .reduce((prev, x) => (prev || 0.0) + (x || 0));
+            } catch (ex) {
+                cost = 0;
+            }
+
 
             this.costs[validCost] = cost;
             this.expense += cost;
