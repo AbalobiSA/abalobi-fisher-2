@@ -6,7 +6,7 @@
 </div>
 
 <ion-list *ngIf="!!trips">
-    <div class="calendar" padding>
+    <div class="calendar">
         <div class="cs-cal-header">
             <div class="cal-day-item" *ngFor="let day of DAY_NAMES">{{day}}</div>
         </div>
@@ -15,7 +15,13 @@
 
             </div>
             <div class="cs-cal-day-block" *ngFor="let day of daysArray">
-                {{day.day}} I: {{displayImage(day)}}
+                <div>
+                    {{day.day}}
+                </div>
+                <div text-center>
+                    <img class="calendar-icon" *ngIf="day.log_has === 'yes'" [src]="displayImage(day)" alt="">
+                </div>
+
             </div>
             <div class="cs-cal-day-block" *ngFor="let day of postBlocksArray">
 

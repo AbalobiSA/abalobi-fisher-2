@@ -1,6 +1,6 @@
 analytics-calendar {
     .calendar {
-
+        margin: 0 4px 0 4px;
     }
     .cs-cal-header {
         display: flex;
@@ -11,6 +11,10 @@ analytics-calendar {
         margin-left: 1px;
         margin-right: 1px;
         width: calc(100% * (1/7) - 2px);
+        color: white;
+        background-color: $ablb_blue;
+        text-align: center;
+        font-weight: bold;
     }
     .cs-cal-days {
         display: flex;
@@ -22,6 +26,15 @@ analytics-calendar {
         width: calc(100% * (1/7) - 2px);
         height: calc(60px - 2px);
         margin: 1px 1px 1px 1px;
+        background-color: $cloud;
         box-sizing: border-box;
+        font-weight: bold;
     }
+
+    .calendar-icon {
+        display: inline-block;
+        max-height: 70%;
+        width: auto;
+    }
+
 }

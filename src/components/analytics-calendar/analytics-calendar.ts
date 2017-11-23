@@ -52,7 +52,9 @@ export class AnalyticsCalendarComponent {
 
         let calendar = [];
         this.numPreBlocks = this.START_DAY;
-        this.numPostBlocks = 35 - this.DAYS_IN_MONTH - this.numPreBlocks;
+        this.numPostBlocks = (this.numPreBlocks > 4 ? 42 : 35) - this.DAYS_IN_MONTH - this.numPreBlocks;
+
+        console.log(this.numPostBlocks);
 
         // if (this.numPreBlocks === 0) { this.numPostBlocks -= 1 };
 
@@ -70,10 +72,9 @@ export class AnalyticsCalendarComponent {
     }
 
     displayImage(day): string {
-        if (day['log_has'] === "no") return "none";
-        else if (day['trip_has'] === "no") return "anchor";
-        else if (day['catch_has'] === "no") return "boat";
-        else if (day['catch_has'] === "yes") return "fish";
+        if (day['trip_has'] === "no") return "assets/images/calendar/anchor.png";
+        else if (day['catch_has'] === "no") return "assets/images/calendar/fish-empty.png";
+        else if (day['catch_has'] === "yes") return "assets/images/calendar/fish-green.png";
     }
 }
 
