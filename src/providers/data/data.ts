@@ -140,7 +140,7 @@ export class DataProvider {
     }
 
     getTripLog(year=null, month=null): Promise<any> {
-        if (year !== null || month !== null) {
+        if (year === null || month === null) {
             year = new Date().getFullYear();
             month = new Date().getMonth();
         }
