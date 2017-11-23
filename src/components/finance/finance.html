@@ -33,7 +33,9 @@
                     <div class="ion_item" *ngFor="let cost of this.validCosts">{{this.prettyCost(cost)}}: {{this.costs[cost]}}</div>
                 </ion-list>
 
-
+                <div style="display: block">
+                    <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"></canvas>
+                </div>
             </ion-card-content>
         </ion-card>
     </div>
