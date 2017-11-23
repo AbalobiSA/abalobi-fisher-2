@@ -48,8 +48,6 @@ import {LogbookTripLocationHarbourPage} from "../pages/logbook/logbook-trip-loca
 import {LogbookWeatherPage} from "../pages/logbook/logbook-weather/logbook-weather";
 import {RegisterProfileImagePage} from "../pages/register-home/register-profile-image/register-profile-image";
 
-import {FinanceComponent} from "../components/finance/finance";
-
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 import {IonicStorageModule} from "@ionic/storage";
@@ -61,7 +59,9 @@ import {Device} from "@ionic-native/device";
 import {AppVersion} from "@ionic-native/app-version";
 import {AnalyticsTripsListComponent} from "../components/analytics-trips-list/analytics-trips-list";
 import {AnalyticsCalendarComponent} from "../components/analytics-calendar/analytics-calendar";
+import {FinanceComponent} from "../components/finance/finance";
 
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 export function createTranslateLoader(http: Http) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -113,6 +113,7 @@ const components = [
         HttpModule,
         BrowserModule,
         FormsModule,
+        ChartsModule,
         ReactiveFormsModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot(),
