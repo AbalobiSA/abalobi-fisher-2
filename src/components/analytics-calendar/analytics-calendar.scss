@@ -1,56 +1,27 @@
 analytics-calendar {
-    .seadays-table {
-        background-color: #e5ffe5;
-        min-height: 200px;
-        padding: 8px;
+    .calendar {
+
     }
-    .seadays-table-entry {
-        padding: 8px;
-        margin-bottom: 8px;
-        border: 1px solid #3F9D2F;
-        border-radius: 4px;
-        min-height: 70px;
+    .cs-cal-header {
+        display: flex;
+        flex-wrap: wrap;
     }
-    .seadays-table-entry-footer {
-        clear: both
+    .cal-day-item {
+        border: 1px solid $ablb_blue;
+        margin-left: 1px;
+        margin-right: 1px;
+        width: calc(100% * (1/7) - 2px);
     }
-    .seadays-table-legend-color{
-        /*width: 2%;*/
-        margin-left: 8px;
-        float: right;
+    .cs-cal-days {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    .seadays-table-entry-img{
-        clear: both;
-        float: left;
-        max-height: 40px;
-        margin-bottom: 8px;
-    }
-    .seadays-table-name {
-        font-weight: bold;
-        float: left;
-        clear: both;
-    }
-    .seadays-table-reason {
-        float: left;
-        clear: both;
-    }
-    .calendar-header {
-        background-color: #F44336;
-        color: #ffffff;
-        text-align: center;
-        font-weight: bold;
-    }
-    .calendar-entry {
-        padding: 0;
-        font-weight: bold;
-        border: solid 1px #aaaaaa;
-        border-collapse: collapse;
-    }
-    .calendar-entry .date {
-        background-color: #e4e4e4;
-        padding: 0 4px;
-    }
-    .calendar-icon {
-        width: 100%;
+    .cs-cal-day-block {
+        border: 1px solid $ablb_blue;
+        width: calc(100% * (1/7) - 2px);
+        height: calc(60px - 2px);
+        margin: 1px 1px 1px 1px;
+        box-sizing: border-box;
     }
 }

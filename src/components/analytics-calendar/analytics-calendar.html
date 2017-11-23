@@ -6,25 +6,29 @@
 </div>
 
 <ion-list *ngIf="!!trips">
-    <div class="calendar">
-        <div class="row">
-            <div class="col calendar-header">S</div>
-            <div class="col calendar-header">M</div>
-            <div class="col calendar-header">D</div>
-            <div class="col calendar-header">W</div>
-            <div class="col calendar-header">D</div>
-            <div class="col calendar-header">V</div>
-            <div class="col calendar-header">S</div>
+    <div class="calendar" padding>
+        <div class="cs-cal-header">
+            <div class="cal-day-item" *ngFor="let day of DAY_NAMES">{{day}}</div>
         </div>
+        <div class="cs-cal-days">
+            <div class="cs-cal-day-block" *ngFor="let day of preBlocksArray">
 
-        <div *ngFor="let week of WEEKS" class="row">
-            <div *ngFor="let day of week" class="col calendar-entry">
-                <div class="date">{{(day.day > 0) ? day.day : ''}}</div>
-                <img *ngIf="day.day > 0" class="calendar-icon" src="{{$ctrl.getCalendarIcon(day)}}" />
-                     <!--tooltips tooltip-template="{{$ctrl.getTooltipTemplate(day)}}"-->
-                     <!--tooltip-side="{{$ctrl.getTooltipPosition($index, day)}}" tooltip-show-trigger="click"-->
-                     <!--(click)="$ctrl.calendarClickEvt($evt, day.day)"-->
+            </div>
+            <div class="cs-cal-day-block" *ngFor="let day of daysArray">
+                {{day.day}} <br> T: {{day.trip_has}} | C: {{day.catch_has}}
+            </div>
+            <div class="cs-cal-day-block" *ngFor="let day of postBlocksArray">
+
             </div>
         </div>
     </div>
+    <!--<button ion-button  block (click)="addDay()">-->
+        <!--Month: {{month}}-->
+    <!--</button>-->
+
+    <!--<div>-->
+        <!--<p>Days in month: {{this.DAYS_IN_MONTH}}</p>-->
+        <!--<p>Month start day: {{this.START_DAY}}</p>-->
+    <!--</div>-->
+
 </ion-list>
