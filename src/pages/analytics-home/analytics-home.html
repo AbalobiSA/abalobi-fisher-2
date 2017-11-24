@@ -1,8 +1,8 @@
 <ion-header>
     <!--<ion-navbar>-->
-        <!--<ion-title>-->
-            <!--&lt;!&ndash;Analytics&ndash;&gt;-->
-        <!--</ion-title>-->
+    <!--<ion-title>-->
+    <!--&lt;!&ndash;Analytics&ndash;&gt;-->
+    <!--</ion-title>-->
     <!--</ion-navbar>-->
     <ion-toolbar no-border-top>
         <ion-segment [(ngModel)]="menu" color="white">
@@ -26,22 +26,30 @@
         <ion-datetime displayFormat="MMMM YYYY"
                       pickerFormat="MMMM YYYY"
                       [(ngModel)]="this.selectedDate"
-                      (ngModelChange)="this.getDataForMonth()" >
+                      (ngModelChange)="this.getDataForMonth()">
         </ion-datetime>
     </ion-item>
 
     <br>
 
     <!--<div>-->
-        <!--SELECTED DATE: {{selectedDate}}-->
+    <!--SELECTED DATE: {{selectedDate}}-->
     <!--</div>-->
 
     <div [hidden]="menu !== '1'">
-        <analytics-calendar *ngIf="selectedDate"
-            [trips]="trips"
-            [month]="selectedDate"
-            (calendarBlockClick)="tripView($event)"
-        ></analytics-calendar>
+        <div class="content-1-bg">
+            <analytics-calendar *ngIf="selectedDate"
+                                [trips]="trips"
+                                [month]="selectedDate"
+                                (calendarBlockClick)="tripView($event)"
+            ></analytics-calendar>
+
+            <analytics-sea-days
+                [trips]="trips"
+            ></analytics-sea-days>
+        </div>
+
+
     </div>
 
     <div [hidden]="menu !== '2'">

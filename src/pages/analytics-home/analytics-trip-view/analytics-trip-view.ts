@@ -17,8 +17,6 @@ export class AnalyticsTripViewPage {
 
     trip: string;
 
-
-
     constructor(public navCtrl: NavController, public navParams: NavParams) {
         this.trip = this.navParams.get("trip");
     }
