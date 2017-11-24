@@ -18,11 +18,18 @@ export class FinanceComponent implements OnChanges {
 
     @Input() trips: AnalyticsTrip[];
 
-    income: Number;
-    expense: Number;
+    totalIncome: Number;
+    totalExpense: Number;
 
     validCosts = ['cost_bait__c', 'cost_food__c', 'cost_fuel__c', 'cost__harbour_fee__c', 'cost_oil__c', 'cost_other_amount__c', 'cost_transport__c'];
-    costs = {};
+
+    // Used to decide what to show for income and expenses in view
+    species = [];
+    costs = [];
+
+    // The income and expense values
+    expense = {};
+    income = {};
 
     chartType = 'pie';
 
@@ -45,8 +52,8 @@ export class FinanceComponent implements OnChanges {
     }
 
     calcIncomeExpense() {
-        this.income = 0;
-        this.expense = 0;
+        this.totalIncome = 0;
+        this.totalExpense = 0;
 
         this.expenseChartData[0] = {data: []};
         this.expenseChartLabels = [];
@@ -54,16 +61,21 @@ export class FinanceComponent implements OnChanges {
         this.incomeChartData[0] = {data: []};
         this.incomeChartLabels = [];
 
+        this.costs = [];
+        this.species = [];
+
         for (let validCost of this.validCosts) {
             let cost;
             cost = this.trips.map(item => item[validCost] || 0.0).reduce((prev, x) => prev + x, 0);
 
-            this.costs[validCost] = cost;
-            this.expense += cost;
+            this.expense[validCost] = cost;
+            this.totalExpense += cost;
 
             if (cost > 0) {
                 this.expenseChartData[0]['data'].push(cost);
                 this.expenseChartLabels.push(this.prettyExpense(validCost));
+
+                this.costs.push(validCost);
             }
         }
 
@@ -82,10 +94,26 @@ export class FinanceComponent implements OnChanges {
         for (let species of groupedBySpecies) {
             let income = 0;
 
+            this.species.push(this.species);
+            this.income[species] = {
+                income: {
+                    'Sold Crates': 0,
+                    'Sold Number': 0,
+                    'Sold Weight': 0
+                },
+                image: ''
+            };
+
             for (let c of groupedBySpecies[species]) {
-                income += ((c['alloc_sold_crates__c'] || 0) * (c['other_price_per_crate__c'] || 0));
-                income += ((c['alloc_sold_number__c'] || 0) * (c['other_price_per_number__c'] || 0));
-                income += ((c['alloc_sold_weight_kg__c'] || 0) * (c['other_price_per_kg__c'] || 0));
+                let soldCrates = (c['alloc_sold_crates__c'] || 0) * (c['other_price_per_crate__c'] || 0);
+                let soldNumber = (c['alloc_sold_number__c'] || 0) * (c['other_price_per_number__c'] || 0);
+                let soldWeight = (c['alloc_sold_weight_kg__c'] || 0) * (c['other_price_per_kg__c'] || 0);
+
+                this.income[species]['totalIncome']['Sold Crates'] += soldCrates;
+                this.income[species]['totalIncome']['Sold Number'] += soldNumber;
+                this.income[species]['totalIncome']['Sold Weight'] += soldWeight;
+
+                income = income + soldCrates + soldNumber + soldWeight;
             }
 
             if (income > 0) {
