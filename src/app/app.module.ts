@@ -62,6 +62,7 @@ import {AnalyticsCalendarComponent} from "../components/analytics-calendar/analy
 import {FinanceComponent} from "../components/finance/finance";
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import {AnalyticsSeaDaysComponent} from "../components/analytics-sea-days/analytics-sea-days";
 
 export function createTranslateLoader(http: Http) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -86,7 +87,8 @@ const pages = [
 
 const components = [
     AnalyticsTripsListComponent,
-    AnalyticsCalendarComponent
+    AnalyticsCalendarComponent,
+    AnalyticsSeaDaysComponent
 ];
 
 @NgModule({

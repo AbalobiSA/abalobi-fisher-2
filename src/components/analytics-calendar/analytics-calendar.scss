@@ -26,7 +26,7 @@ analytics-calendar {
         width: calc(100% * (1/7) - 2px);
         height: calc(60px - 2px);
         margin: 1px 1px 1px 1px;
-        background-color: $cloud;
+        background-color: white;
         box-sizing: border-box;
         font-weight: bold;
     }
@@ -37,4 +37,9 @@ analytics-calendar {
         width: auto;
     }
 
+    .calendar-content {
+        //background-color: $cloud;
+        //margin: 0;
+        //padding: 0;
+    }
 }
