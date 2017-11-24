@@ -36,6 +36,7 @@
         <analytics-calendar *ngIf="selectedDate"
             [trips]="trips"
             [month]="selectedDate"
+            (calendarBlockClick)="tripView($event)"
         ></analytics-calendar>
     </div>
 

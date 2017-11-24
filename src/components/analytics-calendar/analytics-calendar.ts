@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
 import moment from 'moment';
 import _ from 'lodash';
 
@@ -15,8 +15,10 @@ import _ from 'lodash';
 export class AnalyticsCalendarComponent {
     // Constants
 
-    @Input() trips: any[] = null;
+    @Input() trips: any[];
     @Input() month: string;
+
+    @Output() calendarBlockClick: EventEmitter<any> = new EventEmitter();
 
     DAY_NAMES: string[] = [
         "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
@@ -34,8 +36,6 @@ export class AnalyticsCalendarComponent {
     preBlocksArray: number[];
     postBlocksArray: number[];
 
-
-
     constructor() {
         // console.log("SENT MONTH: ", this.month);
         this.renderCalendar();
@@ -43,6 +43,12 @@ export class AnalyticsCalendarComponent {
 
     ngOnChanges(changes) {
         this.renderCalendar();
+    }
+
+    clickBlock(day) {
+        if (!!day['trip']) {
+            this.calendarBlockClick.emit(day['trip']);
+        }
     }
 
 
@@ -54,9 +60,9 @@ export class AnalyticsCalendarComponent {
 
         let calendar = [];
         this.numPreBlocks = this.START_DAY;
-        this.numPostBlocks = 35 - this.DAYS_IN_MONTH - this.numPreBlocks;
+        this.numPostBlocks = (this.numPreBlocks > 4 ? 42 : 35) - this.DAYS_IN_MONTH - this.numPreBlocks;
 
-        // if (this.numPreBlocks === 0) { this.numPostBlocks -= 1 };
+        console.log(this.numPostBlocks);
 
         this.daysArray = buildDays(this.DAYS_IN_MONTH, this.trips);
 
@@ -69,6 +75,12 @@ export class AnalyticsCalendarComponent {
 
     addDay(): void {
 
+    }
+
+    displayImage(day): string {
+        if (day['trip_has'] === "no") return "assets/images/calendar/anchor.png";
+        else if (day['catch_has'] === "no") return "assets/images/calendar/fish-empty.png";
+        else if (day['catch_has'] === "yes") return "assets/images/calendar/fish-green.png";
     }
 }
 
@@ -99,11 +111,14 @@ const buildDays = (days, trips) => {
         };
 
         if (!currentTrip) {
+            dayObject['log_has'] = "no";
             dayObject['trip_has'] = "no";
             dayObject['catch_has'] = "no";
         } else {
+            dayObject['log_has'] = "yes";
             dayObject['trip_has'] = currentTrip.trip_has__c || "no";
             dayObject['catch_has'] = currentTrip.catch_has__c || "no";
+            dayObject['trip'] = currentTrip;
         }
 
         daysArray.push(dayObject);
