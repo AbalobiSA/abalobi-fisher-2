@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
 import moment from 'moment';
 import _ from 'lodash';
 
@@ -15,8 +15,10 @@ import _ from 'lodash';
 export class AnalyticsCalendarComponent {
     // Constants
 
-    @Input() trips: any[] = null;
+    @Input() trips: any[];
     @Input() month: string;
+
+    @Output() calendarBlockClick: EventEmitter<any> = new EventEmitter();
 
     DAY_NAMES: string[] = [
         "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
@@ -43,6 +45,12 @@ export class AnalyticsCalendarComponent {
         this.renderCalendar();
     }
 
+    clickBlock(day) {
+        if (!!day['trip']) {
+            this.calendarBlockClick.emit(day['trip']);
+        }
+    }
+
 
     renderCalendar(): void {
         this.DAYS_IN_MONTH = daysInMonth(this.month);
@@ -55,8 +63,6 @@ export class AnalyticsCalendarComponent {
         this.numPostBlocks = (this.numPreBlocks > 4 ? 42 : 35) - this.DAYS_IN_MONTH - this.numPreBlocks;
 
         console.log(this.numPostBlocks);
-
-        // if (this.numPreBlocks === 0) { this.numPostBlocks -= 1 };
 
         this.daysArray = buildDays(this.DAYS_IN_MONTH, this.trips);
 
@@ -112,6 +118,7 @@ const buildDays = (days, trips) => {
             dayObject['log_has'] = "yes";
             dayObject['trip_has'] = currentTrip.trip_has__c || "no";
             dayObject['catch_has'] = currentTrip.catch_has__c || "no";
+            dayObject['trip'] = currentTrip;
         }
 
         daysArray.push(dayObject);

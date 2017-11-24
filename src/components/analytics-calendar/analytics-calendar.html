@@ -5,7 +5,7 @@
     <circle-loader></circle-loader>
 </div>
 
-<ion-list *ngIf="!!trips">
+<ion-list>
     <div class="calendar">
         <div class="cs-cal-header">
             <div class="cal-day-item" *ngFor="let day of DAY_NAMES">{{day}}</div>
@@ -14,7 +14,7 @@
             <div class="cs-cal-day-block" *ngFor="let day of preBlocksArray">
 
             </div>
-            <div class="cs-cal-day-block" *ngFor="let day of daysArray">
+            <div class="cs-cal-day-block" *ngFor="let day of daysArray" (click)="clickBlock(day)">
                 <div>
                     {{day.day}}
                 </div>

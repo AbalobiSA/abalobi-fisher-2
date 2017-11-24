@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import moment from 'moment';
 
@@ -16,6 +16,8 @@ import moment from 'moment';
 export class AnalyticsTripViewPage {
 
     trip: string;
+
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
         this.trip = this.navParams.get("trip");
