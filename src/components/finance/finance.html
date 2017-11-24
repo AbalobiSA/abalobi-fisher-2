@@ -10,9 +10,13 @@
             <ion-card-header>
                 <h3>Profit</h3>
             </ion-card-header>
-            <ion-item>Income: {{this.income}}</ion-item>
-            <ion-item>Expense: {{this.expense}}</ion-item>
-            <ion-item>Diff: {{this.income - this.expense}}</ion-item>
+            <ion-card-content>
+                <ion-list>
+                    <div class="ion_item">Income: R {{this.income}}</div>
+                    <div class="ion_item">Expense: R {{this.expense}}</div>
+                    <div class="ion_item">Diff: R {{this.income - this.expense}}</div>
+                </ion-list>
+            </ion-card-content>
         </ion-card>
 
         <ion-card>
@@ -20,7 +24,9 @@
                 Income
             </ion-card-header>
             <ion-card-content>
-                Weehoo
+                <div style="display: block" *ngIf="this.incomeChartData[0]['data'].length > 0">
+                    <canvas baseChart [datasets]="incomeChartData" [labels]="incomeChartLabels" [chartType]="chartType"></canvas>
+                </div>
             </ion-card-content>
         </ion-card>
 
@@ -30,11 +36,11 @@
             </ion-card-header>
             <ion-card-content>
                 <ion-list>
-                    <div class="ion_item" *ngFor="let cost of this.validCosts">{{this.prettyCost(cost)}}: {{this.costs[cost]}}</div>
+                    <div class="ion_item" *ngFor="let cost of this.validCosts">{{this.prettyExpense(cost)}}: R {{this.costs[cost]}}</div>
                 </ion-list>
 
-                <div style="display: block">
-                    <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"></canvas>
+                <div style="display: block" *ngIf="this.expenseChartData[0]['data'].length > 0">
+                    <canvas baseChart [datasets]="expenseChartData" [labels]="expenseChartLabels" [chartType]="chartType"></canvas>
                 </div>
             </ion-card-content>
         </ion-card>
