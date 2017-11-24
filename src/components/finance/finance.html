@@ -8,11 +8,15 @@
     <div *ngIf="!!trips">
         <ion-card>
             <ion-card-header>
-                <h3>Profit</h3>
+                <h3>Summary</h3>
             </ion-card-header>
-            <ion-item>Income: {{this.income}}</ion-item>
-            <ion-item>Expense: {{this.expense}}</ion-item>
-            <ion-item>Diff: {{this.income - this.expense}}</ion-item>
+            <ion-card-content>
+                <ion-list>
+                    <div class="ion_item">Income: R {{this.totalIncome}}</div>
+                    <div class="ion_item">Expense: R {{this.totalExpense}}</div>
+                    <div class="ion_item">Diff: R {{this.totalIncome - this.totalExpense}}</div>
+                </ion-list>
+            </ion-card-content>
         </ion-card>
 
         <ion-card>
@@ -20,7 +24,18 @@
                 Income
             </ion-card-header>
             <ion-card-content>
-                Weehoo
+                <ion-list >
+                    <div class="ion_item" *ngFor="let specie of this.species">
+                        <h3>{{specie}}</h3>
+                        <div>Sold Crates: R {{this.income['totalIncome']['Sold Crates']}}</div>
+                        <div>Sold Number: R {{this.income['totalIncome']['Sold Number']}}</div>
+                        <div>Sold Weight: R {{this.income['totalIncome']['Sold Weight']}}</div>
+                    </div>
+                </ion-list>
+
+                <div style="display: block" *ngIf="this.incomeChartData[0]['data'].length > 0">
+                    <canvas baseChart [datasets]="incomeChartData" [labels]="incomeChartLabels" [chartType]="chartType"></canvas>
+                </div>
             </ion-card-content>
         </ion-card>
 
@@ -30,11 +45,12 @@
             </ion-card-header>
             <ion-card-content>
                 <ion-list>
-                    <div class="ion_item" *ngFor="let cost of this.validCosts">{{this.prettyCost(cost)}}: {{this.costs[cost]}}</div>
+                    <div class="ion_item" *ngFor="let cost of this.costs">{{this.prettyExpense(cost)}}: R
+                        {{this.expense[cost]}}</div>
                 </ion-list>
 
-                <div style="display: block">
-                    <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"></canvas>
+                <div style="display: block" *ngIf="this.expenseChartData[0]['data'].length > 0">
+                    <canvas baseChart [datasets]="expenseChartData" [labels]="expenseChartLabels" [chartType]="chartType"></canvas>
                 </div>
             </ion-card-content>
         </ion-card>

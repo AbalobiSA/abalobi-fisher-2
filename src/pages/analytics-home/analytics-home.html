@@ -32,10 +32,6 @@
 
     <br>
 
-    <!--<div>-->
-    <!--SELECTED DATE: {{selectedDate}}-->
-    <!--</div>-->
-
     <div [hidden]="menu !== '1'">
         <div class="content-1-bg">
             <analytics-calendar *ngIf="selectedDate"
@@ -48,8 +44,6 @@
                 [trips]="trips"
             ></analytics-sea-days>
         </div>
-
-
     </div>
 
     <div [hidden]="menu !== '2'">
