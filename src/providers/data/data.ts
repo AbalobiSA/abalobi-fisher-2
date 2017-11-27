@@ -19,9 +19,9 @@ import {AnalyticsTrip} from "../../classes/analytics/AnalyticsTrip";
 @Injectable()
 export class DataProvider {
 
-    // BASE_URL: string = "http://server.abalobi.info";
+    BASE_URL: string = "http://server.abalobi.info";
     // BASE_URL: string = "http://10.0.0.101:8080";
-    BASE_URL: string = "http://localhost:8080";
+    // BASE_URL: string = "http://localhost:8080";
     currentUser: User;
 
     // Analytics Data
@@ -139,7 +139,7 @@ export class DataProvider {
         })
     }
 
-    getTripLog(year=null, month=null): Promise<any> {
+    getTripLog(year = null, month = null): Promise<any> {
         if (year === null || month === null) {
             year = new Date().getFullYear();
             month = new Date().getMonth();
@@ -174,7 +174,8 @@ export class DataProvider {
                     this.cachedTrips[key] = trips as AnalyticsTrip[];
 
                     return Promise.resolve(this.cachedTrips[key]);
-                });
+                })
+                .catch(handleError)
         } else {
             return this.http.get(query, options)
                 .map(response => response.json())
@@ -185,7 +186,13 @@ export class DataProvider {
                     this.cachedTrips[key] = trips as AnalyticsTrip[];
 
                     return Promise.resolve(this.cachedTrips[key]);
-                });
+                })
+                .catch(handleError)
         }
     }
 }
+
+const handleError = (ex) => {
+    console.log("dataservice: server error: ", ex['status']);
+    return Promise.reject(ex);
+};

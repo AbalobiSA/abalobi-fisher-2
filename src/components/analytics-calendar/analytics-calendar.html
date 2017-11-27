@@ -2,7 +2,7 @@
 <!--<script src="../analytics-trips-list/analytics-trips-list.ts"></script>-->
 <div class="calendar-content">
 
-    <div *ngIf="!trips">
+    <div *ngIf="!trips && authenticated">
         <br>
         <circle-loader></circle-loader>
     </div>

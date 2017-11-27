@@ -16,6 +16,7 @@ export class AnalyticsTripsListComponent {
 
     text: string;
     @Input() trips: AnalyticsTrip[];
+    @Input() authenticated: boolean = true;
     @Output() tripView = new EventEmitter<any>();
 
     constructor() {

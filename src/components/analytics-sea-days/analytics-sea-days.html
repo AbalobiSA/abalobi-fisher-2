@@ -1,5 +1,5 @@
 <div class="card-list">
-    <ion-card>
+    <ion-card *ngIf="!!trips">
         <ion-card-header>
             Sea Days
         </ion-card-header>
@@ -7,17 +7,17 @@
         <ion-list>
             <button ion-item>
                 <ion-icon name="cart" item-start></ion-icon>
-                Days Fishing:
+                Days Fishing: {{days_fishing}}
             </button>
 
             <button ion-item>
                 <ion-icon name="medical" item-start></ion-icon>
-                Days Not Fishing:
+                Days Not Fishing: {{days_not_fishing}}
             </button>
 
             <button ion-item>
                 <ion-icon name="cafe" item-start></ion-icon>
-                Trips with catches:
+                Trips with catches: {{trips_with_catches}}
             </button>
         </ion-list>
     </ion-card>

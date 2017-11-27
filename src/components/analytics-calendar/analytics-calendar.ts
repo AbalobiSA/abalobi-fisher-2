@@ -17,6 +17,7 @@ export class AnalyticsCalendarComponent {
 
     @Input() trips: any[];
     @Input() month: string;
+    @Input() authenticated: boolean = true;
 
     @Output() calendarBlockClick: EventEmitter<any> = new EventEmitter();
 

@@ -19,29 +19,55 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content-1-bg">
 
-    <ion-item>
-        <ion-label>Select Date:</ion-label>
-        <ion-datetime displayFormat="MMMM YYYY"
-                      pickerFormat="MMMM YYYY"
-                      [(ngModel)]="this.selectedDate"
-                      (ngModelChange)="this.getDataForMonth()">
-        </ion-datetime>
-    </ion-item>
+    <ion-card>
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Select Date:</ion-label>
+                <ion-datetime displayFormat="MMMM YYYY"
+                              pickerFormat="MMMM YYYY"
+                              [(ngModel)]="this.selectedDate"
+                              (ngModelChange)="this.getDataForMonth()">
+                </ion-datetime>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+    <div *ngIf="!trips && !user_is_authenticated">
+        <ion-card>
+            <ion-card-content>
+                <p>
+                    <strong>Login Expired.</strong>
+                </p>
+
+                <p>Please log out and log back in under the settings tab to see your analytics data.</p>
+
+                <!--<button ion-button block class="ablb-button abalobi-button-darkblue">-->
+                    <!--Retry-->
+                <!--</button>-->
+            </ion-card-content>
+        </ion-card>
+    </div>
 
     <br>
 
     <div [hidden]="menu !== '1'">
-        <div class="content-1-bg">
-            <analytics-calendar *ngIf="selectedDate"
-                                [trips]="trips"
-                                [month]="selectedDate"
-                                (calendarBlockClick)="tripView($event)"
+        <div class="">
+            <analytics-calendar
+                *ngIf="selectedDate"
+                [trips]="trips"
+                [month]="selectedDate"
+                [authenticated]="user_is_authenticated"
+                (calendarBlockClick)="tripView($event)"
             ></analytics-calendar>
 
             <analytics-sea-days
                 [trips]="trips"
+                [selectedDate]="selectedDate"
             ></analytics-sea-days>
         </div>
     </div>
@@ -49,12 +75,16 @@
     <div [hidden]="menu !== '2'">
         <analytics-trips-list
             [trips]="this.trips"
+            [authenticated]="user_is_authenticated"
             (tripView)="tripView($event)"
         ></analytics-trips-list>
         <h3 *ngIf="!!this.trips && this.trips.length === 0">No trips logged for selected month</h3>
     </div>
 
     <div [hidden]="menu !== '3'">
-        <finance [trips]="this.trips"></finance>
+        <finance
+            [trips]="this.trips"
+            [authenticated]="user_is_authenticated"
+        ></finance>
     </div>
 </ion-content>

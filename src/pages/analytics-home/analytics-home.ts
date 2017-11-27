@@ -16,6 +16,8 @@ export class AnalyticsHomePage {
     selectedDate: String;
     trips: AnalyticsTrip[];
 
+    user_is_authenticated: boolean = true;
+
     constructor(
         public navCtrl: NavController,
         public data: DataProvider) {
@@ -38,16 +40,27 @@ export class AnalyticsHomePage {
     }
 
     tripDate(trip: any): string {
-        return moment(trip.trip_date__c).format('dddd') + " - " + moment(trip.trip_date__c).locale('en-gb').format('L');
+        return moment(trip.trip_date__c).format('dddd')
+            + " - "
+            + moment(trip.trip_date__c).locale('en-gb').format('L');
     }
 
     getDataForMonth() {
         this.trips = null;
-        this.data.getTripLog(this.selectedDate.split('-')[0], parseInt(this.selectedDate.split('-')[1]) - 1).then(result => {
-            this.trips = result;
-        }).catch(err => {
-            alert(err);
-            console.log(err);
-        });
+
+        const chosenYear = this.selectedDate.split('-')[0];
+        const chosenMonth = parseInt(this.selectedDate.split('-')[1]) - 1;
+
+        this.data.getTripLog(chosenYear, chosenMonth)
+            .then(result => {
+                this.trips = result;
+                this.user_is_authenticated = true;
+            })
+            .catch(err => {
+                if (err['status'] === 500) {
+                    // User is not authenticated
+                    this.user_is_authenticated = false;
+                }
+            });
     }
 }

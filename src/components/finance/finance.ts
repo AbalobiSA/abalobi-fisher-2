@@ -17,11 +17,20 @@ import {AnalyticsTrip} from "../../classes/analytics/AnalyticsTrip";
 export class FinanceComponent implements OnChanges {
 
     @Input() trips: AnalyticsTrip[];
+    @Input() authenticated: boolean = true;
 
     totalIncome: Number;
     totalExpense: Number;
 
-    validCosts = ['cost_bait__c', 'cost_food__c', 'cost_fuel__c', 'cost__harbour_fee__c', 'cost_oil__c', 'cost_other_amount__c', 'cost_transport__c'];
+    validCosts = [
+        'cost_bait__c',
+        'cost_food__c',
+        'cost_fuel__c',
+        'cost__harbour_fee__c',
+        'cost_oil__c',
+        'cost_other_amount__c',
+        'cost_transport__c'
+    ];
 
     // Used to decide what to show for income and expenses in view
     species = [];
