@@ -49,5 +49,13 @@ export class AnalyticsTripsListComponent {
             default: return "weather_sunny";
         }
     }
+    
+    getTripImage(trip: any): string {
+        if (trip['rpt_catches'].length !== 0) {
+            return 'assets/images/calendar/fish-green.png';
+        } else {
+            return 'assets/images/calendar/fish-empty.png'
+        }
+    }
 
 }

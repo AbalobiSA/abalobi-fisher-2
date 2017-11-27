@@ -9,7 +9,8 @@
             <ion-icon [name]="getWeatherIcon(trip)" item-start class="weatherIcon"></ion-icon>
             {{tripDate(trip)}} <br>
             <span class="scan_date">Catches: {{trip.rpt_catches.length}}</span>
-            <ion-icon [name]="getTripIcon(trip)" item-end class="tripIcon"></ion-icon>
+            <!--<ion-icon [name]="getTripIcon(trip)" item-end class="tripIcon"></ion-icon>-->
+            <img item-end class="fish-trip-icon" *ngIf="trip.trip_has__c === 'yes'" [src]="getTripImage(trip)" alt="">
         </button>
     </ion-card>
 </div>

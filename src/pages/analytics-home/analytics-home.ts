@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {AnalyticsTripViewPage} from "./analytics-trip-view/analytics-trip-view";
+import {AnalyticsTripViewPage} from "../analytics-trip-view/analytics-trip-view";
 import {AnalyticsTrip} from "../../classes/analytics/AnalyticsTrip";
 import {DataProvider} from "../../providers/data/data";
 import moment from 'moment';

@@ -52,7 +52,7 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 import {IonicStorageModule} from "@ionic/storage";
 import {CircleLoaderComponent} from "../components/circle-loader/circle-loader";
-import {AnalyticsTripViewPage} from "../pages/analytics-home/analytics-trip-view/analytics-trip-view";
+import {AnalyticsTripViewPage} from "../pages/analytics-trip-view/analytics-trip-view";
 import {OdkProvider} from '../providers/odk/odk';
 import {File} from "@ionic-native/file";
 import {Device} from "@ionic-native/device";
