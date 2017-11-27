@@ -41,6 +41,12 @@ export class FinanceComponent implements OnChanges {
     income = {};
 
     chartType = 'pie';
+    chartOptions = {
+        responsive: true,
+        legend: {
+            onClick: function(event, legendItem) {}
+        }
+    };
 
     expenseChartData = [{data: []}];
     expenseChartLabels = [];

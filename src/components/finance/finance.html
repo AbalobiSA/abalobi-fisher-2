@@ -34,7 +34,7 @@
                 </ion-list>
 
                 <div style="display: block" *ngIf="this.incomeChartData[0]['data'].length > 0">
-                    <canvas baseChart [datasets]="incomeChartData" [labels]="incomeChartLabels" [chartType]="chartType"></canvas>
+                    <canvas baseChart [datasets]="incomeChartData" [labels]="incomeChartLabels" [chartType]="chartType" [options]="chartOptions"></canvas>
                 </div>
             </ion-card-content>
         </ion-card>
@@ -50,7 +50,7 @@
                 </ion-list>
 
                 <div style="display: block" *ngIf="this.expenseChartData[0]['data'].length > 0">
-                    <canvas baseChart [datasets]="expenseChartData" [labels]="expenseChartLabels" [chartType]="chartType"></canvas>
+                    <canvas baseChart [datasets]="expenseChartData" [labels]="expenseChartLabels" [chartType]="chartType" [options]="chartOptions"></canvas>
                 </div>
             </ion-card-content>
         </ion-card>
