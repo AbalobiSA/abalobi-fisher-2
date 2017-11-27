@@ -1,8 +1,8 @@
 <!-- Generated template for the AnalyticsTripsListComponent component -->
-<div *ngIf="!trips && authenticated">
+<ion-card *ngIf="!trips && authenticated">
     <br>
     <circle-loader></circle-loader>
-</div>
+</ion-card>
 <div *ngIf="!!trips">
     <ion-card *ngFor="let trip of trips">
         <button ion-item text-wrap tappable (click)="handleTripView(trip)">

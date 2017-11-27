@@ -47,4 +47,9 @@ export class AnalyticsTripViewPage {
             + " - " + moment(trip.trip_date__c).locale('en-gb').format('L');
     }
 
+    createComment(trip: any): void {
+        trip['comment_has__c'] = "yes";
+        trip['comment__c'] = "There was a lot of wind.";
+    }
+
 }

@@ -77,7 +77,10 @@
             [authenticated]="user_is_authenticated"
             (tripView)="tripView($event)"
         ></analytics-trips-list>
-        <h3 *ngIf="!!this.trips && this.trips.length === 0">No trips logged for selected month</h3>
+        <ion-card *ngIf="!!this.trips && this.trips.length === 0">
+            <h3>No trips logged for selected month</h3>
+        </ion-card>
+
     </div>
 
     <div [hidden]="menu !== '3'">

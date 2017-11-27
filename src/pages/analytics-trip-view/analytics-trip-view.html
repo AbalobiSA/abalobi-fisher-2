@@ -6,28 +6,114 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{trip.trip_date__c}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{trip.trip_date__c}}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-    <div padding>
-        <h3 text-center>{{tripDate(trip)}}</h3>
-        <p text-center>Details coming soon!</p>
-    </div>
-    <ion-list>
-        <ion-item *ngFor="let item of getKeyItems(trip)">
-            {{item.key}}
-            <ion-note item-end>
-                {{item.value}}
+<ion-content class="pageContent">
 
+    <ion-card>
+        <ion-card-header text-center>{{tripDate(trip)}}</ion-card-header>
+        <ion-card-content>
+            <!--<p text-center>Details coming soon!</p>-->
+            <!--<button ion-button block class="ablb-button abalobi-button-darkblue" (click)="createComment(trip)">-->
+                <!--Generate Comment-->
+            <!--</button>-->
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="trip.comment_has__c === 'yes'">
+        <ion-card-header><strong>Trip Comment</strong></ion-card-header>
+        <ion-card-content>
+            {{trip.comment__c}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="trip.no_trip_reason__c">
+        <ion-card-header><strong>No trip reason</strong></ion-card-header>
+        <ion-card-content>
+            {{trip.no_trip_reason__c}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <strong>Weather & Currents</strong>
+        </ion-card-header>
+
+        <ion-item *ngIf="trip.weather__c">
+            Weather
+            <ion-note item-end>
+                {{trip.weather__c}}
             </ion-note>
         </ion-item>
-    </ion-list>
-    <pre padding>
-        {{viewTrip(trip)}}
-    </pre>
+
+        <ion-item *ngIf="trip.wind_direction__c">
+            Wind Direction
+            <ion-note item-end>
+                {{trip.wind_direction__c}}
+            </ion-note>
+        </ion-item>
+
+        <ion-item *ngIf="trip.wind_strength__c">
+            Wind Strength
+            <ion-note item-end>
+                {{trip.wind_strength__c}}
+            </ion-note>
+        </ion-item>
+
+        <ion-item *ngIf="trip.current_strength__c">
+            Current Strength
+            <ion-note item-end>
+                {{trip.current_strength__c}}
+            </ion-note>
+        </ion-item>
+
+        <ion-item *ngIf="trip.current_direction__c">
+            Current Direction
+            <ion-note item-end>
+                {{trip.current_direction__c}}
+            </ion-note>
+        </ion-item>
+    </ion-card>
+
+    <div *ngIf="trip.rpt_catches.length !==0">
+        <ion-card *ngFor="let fish of trip.rpt_catches">
+            <ion-card-header>
+                <strong>{{fish.species_name}}</strong>
+            </ion-card-header>
+
+            <button ion-item *ngIf="fish.num_items__c">
+                <strong>Items: </strong>{{fish.num_items__c}}
+            </button>
+
+            <button ion-item *ngIf="fish.num_crates__c">
+                <strong>Crates: </strong> {{fish.num_crates__c}}
+            </button>
+
+            <button ion-item *ngIf="fish.weight_kg__c">
+                <strong>Weight (kg): </strong> {{fish.weight_kg__c}}
+            </button>
+
+            <div class="image-container" text-center>
+                <img class="species_image" src="{{fish.species_image_url}}" alt="">
+            </div>
+        </ion-card>
+    </div>
+
+    <!--<ion-card>-->
+        <!--<ion-item *ngFor="let item of getKeyItems(trip)">-->
+            <!--{{item.key}}-->
+            <!--<ion-note item-end>-->
+                <!--{{item.value}}-->
+            <!--</ion-note>-->
+        <!--</ion-item>-->
+    <!--</ion-card>-->
+
+    <ion-card>
+        <pre>{{viewTrip(trip)}}</pre>
+    </ion-card>
 </ion-content>
