@@ -89,7 +89,7 @@ export class LandingPage {
 
     loginBrowser(): void {
         this.loader.presentLoader("Logging in. Please wait...");
-        window.localStorage.setItem("access_token", "zJ6dOIS17tSBJJ-r0winjwYYdTdhKCQc");
+        window.localStorage.setItem("access_token", "jHuSC9KFoIeJbKzk899OIG994FV3S-Bp");
         const token = window.localStorage.getItem("access_token");
 
         let cacheFisher;

@@ -13,14 +13,13 @@
                 Trips
             </ion-segment-button>
             <ion-segment-button value="3">
-                Finance
+                Reports
             </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
 </ion-header>
 
 <ion-content class="content-1-bg">
-
     <ion-card>
         <ion-card-content>
             <ion-item>
@@ -53,10 +52,14 @@
         </ion-card>
     </div>
 
-    <br>
-
     <div [hidden]="menu !== '1'">
         <div class="">
+
+            <analytics-sea-days
+                [trips]="trips"
+                [selectedDate]="selectedDate"
+            ></analytics-sea-days>
+
             <analytics-calendar
                 *ngIf="selectedDate"
                 [trips]="trips"
@@ -65,10 +68,6 @@
                 (calendarBlockClick)="tripView($event)"
             ></analytics-calendar>
 
-            <analytics-sea-days
-                [trips]="trips"
-                [selectedDate]="selectedDate"
-            ></analytics-sea-days>
         </div>
     </div>
 

@@ -1,45 +1,49 @@
 <!-- Generated template for the AnalyticsTripsListComponent component -->
 <!--<script src="../analytics-trips-list/analytics-trips-list.ts"></script>-->
-<div class="calendar-content">
-
-    <div *ngIf="!trips && authenticated">
-        <br>
-        <circle-loader></circle-loader>
-    </div>
-
-
-    <ion-list>
-        <div class="calendar">
-            <div class="cs-cal-header">
-                <div class="cal-day-item" *ngFor="let day of DAY_NAMES">{{day}}</div>
-            </div>
-            <div class="cs-cal-days">
-                <div class="cs-cal-day-block" *ngFor="let day of preBlocksArray">
-
-                </div>
-                <div class="cs-cal-day-block" *ngFor="let day of daysArray" (click)="clickBlock(day)">
-                    <div>
-                        {{day.day}}
-                    </div>
-                    <div text-center>
-                        <img class="calendar-icon" *ngIf="day.log_has === 'yes'" [src]="displayImage(day)" alt="">
-                    </div>
-
-                </div>
-                <div class="cs-cal-day-block" *ngFor="let day of postBlocksArray">
-
-                </div>
-            </div>
+<ion-card *ngIf="!trips && authenticated">
+    <ion-card-content>
+        <div>
+            <br>
+            <circle-loader></circle-loader>
         </div>
-        <!--<button ion-button  block (click)="addDay()">-->
-        <!--Month: {{month}}-->
-        <!--</button>-->
+    </ion-card-content>
+</ion-card>
+<ion-card>
+        <div class="calendar-content">
+            <ion-list>
+                <div class="calendar">
+                    <div class="cs-cal-header">
+                        <div class="cal-day-item" *ngFor="let day of DAY_NAMES">{{day}}</div>
+                    </div>
+                    <div class="cs-cal-days">
+                        <div class="cs-cal-day-block" *ngFor="let day of preBlocksArray">
 
-        <!--<div>-->
-        <!--<p>Days in month: {{this.DAYS_IN_MONTH}}</p>-->
-        <!--<p>Month start day: {{this.START_DAY}}</p>-->
-        <!--</div>-->
+                        </div>
+                        <div class="cs-cal-day-block" *ngFor="let day of daysArray" (click)="clickBlock(day)">
+                            <div>
+                                {{day.day}}
+                            </div>
+                            <div text-center>
+                                <img class="calendar-icon" *ngIf="day.log_has === 'yes'" [src]="displayImage(day)" alt="">
+                            </div>
 
-    </ion-list>
+                        </div>
+                        <div class="cs-cal-day-block" *ngFor="let day of postBlocksArray">
 
-</div>
+                        </div>
+                    </div>
+                </div>
+                <!--<button ion-button  block (click)="addDay()">-->
+                <!--Month: {{month}}-->
+                <!--</button>-->
+
+                <!--<div>-->
+                <!--<p>Days in month: {{this.DAYS_IN_MONTH}}</p>-->
+                <!--<p>Month start day: {{this.START_DAY}}</p>-->
+                <!--</div>-->
+
+            </ion-list>
+
+        </div>
+</ion-card>
+

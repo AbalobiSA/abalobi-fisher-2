@@ -79,7 +79,7 @@ export class AnalyticsCalendarComponent {
     }
 
     displayImage(day): string {
-        if (day['trip_has'] === "no") return "assets/images/calendar/anchor.png";
+        if (day['trip_has'] === "no") return "assets/images/calendar/Streamline-18-512.png";
         else if (day['catch_has'] === "no") return "assets/images/calendar/fish-empty.png";
         else if (day['catch_has'] === "yes") return "assets/images/calendar/fish-green.png";
     }
