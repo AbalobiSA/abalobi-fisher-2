@@ -16,7 +16,9 @@
 <ion-content class="pageContent">
 
     <ion-card>
-        <ion-card-header text-center>{{tripDate(trip)}}</ion-card-header>
+        <ion-card-header text-center>
+            {{tripDate(trip)}}
+        </ion-card-header>
         <ion-card-content>
             <!--<p text-center>Details coming soon!</p>-->
             <!--<button ion-button block class="ablb-button abalobi-button-darkblue" (click)="createComment(trip)">-->
@@ -26,7 +28,9 @@
     </ion-card>
 
     <ion-card *ngIf="trip.comment_has__c === 'yes'">
-        <ion-card-header><strong>Trip Comment</strong></ion-card-header>
+        <ion-card-header>
+            <strong>Trip Comment</strong>
+        </ion-card-header>
         <ion-card-content>
             {{trip.comment__c}}
         </ion-card-content>

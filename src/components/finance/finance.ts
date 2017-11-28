@@ -143,4 +143,13 @@ export class FinanceComponent implements OnChanges {
             return part.charAt(0).toUpperCase() + part.slice(1);
         }).join(' ');
     }
+
+    incomeExists(): void {
+        // <div>Sold Crates: R {{this.income['totalIncome']['Sold Crates']}}</div>
+        // <div>Sold Number: R {{this.income['totalIncome']['Sold Number']}}</div>
+        // <div>Sold Weight: R {{this.income['totalIncome']['Sold Weight']}}</div>
+        const filteredSpecies = this.species.filter(item => {
+            return item['']
+        })
+    }
 }

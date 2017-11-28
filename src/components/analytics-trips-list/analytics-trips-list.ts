@@ -46,10 +46,10 @@ export class AnalyticsTripsListComponent {
             case "weather_sunny" : return "sunny";
             case "weather_cloudy" : return "cloudy";
             case "weather_partlycloudy" : return "partly-sunny";
-            default: return "weather_sunny";
+            default: return "";
         }
     }
-    
+
     getTripImage(trip: any): string {
         if (trip['rpt_catches'].length !== 0) {
             return 'assets/images/calendar/fish-green.png';
@@ -57,5 +57,4 @@ export class AnalyticsTripsListComponent {
             return 'assets/images/calendar/fish-empty.png'
         }
     }
-
 }
