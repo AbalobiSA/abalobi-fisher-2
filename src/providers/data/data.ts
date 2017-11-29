@@ -145,7 +145,7 @@ export class DataProvider {
             month = new Date().getMonth();
         }
 
-        const access_token = window.localStorage.getItem('access_token');
+        const access_token = window.localStorage.getItem('access_token').split('"').join("");
         const query = this.BASE_URL + '/analytics/trips';
         const headers = new Headers();
         const options = new RequestOptions({
