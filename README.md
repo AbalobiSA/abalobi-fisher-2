@@ -1,26 +1,62 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+Abalobi Fisher 2
+================
 
-## How to use this template
+### Requirements 
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+You will need the following to work on this app: 
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+- Node Version Manager ([Windows](https://github.com/carl-eis/Ultimate.Setup/wiki/Windows-Setup) / [Linux / Mac](https://github.com/carl-eis/Ultimate.Setup/wiki/Node.js-Linux))
+- NodeJS v8.9.1 
+- Java JDK version 8.x
+- [Android Studio](https://developer.android.com/studio/index.html)
+- Android Build Tools
+- Android SDK versions `5.1`, `6.0`, `7.0`, `8.0`
+- Yarn package manager (`npm install -g yarn`)
+- Ionic command line tools (`npm install -g @ionic/cli`)
+- Cordova (`npm install -g cordova`)
 
-### With the Ionic CLI:
+The rest of this readme assumes you have these installed and set up
+correctly.
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Also make sure that `$JAVA_HOME` and `$ANDROID_HOME` are set up in your 
+system path. On linux / mac, you can set this in your `bashrc` or `zshrc` 
+file.
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myTabs tabs
-```
+### Getting Started 
 
-Then, to run it, cd into `myTabs` and run:
+Clone this repo, install dependencies
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+    $ git clone https://github.com/AbalobiSA/abalobi-fisher-2
+    $ cd abalobi-fisher-2
+    $ yarn
+    $ cordova platform add android --save
+    
+> Cordova will add the latest backwards-compatible version of cordova-android - 
+if you have any problems with this, use 
 
-Substitute ios for android if not on a Mac.
+    $ cordova platform add android@6.3.0 --save
+    
+Check that the cordova plugins installed correctly.
 
+    $ cordova plugins ls
+    
+### Development 
+
+This will launch the app in the browser. Cordova native functionality
+will not be available.
+
+    $ ionic serve
+    
+### Building 
+
+Connect your mobile phone via USB cable and enable android debugging.
+
+    $ ionic build --prod
+    $ cordova run android
+
+### Plugins
+
+If for whatever reason the cordova plugins are not downloaded, I have 
+uploaded zip files containing the cordova plugins for each project to the 
+Techairos dropbox. Unzip the ones for ablb-fisher-2 app into `./plugins/` and
+you should be good to go.
