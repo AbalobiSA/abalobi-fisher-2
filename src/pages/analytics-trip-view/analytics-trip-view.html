@@ -43,6 +43,13 @@
         </ion-card-content>
     </ion-card>
 
+    <ion-card *ngIf="trip.no_catch_reason__c">
+        <ion-card-header><strong>No catch reason</strong></ion-card-header>
+        <ion-card-content>
+            {{trip.no_catch_reason__c}}
+        </ion-card-content>
+    </ion-card>
+
     <ion-card>
         <ion-card-header>
             <strong>Weather & Currents</strong>
