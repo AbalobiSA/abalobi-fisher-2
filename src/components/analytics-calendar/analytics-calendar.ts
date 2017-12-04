@@ -56,14 +56,14 @@ export class AnalyticsCalendarComponent {
     renderCalendar(): void {
         this.DAYS_IN_MONTH = daysInMonth(this.month);
         const firstDay = this.month + "-01";
-        console.log("First day of month: ", firstDay);
+        // console.log("First day of month: ", firstDay);
         this.START_DAY = moment(firstDay).day();
 
         let calendar = [];
         this.numPreBlocks = this.START_DAY;
         this.numPostBlocks = (this.numPreBlocks > 4 ? 42 : 35) - this.DAYS_IN_MONTH - this.numPreBlocks;
 
-        console.log(this.numPostBlocks);
+        // console.log(this.numPostBlocks);
 
         this.daysArray = buildDays(this.DAYS_IN_MONTH, this.trips);
 
@@ -87,7 +87,7 @@ export class AnalyticsCalendarComponent {
 
 const daysInMonth = (MONTH_BASE_ONE) => {
     let days = moment(MONTH_BASE_ONE).daysInMonth();
-    console.log("debug: days in month: ", days);
+    // console.log("debug: days in month: ", days);
     return days;
 };
 

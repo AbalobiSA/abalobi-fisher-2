@@ -51,6 +51,6 @@ export class AnalyticsSeaDaysComponent {
 
 const daysInMonth = (MONTH_BASE_ONE) => {
     let days = moment(MONTH_BASE_ONE).daysInMonth();
-    console.log("debug: days in month: ", days);
+    // console.log("debug: days in month: ", days);
     return days;
 };

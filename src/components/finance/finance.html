@@ -20,15 +20,15 @@
             </ion-card-header>
             <ion-item>
                 <ion-icon item-start name="cash"></ion-icon>
-                <strong>Income: </strong>R {{this.totalIncome}}
+                <strong>Income: </strong>R {{this.totalIncome.toFixed(2)}}
             </ion-item>
             <ion-item>
                 <ion-icon item-start name="card"></ion-icon>
-                <strong>Expense: </strong>R {{this.totalExpense}}
+                <strong>Expense: </strong>R {{this.totalExpense.toFixed(2)}}
             </ion-item>
-            <ion-item>
+            <ion-item *ngIf="!!this.totalIncome && this.totalIncome !== 0">
                 <ion-icon item-start name="list-box"></ion-icon>
-                <strong>Profit: </strong>R {{this.totalIncome - this.totalExpense}}
+                <strong>Profit: </strong>R {{(this.totalIncome - this.totalExpense).toFixed(2)}}
             </ion-item>
         </ion-card>
 
@@ -37,25 +37,23 @@
                 <strong>Income</strong>
             </ion-card-header>
 
-            <ion-card-content>
-                <ion-list>
-                    <div class="ion_item" *ngFor="let specie of this.species">
-                        <h3>{{specie}}</h3>
-                        <div>Sold Crates: R {{this.income['totalIncome']['Sold Crates']}}</div>
-                        <div>Sold Number: R {{this.income['totalIncome']['Sold Number']}}</div>
-                        <div>Sold Weight: R {{this.income['totalIncome']['Sold Weight']}}</div>
-                    </div>
-                </ion-list>
 
-                <div style="display: block" *ngIf="this.incomeChartData[0]['data'].length > 0">
-                    <canvas baseChart
-                            [datasets]="incomeChartData"
-                            [labels]="incomeChartLabels"
-                            [chartType]="chartType"
-                            [options]="chartOptions"
-                    ></canvas>
-                </div>
-            </ion-card-content>
+            <ion-item *ngFor="let specie of this.getIncomeBySpecies()">
+                <ion-icon item-left name="pricetag"></ion-icon>
+                <strong>{{specie.name}}: </strong>R {{specie.income.toFixed(2)}}
+            </ion-item>
+
+            <div style="display: block" *ngIf="this.incomeChartData[0]['data'].length > 0">
+                <canvas baseChart
+                        [datasets]="incomeChartData"
+                        [labels]="incomeChartLabels"
+                        [chartType]="chartType"
+                        [options]="chartOptions"
+                ></canvas>
+            </div>
+
+            <br>
+
         </ion-card>
 
         <ion-card>
@@ -64,13 +62,15 @@
             </ion-card-header>
             <ion-item *ngFor="let cost of this.costs">
                 <ion-icon item-left name="pricetag"></ion-icon>
-                <strong>{{this.prettyExpense(cost)}}: </strong>R {{this.expense[cost]}}
+                <strong>{{this.prettyExpense(cost)}}: </strong>R {{this.expense[cost].toFixed(2)}}
             </ion-item>
 
             <div style="display: block" *ngIf="this.expenseChartData[0]['data'].length > 0">
                 <canvas baseChart [datasets]="expenseChartData" [labels]="expenseChartLabels"
                         [chartType]="chartType" [options]="chartOptions"></canvas>
             </div>
+
+            <br>
         </ion-card>
     </div>
 </div>
