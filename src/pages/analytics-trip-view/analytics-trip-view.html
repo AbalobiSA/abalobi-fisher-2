@@ -84,6 +84,37 @@
         </ion-item>
     </ion-card>
 
+    <ion-card>
+        <ion-card-header>
+            <strong>Trip information</strong>
+        </ion-card-header>
+        <ion-card-content>
+
+            <ion-item>
+                Landing Site
+                <ion-note item-end>
+                    {{trip.landing_site__c}}
+                </ion-note>
+            </ion-item>
+
+            <ion-item *ngIf="!!trip.crew_number__c">
+                Crew Number
+                <ion-note item-end>
+                    {{trip.crew_number__c}}
+                </ion-note>
+            </ion-item>
+
+            <ion-card-header>
+                Crew List
+            </ion-card-header>
+
+            <div *ngIf="!!trip.crew_list__c">
+                {{trip.crew_list__c}}
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+
     <div *ngIf="trip.rpt_catches.length !==0">
         <ion-card *ngFor="let fish of trip.rpt_catches">
             <ion-card-header>
