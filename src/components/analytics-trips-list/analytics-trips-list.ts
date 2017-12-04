@@ -45,6 +45,7 @@ export class AnalyticsTripsListComponent {
             case "weather_rainy" : return "rainy";
             case "weather_sunny" : return "sunny";
             case "weather_cloudy" : return "cloudy";
+            case "weather_misty" : return "cloud";
             case "weather_partlycloudy" : return "partly-sunny";
             default: return "";
         }

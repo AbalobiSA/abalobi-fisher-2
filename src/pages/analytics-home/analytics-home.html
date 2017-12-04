@@ -78,7 +78,9 @@
             (tripView)="tripView($event)"
         ></analytics-trips-list>
         <ion-card *ngIf="!!this.trips && this.trips.length === 0">
-            <h3>No trips logged for selected month</h3>
+            <ion-card-header>
+                <h3>No trips logged for selected month.</h3>
+            </ion-card-header>
         </ion-card>
 
     </div>
