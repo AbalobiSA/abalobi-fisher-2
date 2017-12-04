@@ -51,6 +51,7 @@ will not be available.
 
 Connect your mobile phone via USB cable and enable android debugging.
 
+    $ gulp  // (increases version number)
     $ ionic build --prod
     $ cordova run android
 
