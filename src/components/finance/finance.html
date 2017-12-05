@@ -7,14 +7,6 @@
 
     <div *ngIf="!!trips">
         <ion-card>
-            <ion-card-content>
-                <button ion-button block class="ablb-button abalobi-button-darkblue">
-                    <ion-icon item-start name="mail"></ion-icon>&nbsp;&nbsp;Email report
-                </button>
-            </ion-card-content>
-        </ion-card>
-
-        <ion-card>
             <ion-card-header>
                 <strong>Month Summary</strong>
             </ion-card-header>
@@ -62,7 +54,7 @@
             </ion-card-header>
             <ion-item *ngFor="let cost of this.costs">
                 <ion-icon item-left name="pricetag"></ion-icon>
-                <strong>{{this.prettyExpense(cost)}}: </strong>R {{this.expense[cost].toFixed(2)}}
+                <strong>{{prettyExpense(cost)}}: </strong>R {{this.expense[cost].toFixed(2)}}
             </ion-item>
 
             <div style="display: block" *ngIf="this.expenseChartData[0]['data'].length > 0">
