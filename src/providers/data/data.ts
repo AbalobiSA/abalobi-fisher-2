@@ -83,7 +83,9 @@ export class DataProvider {
                 "Email__c",
                 "contact_mobile_num__c",
                 "share_data_with_daff__c",
-                "share_data_with_local_impl__c"
+                "share_data_with_local_impl__c",
+                "abalobi_id__c",
+                "primary_community__c"
             ];
 
             let body = {};
