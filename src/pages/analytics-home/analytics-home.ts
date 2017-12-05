@@ -1,9 +1,13 @@
+import { EmailModalComponent } from './../../components/email-modal/email-modal';
+import {LoaderProvider} from './../../providers/loader.service';
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, ModalController} from 'ionic-angular';
 import {AnalyticsTripViewPage} from "../analytics-trip-view/analytics-trip-view";
 import {AnalyticsTrip} from "../../classes/analytics/AnalyticsTrip";
 import {DataProvider} from "../../providers/data/data";
 import moment from 'moment';
+
+
 
 @Component({
     selector: 'page-analytics-home',
@@ -20,7 +24,9 @@ export class AnalyticsHomePage {
 
     constructor(
         public navCtrl: NavController,
-        public data: DataProvider) {
+        public data: DataProvider,
+        public loader: LoaderProvider,
+        public modalCtrl: ModalController) {
 
         let now = new Date();
         this.selectedDate = [now.getFullYear(), now.getMonth() + 1].join('-');
@@ -62,5 +68,22 @@ export class AnalyticsHomePage {
                     this.user_is_authenticated = false;
                 }
             });
+    }
+
+    emailReport(): void {
+
+        const emailAddress = this.data.currentUser.Email__c;
+        const modal = this.modalCtrl.create(EmailModalComponent, {
+          email: this.data.currentUser.Email__c
+        });
+        modal.present();
+
+
+        // this.loader.presentLoader("Emailing report...");
+
+        // setTimeout(() => {
+        //     this.loader.dismissLoader();
+        //     alert("Done!");
+        // }, 4000);
     }
 }

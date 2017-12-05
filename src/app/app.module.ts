@@ -1,3 +1,4 @@
+import { EmailModalComponent } from './../components/email-modal/email-modal';
 import {NgModule, ErrorHandler} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
@@ -88,7 +89,8 @@ const pages = [
 const components = [
     AnalyticsTripsListComponent,
     AnalyticsCalendarComponent,
-    AnalyticsSeaDaysComponent
+    AnalyticsSeaDaysComponent,
+    EmailModalComponent
 ];
 
 @NgModule({
@@ -142,7 +144,8 @@ const components = [
         RegisterContactDetailsPage,
         SettingsEditPage,
         LogbookNewPage,
-        pages
+        pages,
+        EmailModalComponent
     ],
     providers: [
         StatusBar,

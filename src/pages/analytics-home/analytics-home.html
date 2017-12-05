@@ -1,94 +1,101 @@
 <ion-header>
-    <!--<ion-navbar>-->
-    <!--<ion-title>-->
-    <!--&lt;!&ndash;Analytics&ndash;&gt;-->
-    <!--</ion-title>-->
-    <!--</ion-navbar>-->
-    <ion-toolbar>
-        <ion-segment [(ngModel)]="menu" color="white">
-            <ion-segment-button value="1">
-                Calendar
-            </ion-segment-button>
-            <ion-segment-button value="2">
-                Trips
-            </ion-segment-button>
-            <ion-segment-button value="3">
-                Reports
-            </ion-segment-button>
-        </ion-segment>
-    </ion-toolbar>
+  <!--<ion-navbar>-->
+  <!--<ion-title>-->
+  <!--&lt;!&ndash;Analytics&ndash;&gt;-->
+  <!--</ion-title>-->
+  <!--</ion-navbar>-->
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="menu" color="white">
+      <ion-segment-button value="1">
+        Calendar
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        Trips
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        Reports
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="content-1-bg">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Select Date:</ion-label>
+        <ion-datetime displayFormat="MMMM YYYY"
+                      pickerFormat="MMMM YYYY"
+                      [(ngModel)]="this.selectedDate"
+                      (ngModelChange)="this.getDataForMonth()">
+        </ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+  <div *ngIf="!trips && !user_is_authenticated">
     <ion-card>
-        <ion-card-content>
-            <ion-item>
-                <ion-label>Select Date:</ion-label>
-                <ion-datetime displayFormat="MMMM YYYY"
-                              pickerFormat="MMMM YYYY"
-                              [(ngModel)]="this.selectedDate"
-                              (ngModelChange)="this.getDataForMonth()">
-                </ion-datetime>
-            </ion-item>
-        </ion-card-content>
+      <ion-card-content>
+        <p>
+          <strong>Login Expired.</strong>
+        </p>
+
+        <p>Please log out and log back in under the settings tab to see your analytics data.</p>
+
+        <!--<button ion-button block class="ablb-button abalobi-button-darkblue">-->
+        <!--Retry-->
+        <!--</button>-->
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div [hidden]="menu !== '1'">
+    <div class="">
+
+      <analytics-sea-days
+        [trips]="trips"
+        [selectedDate]="selectedDate"
+      ></analytics-sea-days>
+
+      <analytics-calendar
+        *ngIf="selectedDate"
+        [trips]="trips"
+        [month]="selectedDate"
+        [authenticated]="user_is_authenticated"
+        (calendarBlockClick)="tripView($event)"
+      ></analytics-calendar>
+
+    </div>
+  </div>
+
+  <div [hidden]="menu !== '2'">
+    <analytics-trips-list
+      [trips]="this.trips"
+      [authenticated]="user_is_authenticated"
+      (tripView)="tripView($event)"
+    ></analytics-trips-list>
+    <ion-card *ngIf="!!this.trips && this.trips.length === 0">
+      <ion-card-header>
+        <h3>No trips logged for selected month.</h3>
+      </ion-card-header>
     </ion-card>
 
+  </div>
 
+  <div [hidden]="menu !== '3'">
 
+    <ion-card>
+      <ion-card-content>
+        <button ion-button block class="ablb-button abalobi-button-darkblue" (tap)="emailReport()">
+          <ion-icon item-start name="mail"></ion-icon>&nbsp;&nbsp;Email report
+        </button>
+      </ion-card-content>
+    </ion-card>
 
-    <div *ngIf="!trips && !user_is_authenticated">
-        <ion-card>
-            <ion-card-content>
-                <p>
-                    <strong>Login Expired.</strong>
-                </p>
-
-                <p>Please log out and log back in under the settings tab to see your analytics data.</p>
-
-                <!--<button ion-button block class="ablb-button abalobi-button-darkblue">-->
-                    <!--Retry-->
-                <!--</button>-->
-            </ion-card-content>
-        </ion-card>
-    </div>
-
-    <div [hidden]="menu !== '1'">
-        <div class="">
-
-            <analytics-sea-days
-                [trips]="trips"
-                [selectedDate]="selectedDate"
-            ></analytics-sea-days>
-
-            <analytics-calendar
-                *ngIf="selectedDate"
-                [trips]="trips"
-                [month]="selectedDate"
-                [authenticated]="user_is_authenticated"
-                (calendarBlockClick)="tripView($event)"
-            ></analytics-calendar>
-
-        </div>
-    </div>
-
-    <div [hidden]="menu !== '2'">
-        <analytics-trips-list
-            [trips]="this.trips"
-            [authenticated]="user_is_authenticated"
-            (tripView)="tripView($event)"
-        ></analytics-trips-list>
-        <ion-card *ngIf="!!this.trips && this.trips.length === 0">
-            <ion-card-header>
-                <h3>No trips logged for selected month.</h3>
-            </ion-card-header>
-        </ion-card>
-
-    </div>
-
-    <div [hidden]="menu !== '3'">
-        <finance
-            [trips]="this.trips"
-            [authenticated]="user_is_authenticated"
-        ></finance>
-    </div>
+    <finance
+      [trips]="this.trips"
+      [authenticated]="user_is_authenticated"
+    ></finance>
+  </div>
 </ion-content>
