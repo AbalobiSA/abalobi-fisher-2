@@ -1,0 +1,37 @@
+page-manager-fisher-list {
+  .pageContent {
+    background-color: $cloud;
+  }
+
+  .fisherNameHeader {
+    background-color: $ablb_brown;
+    color: white;
+
+    border: none;
+    margin-bottom: 0px;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+
+  .cardContent {
+    margin-top: 0;
+    padding-top: 0;
+    vertical-align: top;
+  }
+
+  .image-container {
+    height: 200px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+
+  .profile-image {
+    height: 200px;
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+  }
+}

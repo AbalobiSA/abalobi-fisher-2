@@ -1,0 +1,62 @@
+<!--
+  Generated template for the ManagerFisherListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Managed Fishers</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="pageContent">
+
+  <div class="loader-container" *ngIf="!managed_fishers">
+    <ion-card>
+      <ion-card-content>
+        <circle-loader></circle-loader>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="fisher-cards" *ngIf="!!managed_fishers">
+    <ion-card *ngFor="let fisher of managed_fishers">
+      <ion-card-header text-center class="fisherNameHeader">
+        <span *ngIf="fisher.abalobi_id__c !== 'not_on_list'">{{fisher.firstName__c + " " + fisher.lastName__c}}</span>
+        <span *ngIf="fisher.abalobi_id__c === 'not_on_list'">Not on list</span>
+      </ion-card-header>
+      <ion-card-content class="cardContent">
+        <div class="image-container" *ngIf="!!fisher.image">
+          <img [src]="fisher.image" alt="" class="profile-image">
+        </div>
+        <ion-list>
+          <ion-item text-wrap>
+            <ion-icon name="calendar" item-start></ion-icon>
+            Trips this month: <strong>{{fisher.trips_last_month}}</strong>
+          </ion-item>
+          <ion-item text-wrap>
+            <ion-icon name="calendar" item-start></ion-icon>
+            Trips this year: <strong>{{fisher.trips_last_year}}</strong>
+          </ion-item>
+          <ion-item text-wrap>
+            <ion-icon name="calendar" item-start></ion-icon>
+            Last Trip Date: <strong>{{fisher.last_trip_date}}</strong>
+          </ion-item>
+          <ion-item text-wrap>
+            <ion-icon name="calendar" item-start></ion-icon>
+            Last Submission: <strong>{{displayMomentDate(fisher.last_trip_date)}}</strong>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!--<pre>{{viewManagedFishers()}}</pre>-->
+
+  </div>
+
+
+</ion-content>

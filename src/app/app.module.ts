@@ -1,4 +1,4 @@
-import { EmailModalComponent } from './../components/email-modal/email-modal';
+import {EmailModalComponent} from './../components/email-modal/email-modal';
 import {NgModule, ErrorHandler} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
@@ -62,109 +62,111 @@ import {AnalyticsTripsListComponent} from "../components/analytics-trips-list/an
 import {AnalyticsCalendarComponent} from "../components/analytics-calendar/analytics-calendar";
 import {FinanceComponent} from "../components/finance/finance";
 
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import {ChartsModule} from 'ng2-charts/ng2-charts';
 import {AnalyticsSeaDaysComponent} from "../components/analytics-sea-days/analytics-sea-days";
+import {ManagerFisherListPage} from "../pages/manager-fisher-list/manager-fisher-list";
 
 export function createTranslateLoader(http: Http) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 const pages = [
-    LogbookCurrentsPage,
-    LogbookTripExistsPage,
-    LogbookTripLocationPage,
-    LogbookTripTypePage,
-    LogbookNoTripPage,
-    LogbookTripLocationShorespotsPage,
-    LogbookTripLocationHarbourPage,
-    RegisterPasswordPage,
-    RegisterFisherInfoPage,
-    LogbookWeatherPage,
-    RegisterBoatPage,
-    RegisterProfileImagePage,
-    RegisterSummaryPage,
-    AnalyticsTripViewPage,
+  LogbookCurrentsPage,
+  LogbookTripExistsPage,
+  LogbookTripLocationPage,
+  LogbookTripTypePage,
+  LogbookNoTripPage,
+  LogbookTripLocationShorespotsPage,
+  LogbookTripLocationHarbourPage,
+  RegisterPasswordPage,
+  RegisterFisherInfoPage,
+  LogbookWeatherPage,
+  RegisterBoatPage,
+  RegisterProfileImagePage,
+  RegisterSummaryPage,
+  AnalyticsTripViewPage,
+  ManagerFisherListPage
 ];
 
 const components = [
-    AnalyticsTripsListComponent,
-    AnalyticsCalendarComponent,
-    AnalyticsSeaDaysComponent,
-    EmailModalComponent
+  AnalyticsTripsListComponent,
+  AnalyticsCalendarComponent,
+  AnalyticsSeaDaysComponent,
+  EmailModalComponent
 ];
 
 @NgModule({
-    declarations: [
-        MyApp,
-        AnalyticsHomePage,
-        ContactPage,
-        TabsPage,
-        HomePage,
-        LandingPage,
-        SettingsPage,
-        RegisterHomePage,
-        RegisterAgreementPage,
-        RegisterPersonalDetailsPage,
-        RegisterContactDetailsPage,
-        SettingsEditPage,
-        LogbookNewPage,
-        CircleLoaderComponent,
-        FinanceComponent,
-        pages,
-        components
-    ],
-    imports: [
-        HttpModule,
-        BrowserModule,
-        FormsModule,
-        ChartsModule,
-        ReactiveFormsModule,
-        IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot(),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [Http]
-            }
-        })
-    ],
-    bootstrap: [IonicApp],
-    entryComponents: [
-        MyApp,
-        AnalyticsHomePage,
-        ContactPage,
-        TabsPage,
-        HomePage,
-        LandingPage,
-        SettingsPage,
-        RegisterHomePage,
-        RegisterAgreementPage,
-        RegisterPersonalDetailsPage,
-        RegisterContactDetailsPage,
-        SettingsEditPage,
-        LogbookNewPage,
-        pages,
-        EmailModalComponent
-    ],
-    providers: [
-        StatusBar,
-        SplashScreen,
-        {provide: ErrorHandler, useClass: IonicErrorHandler},
-        AppstarterProvider,
-        ErrorsProvider,
-        RegistrationProvider,
-        DatePicker,
-        AuthProvider,
-        DataProvider,
-        LoaderProvider,
-        LogbookProvider,
-        Camera,
-        OdkProvider,
-        File,
-        Device,
-        AppVersion
-    ]
+  declarations: [
+    MyApp,
+    AnalyticsHomePage,
+    ContactPage,
+    TabsPage,
+    HomePage,
+    LandingPage,
+    SettingsPage,
+    RegisterHomePage,
+    RegisterAgreementPage,
+    RegisterPersonalDetailsPage,
+    RegisterContactDetailsPage,
+    SettingsEditPage,
+    LogbookNewPage,
+    CircleLoaderComponent,
+    FinanceComponent,
+    pages,
+    components
+  ],
+  imports: [
+    HttpModule,
+    BrowserModule,
+    FormsModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    AnalyticsHomePage,
+    ContactPage,
+    TabsPage,
+    HomePage,
+    LandingPage,
+    SettingsPage,
+    RegisterHomePage,
+    RegisterAgreementPage,
+    RegisterPersonalDetailsPage,
+    RegisterContactDetailsPage,
+    SettingsEditPage,
+    LogbookNewPage,
+    pages,
+    EmailModalComponent
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AppstarterProvider,
+    ErrorsProvider,
+    RegistrationProvider,
+    DatePicker,
+    AuthProvider,
+    DataProvider,
+    LoaderProvider,
+    LogbookProvider,
+    Camera,
+    OdkProvider,
+    File,
+    Device,
+    AppVersion
+  ]
 })
 export class AppModule {
 }

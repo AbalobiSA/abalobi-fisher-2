@@ -3,6 +3,8 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/filter';
+import _ from 'lodash';
+
 
 import {User} from "../../classes/fisher/user.class";
 import {Community} from "../../classes/fisher/community.class";
@@ -198,6 +200,23 @@ export class DataProvider {
 
     return this.http.get(query, options)
       .map(response => response.json())
+      .toPromise()
+  }
+
+  userIsManager(): boolean {
+    return this.currentUser.abalobi_usertype__c.toLowerCase().includes("manager");
+  }
+
+  getManagedFishers(): Promise<any> {
+    const query = this.BASE_URL + '/analytics/manager/tripsubmissions';
+    const headers = new Headers();
+    const options = new RequestOptions({headers, params: {
+        id: this.currentUser.abalobi_id__c
+      }});
+
+    return this.http.get(query, options)
+      .map(response => response.json())
+      .map(response => _.sortBy(response, "last_trip_date").reverse())
       .toPromise()
   }
 }

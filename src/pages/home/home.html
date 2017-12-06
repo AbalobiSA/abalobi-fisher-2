@@ -16,8 +16,6 @@
 <ion-content padding class="page-content">
     <h1 text-center class="main-header">Abalobi Fisher </h1>
 
-
-
     <!--<h3 text-center>{{}}</h3>-->
     <!--<div class="image-container">-->
         <!--<img class="title-image" src="assets/images/abalobi_logo.png">-->
@@ -31,6 +29,13 @@
 
     <button ion-button block class="ablb-button abalobi-button-darkblue" (click)="startODK()">
         <i class="fa fa-book" aria-hidden="true"></i>&nbsp;{{"MAIN_MENU_LOG_CATCH" | translate}}
+    </button>
+
+    <button
+      ion-button block
+      class="ablb-button abalobi-button-brown"
+      (click)="openManagerView()">
+        <i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Manager View
     </button>
 
     <!--<button ion-button block class="ablb-button abalobi-button-darkblue" (click)="startAnalytics()">-->
