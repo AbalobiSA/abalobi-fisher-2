@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.abalobi_fisher" android-versionCode="200010" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="200040" id="com.abalobi_fisher" version="2.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Abalobi Fisher</name>
   <description>A fishing logbook for small-scale fishers.</description>
   <author email="support@abalobi.info" href="http://abalobi.info/">Abalobi Team</author>
