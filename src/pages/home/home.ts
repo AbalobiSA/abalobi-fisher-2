@@ -6,6 +6,7 @@ import {AuthProvider} from "../../providers/auth/auth";
 import {LogbookNewPage} from "../logbook/logbook-new/logbook-new";
 import {User} from "../../classes/fisher/user.class";
 import {ManagerFisherListPage} from "../manager-fisher-list/manager-fisher-list";
+import {DataProvider} from "../../providers/data/data";
 
 let startApp: any;
 
@@ -23,7 +24,8 @@ let startApp: any;
 export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public platform: Platform, public appstarter: AppstarterProvider,
-              public auth: AuthProvider) {
+              public auth: AuthProvider,
+              public data: DataProvider) {
   }
 
   ionViewDidLoad() {

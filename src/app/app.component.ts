@@ -6,9 +6,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {LandingPage} from "../pages/landing/landing";
 import Auth0Cordova from '@auth0/cordova';
 
-import {TabsPage} from '../pages/tabs/tabs';
-import {HomePage} from "../pages/home/home"
-
 @Component({
     templateUrl: 'app.html'
 })

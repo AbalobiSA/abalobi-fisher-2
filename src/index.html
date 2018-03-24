@@ -28,11 +28,35 @@
     <link href="build/main.css" rel="stylesheet">
 
     <script src="../node_modules/chart.js/src/chart.js"></script>
+
+  <style>
+    .br-loader-container {
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .br-loader {
+      text-align: center;
+      height: 100%;
+    }
+
+    .br-loader-image {
+      display: inline-block;
+      height: 100%;
+    }
+  </style>
+
 </head>
 <body>
 
 <!-- Ionic's root component and where the app will load -->
-<ion-app></ion-app>
+<ion-app>
+  <div class="br-loader-container">
+    <div class="br-loader">
+      <img class="br-loader-image" src="assets/loaders/puff.svg" />
+    </div>
+  </div>
+</ion-app>
 
 <!-- The polyfills js is generated during the build process -->
 <script src="build/polyfills.js"></script>
