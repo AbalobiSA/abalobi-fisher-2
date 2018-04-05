@@ -8,7 +8,6 @@ import _ from 'lodash';
 
 import {User} from "../../classes/fisher/user.class";
 import {Community} from "../../classes/fisher/community.class";
-import {Registration} from "../../classes/registration/registration.class";
 
 import {AnalyticsTrip} from "../../classes/analytics/AnalyticsTrip";
 
@@ -109,37 +108,7 @@ export class DataProvider {
     })
   }
 
-  submitRegistration(reg: Registration): Promise<any> {
-    const query = this.BASE_URL + '/register';
-    const headers = new Headers();
-    const options = new RequestOptions({
-      headers: headers
-    });
-    return this.http.post(query, reg, options)
-    // .map(response => response.json())
-      .toPromise()
-  }
-
-  downloadImage(url: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const query = url;
-      const headers = new Headers();
-      // headers.append("Access-Control-Allow-Origin", "true");
-      const options = new RequestOptions({
-        headers: headers
-      });
-
-      this.http.get(query, options)
-      // .map(response => response.json())
-        .toPromise()
-        .then(result => {
-          resolve(result);
-        })
-        .catch(ex => {
-          reject(ex);
-        })
-    })
-  }
+  
 
   getTripLog(year = null, month = null): Promise<any> {
     if (year === null || month === null) {

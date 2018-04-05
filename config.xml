@@ -95,7 +95,6 @@
         <variable name="ANDROID_HOST" value="abalobi.eu.auth0.com" />
         <variable name="ANDROID_PATHPREFIX" value="/cordova/com.abalobi.fisher/callback" />
     </plugin>
-    <plugin name="cordova-plugin-camera" spec="^3.0.0" />
     <plugin name="cordova-plugin-file" spec="^5.0.0" />
-    <engine name="android" spec="6.4.0" />
+    <engine name="android" spec="6.3.0" />
 </widget>

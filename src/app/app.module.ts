@@ -22,11 +22,6 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AppstarterProvider} from '../providers/appstarter/appstarter';
 import {ErrorsProvider} from '../providers/errors/errors';
-import {RegisterHomePage} from "../pages/register-home/register-home";
-import {RegistrationProvider} from '../providers/registration/registration.provider';
-import {RegisterAgreementPage} from "../pages/register-home/register-agreement/register-agreement";
-import {RegisterPersonalDetailsPage} from "../pages/register-home/register-personal-details/register-personal-details";
-import {RegisterContactDetailsPage} from "../pages/register-home/register-contact-details/register-contact-details";
 import {AuthProvider} from '../providers/auth/auth';
 import {DataProvider} from '../providers/data/data';
 
@@ -39,18 +34,12 @@ import {LogbookProvider} from '../providers/logbook/logbook';
 import {LogbookTripExistsPage} from "../pages/logbook/logbook-trip-exists/logbook-trip-exists";
 import {LogbookTripLocationPage} from "../pages/logbook/logbook-trip-location/logbook-trip-location";
 import {LogbookTripTypePage} from "../pages/logbook/logbook-trip-type/logbook-trip-type";
-import {RegisterPasswordPage} from "../pages/register-home/register-password/register-password";
-import {RegisterFisherInfoPage} from "../pages/register-home/register-fisher-info/register-fisher-info";
-import {RegisterBoatPage} from "../pages/register-home/register-boat/register-boat";
 import {LogbookCurrentsPage} from "../pages/logbook/logbook-currents/logbook-currents";
 import {LogbookNoTripPage} from "../pages/logbook/logbook-no-trip/logbook-no-trip";
 import {LogbookTripLocationShorespotsPage} from "../pages/logbook/logbook-trip-location-shorespots/logbook-trip-location-shorespots";
 import {LogbookTripLocationHarbourPage} from "../pages/logbook/logbook-trip-location-harbour/logbook-trip-location-harbour";
 import {LogbookWeatherPage} from "../pages/logbook/logbook-weather/logbook-weather";
-import {RegisterProfileImagePage} from "../pages/register-home/register-profile-image/register-profile-image";
 
-import {Camera, CameraOptions} from '@ionic-native/camera';
-import {RegisterSummaryPage} from "../pages/register-home/register-summary/register-summary";
 import {IonicStorageModule} from "@ionic/storage";
 import {CircleLoaderComponent} from "../components/circle-loader/circle-loader";
 import {AnalyticsTripViewPage} from "../pages/analytics-trip-view/analytics-trip-view";
@@ -78,12 +67,7 @@ const pages = [
   LogbookNoTripPage,
   LogbookTripLocationShorespotsPage,
   LogbookTripLocationHarbourPage,
-  RegisterPasswordPage,
-  RegisterFisherInfoPage,
   LogbookWeatherPage,
-  RegisterBoatPage,
-  RegisterProfileImagePage,
-  RegisterSummaryPage,
   AnalyticsTripViewPage,
   ManagerFisherListPage
 ];
@@ -104,10 +88,6 @@ const components = [
     HomePage,
     LandingPage,
     SettingsPage,
-    RegisterHomePage,
-    RegisterAgreementPage,
-    RegisterPersonalDetailsPage,
-    RegisterContactDetailsPage,
     SettingsEditPage,
     LogbookNewPage,
     CircleLoaderComponent,
@@ -140,10 +120,6 @@ const components = [
     HomePage,
     LandingPage,
     SettingsPage,
-    RegisterHomePage,
-    RegisterAgreementPage,
-    RegisterPersonalDetailsPage,
-    RegisterContactDetailsPage,
     SettingsEditPage,
     LogbookNewPage,
     pages,
@@ -155,13 +131,11 @@ const components = [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppstarterProvider,
     ErrorsProvider,
-    RegistrationProvider,
     DatePicker,
     AuthProvider,
     DataProvider,
     LoaderProvider,
     LogbookProvider,
-    Camera,
     OdkProvider,
     File,
     Device,

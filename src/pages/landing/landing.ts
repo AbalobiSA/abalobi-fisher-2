@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
-import {RegisterHomePage} from "../register-home/register-home";
 import {AuthProvider} from "../../providers/auth/auth";
 import {DataProvider} from "../../providers/data/data";
 import {LoaderProvider} from "../../providers/loader.service";
@@ -67,7 +66,7 @@ export class LandingPage {
     }
 
     register(): void {
-        this.navCtrl.push(RegisterHomePage, {}, {animate: true, direction: 'forward'});
+
     }
 
     loginMobile(): void {
